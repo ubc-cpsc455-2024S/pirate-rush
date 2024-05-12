@@ -1,0 +1,31 @@
+/* Colour hex codes
+-
+ */
+
+.navbar {
+    display: inline;
+}
+
+li {
+    display: inline;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mulish-heading {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.mulish-p {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
