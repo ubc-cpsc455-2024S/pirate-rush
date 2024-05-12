@@ -1,0 +1,16 @@
+{
+  "members": [
+    {
+      "name": "Luffy",
+      "description": "Captain of the Straw Hat Pirates",
+      "age": 19,
+      "image": "https://optc-db.github.io/api/images/full/transparent/1/400/1404.png"
+    },
+    {
+      "name": "Zoro",
+      "description": "Esteemed swordsman and pirate bounty hunter",
+      "age": 21,
+      "image": "https://optc-db.github.io/api/images/full/transparent/1/300/1362.png"
+    }
+  ]
+}

@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Team Builder</title>
+    <title>Crew Builder</title>
     <script src="teamBuilder.js" type="text/javascript"></script>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
           rel="stylesheet">
+    <link rel="icon" href="https://icons.iconarchive.com/icons/crountch/one-piece-jolly-roger/256/Luffys-flag-icon.png">
 </head>
 <body>
 <div id="all">
@@ -19,7 +20,7 @@
         </ul>
     </div>
     <div class="mulish-p" id="create-team-form">
-        <p class="mulish-heading">Create Your Team!</p>
+        <p class="mulish-heading">Build Your Pirate Crew!</p>
         <form>
             <div>
                 <label for="name">Member Name<span aria-label="required" class="required">*</span></label>
@@ -34,23 +35,20 @@
                 <input id="age" name="age" required type="number"/> <!-- TODO restrict to positive int -->
             </div>
             <div>
-                <button id="submit-button"  onclick={console.log("submit")} type="submit">Create Member</button>
+                <button id="submit-button" type="submit">Create Member</button>
             </div>
             <div>
                 <button id="clear-fields-button" onclick={console.log("reset")} type="reset">Clear Fields</button>
             </div>
         </form>
     </div>
+    <div>
+        <button id="clear-team-button" onclick={(console.log("clear"))}>Clear Cards</button>
+    </div>
     <div id="team-display">
         <div>
             <ul id="team-list">
-                <div class="team-member">
-                    <p>example</p>
-                </div>
             </ul>
-        </div>
-        <div>
-            <button id="clear-team-button" onclick={(console.log("clear"))}>Clear Cards</button>
         </div>
     </div>
 </div>

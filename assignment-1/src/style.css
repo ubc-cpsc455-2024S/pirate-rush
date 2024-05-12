@@ -1,9 +1,13 @@
-/* Colour hex codes
+/* Colours
 -
  */
 
-/* Tips
--   Generally for sizing, use % or rem
+.required {
+    color: #d00000;
+}
+
+/* General Tips
+-   For sizing, use % or rem
  */
 
 li {
@@ -50,6 +54,7 @@ button {
     font-style: normal;
 }
 
-.required {
-    color: #d00000;
+.member-container {
+    display: flex;
+    flex-direction: column;
 }
