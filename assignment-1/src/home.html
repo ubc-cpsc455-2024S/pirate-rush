@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Crew Builder</title>
-    <script src="teamBuilder.js" type="text/javascript"></script>
+    <script src="teamBuilder.js" type="module"></script>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
           rel="stylesheet">
-    <link rel="icon" href="https://icons.iconarchive.com/icons/crountch/one-piece-jolly-roger/256/Luffys-flag-icon.png">
+    <link href="https://icons.iconarchive.com/icons/crountch/one-piece-jolly-roger/256/Luffys-flag-icon.png" rel="icon">
 </head>
 <body>
 <div id="all">
     <div id="navbar">
-        <ul class="mulish-heading">
-            <li><a>Home</a></li> <!-- TODO link pages -->
-            <li><a>About</a></li>
-        </ul>
+        <nav>
+            <ul class="mulish-heading">
+                <li><a>Home</a></li> <!-- TODO link pages -->
+                <li><a>About</a></li>
+            </ul>
+        </nav>
     </div>
     <div class="mulish-p" id="create-team-form">
         <p class="mulish-heading">Build Your Pirate Crew!</p>
-        <form>
+        <form id="member-form">
+            <div>
+                <p>Fields marked with <span aria-label="required" class="required">*</span> are required.</p>
+            </div>
             <div>
                 <label for="name">Member Name<span aria-label="required" class="required">*</span></label>
                 <input id="name" name="name" required type="text"/>
@@ -35,15 +40,19 @@
                 <input id="age" name="age" required type="number"/> <!-- TODO restrict to positive int -->
             </div>
             <div>
-                <button id="submit-button" type="submit">Create Member</button>
+                <label for="imageURL">Image URL</label>
+                <input id="imageURL" name="imageURL" type="text"/>
             </div>
             <div>
-                <button id="clear-fields-button" onclick={console.log("reset")} type="reset">Clear Fields</button>
+                <input id="submit-button" type="submit" value="Add Pirate"/>
+            </div>
+            <div>
+                <button id="clear-fields-button" type="reset">Clear Fields</button>
             </div>
         </form>
     </div>
     <div>
-        <button id="clear-team-button" onclick={(console.log("clear"))}>Clear Cards</button>
+        <button id="clear-team-button">Clear Cards</button>
     </div>
     <div id="team-display">
         <div>

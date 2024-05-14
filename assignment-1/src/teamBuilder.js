@@ -3,29 +3,82 @@ const submitButton = document.getElementById("submit-button")
 const clearFormButton = document.getElementById("clear-fields-button")
 const clearCardsButton = document.getElementById("clear-team-button")
 
-// Ensure HTMLElement is not null before adding event listener
-if (submitButton) {
-    submitButton.addEventListener("click", createMember)
-}
+let jsonArray = []
 
-// if (clearFormButton) {
-//     clearFormButton.addEventListener("click", () => {})
-// }
-//
-// if (clearCardsButton) {
-//     clearCardsButton.addEventListener("click", () => {})
-// }
-
-document.addEventListener("DOMContentLoaded", function () {
-    fetch('team.json')
-        .then(resp => resp.json())
-        .then(data => {
-            const teamList = document.getElementById("team-list")
-            data.members.forEach(member => loadMember(member, teamList))
-        })
-        .catch(err => console.log("Error fetching data: ", err));
+document.addEventListener("DOMContentLoaded", () => {
+    loadTeamFromFile('team.json')
 })
 
+if (submitButton) {
+    submitButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        submitMember()
+        clearFormFields()
+    })
+}
+
+function submitMember() {
+    const name = document.getElementById("name").value
+    const description = document.getElementById("description").value
+    const age = document.getElementById("age").value
+    const imageURL = document.getElementById("imageURL").value
+
+    let image;
+    if (imageURL.trim() !== "") {
+        image = imageURL
+    } else {
+        image = createImage(name)
+    }
+
+    const memberObject = {
+        name: name,
+        description: description,
+        age: age,
+        image: image
+    }
+
+    jsonArray.push(memberObject)
+    loadMember(memberObject)
+}
+
+function loadTeamFromFile(teamJsonPath) {
+    fetch(teamJsonPath)
+        .then(resp => resp.json())
+        .then(data => {
+            jsonArray = data.members
+            jsonArray.forEach(member => loadMember(member))
+        })
+        .catch(err => console.log("Error fetching data: ", err));
+}
+
+function loadMember(member) {
+    const teamList = document.getElementById("team-list")
+    const list = document.createElement("li")
+    const div = document.createElement("div")
+    div.className = "member-container"
+
+    const name = createMemberFields(member.name)
+    const description = createMemberFields(member.description)
+    const age = createMemberFields(`${member.age} y/o`)
+    const img = document.createElement("img")
+
+    img.src = member.image
+    img.alt = member.name
+    img.width = 300
+
+    div.append(name, age, description, img)
+    list.appendChild(div)
+    teamList.appendChild(list)
+}
+
+function createMemberFields(fieldText) {
+    const field = document.createElement("span");
+    field.textContent = `${fieldText}`;
+    field.style.display = "block";
+    field.className = "mulish-p"
+
+    return field
+}
 
 function createImage(name) {
     switch (name.toLowerCase()) {
@@ -52,44 +105,13 @@ function createImage(name) {
     }
 }
 
-function createMember() { // TODO FINISH THIS
-    const name = document.getElementById("name")
-    const description = document.getElementById("description")
-    const age = document.getElementById("age")
+/*
+    Functions related to form-handling
+ */
 
-    const memberJson = {
-        name: name,
-        description: description,
-        age: age,
-        image: createImage(name)
-    }
+function clearFormFields() {
+    document.getElementById("name").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("imageURL").value = "";
 }
-
-function createMemberFields(fieldText) {
-    const field = document.createElement("span");
-    field.textContent = `${fieldText}`;
-    field.style.display = "block";
-    field.className = "mulish-p"
-
-    return field
-}
-
-function loadMember(member, teamList) {
-    const list = document.createElement("li")
-    const div = document.createElement("div")
-    div.className = "member-container"
-
-    const name = createMemberFields(member.name)
-    const description = createMemberFields(member.description)
-    const age = createMemberFields(`${member.age} y/o`)
-    const img = document.createElement("img")
-
-    img.src = member.image
-    img.alt = member.name
-    img.width = 300
-
-    div.append(name, age, description, img)
-    list.appendChild(div)
-    teamList.appendChild(list)
-}
-
