@@ -1,21 +1,39 @@
 
+let jsonArray = []
+
+/*
+    Handle buttons
+ */
 const submitButton = document.getElementById("submit-button")
 const clearFormButton = document.getElementById("clear-fields-button")
 const clearCardsButton = document.getElementById("clear-team-button")
-
-let jsonArray = []
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadTeamFromFile('team.json')
-})
 
 if (submitButton) {
     submitButton.addEventListener("click", (e) => {
         e.preventDefault()
         submitMember()
+        deleteAll()
+        loadAll()
         clearFormFields()
     })
 }
+if (clearFormButton) {
+    clearFormButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        clearFormFields()
+    })
+}
+if (clearCardsButton) {
+    clearCardsButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        deleteAll()
+        clearJson()
+    })
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadTeamFromFile('team.json')
+})
 
 function submitMember() {
     const name = document.getElementById("name").value
@@ -38,7 +56,6 @@ function submitMember() {
     }
 
     jsonArray.push(memberObject)
-    loadMember(memberObject)
 }
 
 function loadTeamFromFile(teamJsonPath) {
@@ -46,9 +63,22 @@ function loadTeamFromFile(teamJsonPath) {
         .then(resp => resp.json())
         .then(data => {
             jsonArray = data.members
-            jsonArray.forEach(member => loadMember(member))
+            loadAll()
         })
         .catch(err => console.log("Error fetching data: ", err));
+}
+
+function clearJson() {
+    jsonArray = []
+}
+
+function deleteAll() {
+    const teamList = document.getElementById("team-list")
+    teamList.innerHTML = ''
+}
+
+function loadAll() {
+    jsonArray.forEach(member => loadMember(member))
 }
 
 function loadMember(member) {
