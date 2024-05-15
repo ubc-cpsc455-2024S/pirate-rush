@@ -1,5 +1,10 @@
+const MAX_TEAM_SIZE = 6
 
 let jsonArray = []
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadTeamFromFile('team.json')
+})
 
 /*
     Handle buttons
@@ -11,18 +16,24 @@ const clearCardsButton = document.getElementById("clear-team-button")
 if (submitButton) {
     submitButton.addEventListener("click", (e) => {
         e.preventDefault()
-        submitMember()
-        deleteAll()
-        loadAll()
-        clearFormFields()
+        if (jsonArray.length === MAX_TEAM_SIZE) {
+            alert("Your team is full!")
+        } else {
+            submitMember()
+            deleteAll()
+            loadAll()
+            clearFormFields()
+        }
     })
 }
+
 if (clearFormButton) {
     clearFormButton.addEventListener("click", (e) => {
         e.preventDefault()
         clearFormFields()
     })
 }
+
 if (clearCardsButton) {
     clearCardsButton.addEventListener("click", (e) => {
         e.preventDefault()
@@ -31,10 +42,9 @@ if (clearCardsButton) {
     })
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadTeamFromFile('team.json')
-})
-
+/*
+    Helper functions
+ */
 function submitMember() {
     const name = document.getElementById("name").value
     const description = document.getElementById("description").value
@@ -134,10 +144,6 @@ function createImage(name) {
             return "https://optc-db.github.io/api/images/full/transparent/3/500/3515.png"
     }
 }
-
-/*
-    Functions related to form-handling
- */
 
 function clearFormFields() {
     document.getElementById("name").value = "";
