@@ -29,19 +29,20 @@
             </div>
             <div>
                 <label for="name">Member Name<span aria-label="required" class="required">*</span></label>
-                <input id="name" name="name" required type="text"/>
+                <input id="name" maxlength="16" name="name" required type="text"/>
             </div>
             <div>
                 <label for="description">Description<span aria-label="required" class="required">*</span></label>
-                <input id="description" name="description" required type="text"/>
+                <input id="description" maxlength="50" name="description" required type="text"/>
             </div>
             <div>
                 <label for="age">Age<span aria-label="required" class="required">*</span></label>
-                <input id="age" name="age" required type="number"/> <!-- TODO restrict to positive int -->
+                <input id="age" min="1" name="age" required type="number"/>
             </div>
             <div>
                 <label for="imageURL">Image URL</label>
-                <input id="imageURL" name="imageURL" type="text"/>
+                <input id="imageURL" name="imageURL" pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+                       type="text"/>
             </div>
             <div>
                 <input id="submit-button" type="submit" value="Add Pirate"/>
