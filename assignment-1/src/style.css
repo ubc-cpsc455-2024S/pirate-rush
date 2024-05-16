@@ -1,12 +1,4 @@
-
-.required {
-    color: #d00000;
-}
-
-/* General Tips
--   For sizing, use % or rem
- */
-
+/* General Tips - For sizing, use % or rem */
 li {
     display: inline;
 }
@@ -25,40 +17,119 @@ span {
 }
 
 button {
-    transition-duration: 0.5s;
+    font-family: "Mulish", sans-serif;
 }
 
+/* Input form styling */
+#submit-button,
 #clear-fields-button {
-
-}
-
-#submit-button {
-
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #202020;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 10px;
 }
 
 #clear-team-button {
-
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #b02b43;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 10px;
 }
 
+#submit-button:hover,
+#clear-fields-button:hover {
+    background-color: #515151;
+}
+
+#clear-team-button:hover {
+    background-color: #781f2f;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #f6f8fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.required {
+    color: red;
+}
+
+.input-field-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.input-field-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-field-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #7b8da3;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Navbar styling */
 .navbar {
-    display: inline;
+    background-color: #24292e;
+    overflow: hidden;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 .navbar a:hover {
     background-color: #ddd;
-    color: black;
+    color: #131313;
 }
 
-.navbar a.home {
-    background-color: #272727;
-    color: white;
+.link {
+    text-decoration: none;
 }
 
+/* Typography */
 .mulish-heading {
     font-family: "Mulish", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
+    text-align: center;
 }
 
 .mulish-p {
@@ -66,14 +137,97 @@ button {
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
+    text-align: center;
 }
 
+/* Team display styling */
+#team-display {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+#team-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Member container styling */
+/*
+    Used ChatGPT to generate the shadow effect and hover effect and then modified the provided css code:
+    - Prompt was: help me create a shadow and slight container hover effect
+ */
 .member-container {
-    background-color: white;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member-container:hover {
+    transform: translateX(2px) translateY(-4px);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
 }
 
 .member-name {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #101010;
+    margin-bottom: 10px;
+}
 
+.member-age {
+    font-size: 1rem;
+    color: #586069;
+    margin-bottom: 10px;
+}
+
+.member-description {
+    font-size: 1rem;
+    color: #24292e;
+    background-color: #e4e4e4;
+    border-radius: 10px;
+    margin: auto auto auto auto;
+    padding: 5px 15px 5px 15px;
+    text-align: center;
+}
+
+.member-container img {
+    margin: auto auto auto auto;
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Center the clear team button */
+.center {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Responsive styling */
+@media (max-width: 1200px) {
+    #team-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #team-list {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 10px;
+    }
 }

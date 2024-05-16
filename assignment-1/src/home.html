@@ -16,30 +16,30 @@
     <div class="navbar">
         <nav>
             <ul class="mulish-heading">
-                <li><a class="home" href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a class="link" href="home.html">Home</a></li>
+                <li><a class="link" href="about.html">About</a></li>
             </ul>
         </nav>
     </div>
     <div class="mulish-p" id="create-team-form">
         <h1 class="mulish-heading">Build Your Pirate Crew!</h1>
-        <form id="member-form">
+        <form id="member-form" class="form-container">
             <div>
-                <p>Fields marked with <span aria-label="required" class="required">*</span> are required.</p>
+                <p>Fields marked with <span aria-label="required" class="required"> *</span> are required.</p>
             </div>
-            <div>
-                <label for="name">Member Name<span aria-label="required" class="required">*</span></label>
+            <div class="input-field-container">
+                <label for="name">Member Name<span aria-label="required" class="required"> *</span></label>
                 <input id="name" maxlength="16" name="name" required type="text"/>
             </div>
-            <div>
-                <label for="description">Description<span aria-label="required" class="required">*</span></label>
+            <div class="input-field-container">
+                <label for="description">Description<span aria-label="required" class="required"> *</span></label>
                 <input id="description" maxlength="50" name="description" required type="text"/>
             </div>
-            <div>
-                <label for="age">Age<span aria-label="required" class="required">*</span></label>
+            <div class="input-field-container">
+                <label for="age">Age<span aria-label="required" class="required"> *</span></label>
                 <input id="age" min="1" name="age" required type="number"/>
             </div>
-            <div>
+            <div class="input-field-container">
                 <label for="imageURL">Image URL</label>
                 <input id="imageURL" name="imageURL" pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
                        type="text"/>
@@ -52,7 +52,7 @@
             </div>
         </form>
     </div>
-    <div>
+    <div class="center">
         <button id="clear-team-button">Clear Pirates</button>
     </div>
     <div id="team-display">

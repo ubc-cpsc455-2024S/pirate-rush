@@ -14,8 +14,7 @@ const clearFormButton = document.getElementById("clear-fields-button")
 const clearCardsButton = document.getElementById("clear-team-button")
 
 if (submitButton) {
-    // Event needs to be of type 'submit' for HTML5 validations to work
-    submitButton.addEventListener("submit", (e) => {
+    submitButton.addEventListener("click", (e) => {
         e.preventDefault()
         if (jsonArray.length === MAX_TEAM_SIZE) {
             alert("Your team is full!")
