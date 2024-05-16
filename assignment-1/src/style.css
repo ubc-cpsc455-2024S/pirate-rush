@@ -57,10 +57,10 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
-    width: 90%;
-    max-width: 500px;
-    padding: 20px;
+    margin: auto;
+    width: 80%;
+    max-width: 400px;
+    padding: 15px 20px 15px 5px;
     background-color: #f6f8fa;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -68,6 +68,7 @@ button {
 
 .required {
     color: red;
+    font-size: 0.8rem;
 }
 
 .input-field-container {
@@ -75,16 +76,19 @@ button {
     flex-direction: column;
     width: 100%;
     margin-bottom: 15px;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .input-field-container label {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
 .input-field-container input {
-    padding: 10px;
-    font-size: 1rem;
+    padding: 8px;
+    font-size: 0.9rem;
     border: 1px solid #7b8da3;
     border-radius: 5px;
     width: 100%;
@@ -112,6 +116,7 @@ button {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .navbar a:hover {
@@ -151,7 +156,7 @@ button {
 
 #team-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 2fr);
     gap: 20px;
     padding: 20px;
 }
@@ -164,9 +169,6 @@ button {
     flex-direction: column;
     align-items: center;
     padding-bottom: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     height: 320px; /* Fixed height for consistent sizing */
@@ -191,7 +193,7 @@ button {
     margin-bottom: 10px;
 }
 
-.member-description {
+.member-description { /* TODO: MAKE CARD FIXED SIZE */
     font-size: 1rem;
     color: #24292e;
     background-color: #e4e4e4;
@@ -202,11 +204,9 @@ button {
 }
 
 .member-container img {
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 15px 5px;
     border-radius: 5px;
     max-width: 100%;
-    height: auto;
+    min-width: 250px;
 }
 
 /* Center the clear team button */
@@ -217,19 +217,41 @@ button {
 }
 
 /* Responsive styling */
-@media (max-width: 1200px) {
-    #team-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 768px) {
-    #team-list {
-        grid-template-columns: 1fr;
+    /* Ensure cards stack vertically */
+    .member-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Ensure image width doesn't exceed card width */
+    .member-container img {
+        max-width: 100%;
+        height: auto;
+        min-width: unset; /* Reset minimum width for the image */
     }
 
     .form-container {
-        width: 100%;
-        padding: 10px;
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .input-field-container label {
+        font-size: 0.8rem;
+    }
+
+    .input-field-container input {
+        font-size: 0.8rem;
+    }
+
+    #submit-button,
+    #clear-fields-button,
+    #clear-team-button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .required {
+        font-size: 0.7rem;
     }
 }
