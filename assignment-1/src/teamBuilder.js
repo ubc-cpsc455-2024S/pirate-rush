@@ -96,12 +96,14 @@ function loadMember(member) {
     const teamList = document.getElementById("team-list")
     const list = document.createElement("li")
     const div = document.createElement("div")
-    div.className = "member-container"
 
-    const name = createMemberFields(member.name)
-    const description = createMemberFields(member.description)
-    const age = createMemberFields(`${member.age} y/o`)
+    const name = createMemberFields(member.name, "name")
+    const description = createMemberFields(member.description, "description")
+    const age = createMemberFields(`${member.age} y/o`, "age")
     const img = document.createElement("img")
+
+    list.className = "each-card"
+    div.className = "member-container"
 
     img.src = member.image
     img.alt = member.name
@@ -112,11 +114,11 @@ function loadMember(member) {
     teamList.appendChild(list)
 }
 
-function createMemberFields(fieldText) {
+function createMemberFields(fieldText, type) {
     const field = document.createElement("span");
     field.textContent = `${fieldText}`;
     field.style.display = "block";
-    field.className = "mulish-p"
+    field.className = `member-${type}`
 
     return field
 }

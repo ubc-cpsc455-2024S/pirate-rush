@@ -17,6 +17,13 @@ ul {
     padding: 0;
 }
 
+span {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
 button {
     transition-duration: 0.5s;
 }
@@ -65,4 +72,8 @@ button {
     background-color: white;
     display: flex;
     flex-direction: column;
+}
+
+.member-name {
+
 }
