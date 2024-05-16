@@ -157,19 +157,20 @@ button {
 }
 
 /* Member container styling */
-/*
-    Used ChatGPT to generate the shadow effect and hover effect and then modified the provided css code:
-    - Prompt was: help me create a shadow and slight container hover effect
- */
 .member-container {
-    background-color: #ffffff;
+    border-width: 5px;
+    border-color: #7b8da3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    height: 320px; /* Fixed height for consistent sizing */
+    margin: 10px; /* Adjust margin for spacing */
 }
 
 .member-container:hover {
@@ -178,8 +179,8 @@ button {
 }
 
 .member-name {
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-weight: 800;
+    font-size: 1.6rem;
     color: #101010;
     margin-bottom: 10px;
 }
@@ -195,13 +196,14 @@ button {
     color: #24292e;
     background-color: #e4e4e4;
     border-radius: 10px;
-    margin: auto auto auto auto;
-    padding: 5px 15px 5px 15px;
+    margin: 5px 5px 5px 5px;
+    padding: 3px 10px 10px 10px;
     text-align: center;
 }
 
 .member-container img {
-    margin: auto auto auto auto;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 15px 5px;
     border-radius: 5px;
     max-width: 100%;
     height: auto;
