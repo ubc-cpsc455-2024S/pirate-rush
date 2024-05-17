@@ -45,7 +45,7 @@ if (clearCardsButton) {
 /*
     Helper functions
  */
-function submitMember() {
+function submitMember() { // TODO - PLAY CHARACTER DIALOGUE WHEN ADDING CHARACTER, CSS ANIMATION WHEN ADDING CHARACTER
     const name = document.getElementById("name").value
     const description = document.getElementById("description").value
     const age = document.getElementById("age").value

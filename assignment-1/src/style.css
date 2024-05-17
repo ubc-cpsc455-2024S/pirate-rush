@@ -162,7 +162,7 @@ button {
 }
 
 /* Member container styling */
-.member-container {
+.member-container { /* TODO: ADD BACKGROUND BOX FOR CARDS */
     border-width: 5px;
     border-color: #7b8da3;
     display: flex;
@@ -187,7 +187,7 @@ button {
     margin-bottom: 10px;
 }
 
-.member-age {
+.member-age { /* TODO: MAKE AGE INPUT BOX SMALLER */
     font-size: 1rem;
     color: #586069;
     margin-bottom: 10px;
