@@ -20,7 +20,6 @@ button {
     font-family: "Mulish", sans-serif;
 }
 
-/* Input form styling */
 #submit-button,
 #clear-fields-button {
     padding: 10px 20px;
@@ -94,7 +93,6 @@ button {
     width: 100%;
 }
 
-/* Navbar styling */
 .navbar {
     background-color: #24292e;
     overflow: hidden;
@@ -128,7 +126,6 @@ button {
     text-decoration: none;
 }
 
-/* Typography */
 .mulish-heading {
     font-family: "Mulish", sans-serif;
     font-optical-sizing: auto;
@@ -145,13 +142,15 @@ button {
     text-align: center;
 }
 
-/* Team display styling */
 #team-display {
     display: flex;
     justify-content: center;
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
+    background-color: #f6f8fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 #team-list {
@@ -161,8 +160,7 @@ button {
     padding: 20px;
 }
 
-/* Member container styling */
-.member-container { /* TODO: ADD BACKGROUND BOX FOR CARDS */
+.member-container {
     border-width: 5px;
     border-color: #7b8da3;
     display: flex;
@@ -171,8 +169,8 @@ button {
     padding-bottom: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    height: 320px; /* Fixed height for consistent sizing */
-    margin: 10px; /* Adjust margin for spacing */
+    height: 320px;
+    margin: 10px;
 }
 
 .member-container:hover {
@@ -187,20 +185,21 @@ button {
     margin-bottom: 10px;
 }
 
-.member-age { /* TODO: MAKE AGE INPUT BOX SMALLER */
+.member-age {
     font-size: 1rem;
     color: #586069;
     margin-bottom: 10px;
 }
 
-.member-description { /* TODO: MAKE CARD FIXED SIZE */
+.member-description {
     font-size: 1rem;
     color: #24292e;
-    background-color: #e4e4e4;
     border-radius: 10px;
-    margin: 5px 5px 5px 5px;
-    padding: 3px 10px 10px 10px;
+    margin: auto;
     text-align: center;
+    max-width: 90%;
+    padding: 10px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 .member-container img {
@@ -209,14 +208,12 @@ button {
     min-width: 250px;
 }
 
-/* Center the clear team button */
 .center {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 
-/* Responsive styling */
 @media (max-width: 768px) {
     /* Ensure cards stack vertically */
     .member-container {
@@ -232,6 +229,7 @@ button {
     }
 
     .form-container {
+        margin-top: 10px;
         width: 90%;
         max-width: 100%;
     }
@@ -254,4 +252,39 @@ button {
     .required {
         font-size: 0.7rem;
     }
+}
+
+/* About Page */
+.about {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about h1 {
+    margin-bottom: 20px;
+}
+
+.about-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+}
+
+.about-link {
+    color: #0073b1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about-link:hover {
+    color: #005582;
 }
