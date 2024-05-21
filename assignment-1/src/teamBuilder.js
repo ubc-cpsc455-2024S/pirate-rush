@@ -1,9 +1,16 @@
 const MAX_TEAM_SIZE = 6
 
+const overtaken_mp3 = new Audio("overtaken.mp3")
+
 let jsonArray = []
+
 
 document.addEventListener("DOMContentLoaded", () => {
     loadTeamFromFile('team.json')
+})
+
+overtaken_mp3.addEventListener("canplaythrough", () => {
+    overtaken_mp3.play()
 })
 
 /*
