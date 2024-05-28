@@ -1,4 +1,4 @@
-/* General Tips - For sizing, use % or rem */
+
 li {
     display: inline;
 }
@@ -52,35 +52,32 @@ button {
     background-color: #781f2f;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    width: 80%;
-    max-width: 400px;
-    padding: 15px 20px 15px 5px;
-    background-color: #f6f8fa;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
 .required {
     color: red;
     font-size: 0.8rem;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    max-width: 400px;
+    background-color: #f6f8fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
 .input-field-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 70%;
     margin-bottom: 15px;
-    padding: 0 10px;
     box-sizing: border-box;
 }
 
 .input-field-container label {
-    margin-bottom: 3px;
+    margin-bottom: 0.5rem;
     font-weight: bold;
     font-size: 0.9rem;
 }
@@ -90,7 +87,6 @@ button {
     font-size: 0.9rem;
     border: 1px solid #7b8da3;
     border-radius: 5px;
-    width: 100%;
 }
 
 .navbar {
@@ -146,7 +142,7 @@ button {
     display: flex;
     justify-content: center;
     width: 90%;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 20px auto;
     background-color: #f6f8fa;
     border-radius: 10px;
@@ -161,20 +157,16 @@ button {
 }
 
 .member-container {
-    border-width: 5px;
-    border-color: #7b8da3;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    height: 320px;
-    margin: 10px;
 }
 
 .member-container:hover {
-    transform: translateX(2px) translateY(-4px);
+    transform: translateX(3px) translateY(-5px);
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -183,35 +175,29 @@ button {
     font-size: 1.6rem;
     color: #101010;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .member-age {
     font-size: 1rem;
     color: #586069;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .member-description {
     font-size: 1rem;
     color: #24292e;
-    border-radius: 10px;
-    margin: auto;
     text-align: center;
     max-width: 90%;
     padding: 10px;
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
-}
-
-.member-container img {
-    border-radius: 5px;
-    max-width: 100%;
-    min-width: 250px;
+    height: 40px;
+    margin-bottom: 10px;
 }
 
 .center {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
 }
 
 @media (max-width: 768px) {

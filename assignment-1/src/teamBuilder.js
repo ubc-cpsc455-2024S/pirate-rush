@@ -1,4 +1,14 @@
 const MAX_TEAM_SIZE = 6
+const AUDIO_FILES = {
+    luffy: new Audio("jc_luf_053.wav"),
+    zoro: new Audio("j_zor_167.wav"),
+    nami: new Audio("j_nam_030.wav"),
+    usopp: new Audio("j_uso_031.wav"),
+    sanji: new Audio("j_snj_185.wav"),
+    chopper: new Audio("j_cho_037_b.wav"),
+    robin: new Audio("j_nic_044.wav"),
+    franky: new Audio("j_fra_068.wav")
+};
 
 let jsonArray = []
 
@@ -45,7 +55,7 @@ if (clearCardsButton) {
 /*
     Helper functions
  */
-function submitMember() { // TODO - PLAY CHARACTER DIALOGUE WHEN ADDING CHARACTER, CSS ANIMATION WHEN ADDING CHARACTER
+function submitMember() {
     const name = document.getElementById("name").value
     const description = document.getElementById("description").value
     const age = document.getElementById("age").value
@@ -66,6 +76,7 @@ function submitMember() { // TODO - PLAY CHARACTER DIALOGUE WHEN ADDING CHARACTE
     }
 
     jsonArray.push(memberObject)
+    playCharacterAudio(name)
 }
 
 function loadTeamFromFile(teamJsonPath) {
@@ -138,8 +149,6 @@ function createImage(name) {
             return "https://optc-db.github.io/api/images/full/transparent/1/300/1370.png"
         case "robin":
             return "https://optc-db.github.io/api/images/full/transparent/1/400/1408.png"
-        case "brook":
-            return "https://optc-db.github.io/api/images/full/transparent/1/400/1410.png"
         case "franky":
             return "https://optc-db.github.io/api/images/full/transparent/1/300/1364.png"
         default:
@@ -152,4 +161,10 @@ function clearFormFields() {
     document.getElementById("description").value = "";
     document.getElementById("age").value = "";
     document.getElementById("imageURL").value = "";
+}
+
+function playCharacterAudio(name) {
+    if (AUDIO_FILES[name]) {
+        AUDIO_FILES[name].play();
+    }
 }
