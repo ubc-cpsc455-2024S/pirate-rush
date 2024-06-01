@@ -1,14 +1,22 @@
-import './css/App.css'
 import './css/style.css'
 
-import InputForm from "./components/InputForm.jsx";
-import CrewContainer from "./components/CrewContainer.jsx";
+import NavBar from "./components/NavBar.jsx";
+import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
+import HomePage from "./pages/HomePage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 
 function App() {
     return (
         <>
-            <InputForm/>
-            <CrewContainer/>
+            <div id="all">
+                <Router>
+                    <NavBar/>
+                    <Routes>
+                        <Route path="/" element={<HomePage/>}/>
+                        <Route path="/About" element={<AboutPage/>}/>
+                    </Routes>
+                </Router>
+            </div>
         </>
     )
 }
