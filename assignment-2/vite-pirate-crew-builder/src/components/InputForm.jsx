@@ -100,7 +100,7 @@ function InputForm({addMember}) {
                         <input id="submit-button" type="submit" value="Add Pirate"/>
                     </div>
                     <div>
-                        <button id="clear-fields-button" type="reset">Clear Fields</button>
+                        <button id="clear-fields-button" type="reset" onClick={() => resetForm()}>Clear Fields</button>
                     </div>
                 </form>
             </div>
