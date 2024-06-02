@@ -1,14 +1,14 @@
 import React from 'react';
 import {v4 as uuidv4} from 'uuid';
 
-function CrewContainer({crew}) {
+function CrewContainer({crew, clearMembers, deleteMember, viewMember}) {
     return (
         <>
             <div id="team-display">
                 <div>
                     <h2 className="mulish-heading">Your Crew</h2>
                     <div className="center">
-                        <button id="clear-team-button">Clear Pirates</button>
+                        <button id="clear-team-button" onClick={() => clearMembers()}>Clear Pirates</button>
                     </div>
                     <ul id="team-list">
                         {crew.map((crewMember) => (
@@ -20,8 +20,8 @@ function CrewContainer({crew}) {
                                     <img className="member-image" src={crewMember.image} alt={crewMember.name}
                                          width={300}/>
                                     <div>
-                                        <button className="view-member-button">View</button>
-                                        <button className="delete-member-button">Delete</button>
+                                        <button className="view-member-button" onClick={() => viewMember()}>View</button>
+                                        <button className="delete-member-button" onClick={() => deleteMember()}>Delete</button>
                                     </div>
                                 </div>
                             </li>

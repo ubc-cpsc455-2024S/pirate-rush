@@ -37,13 +37,21 @@ function HomePage() {
     };
 
     const clearMembers = () => {
-        setCrew([]);
+        console.log("clear pirates clicked!")
+    }
+
+    const deleteMember = () => {
+        console.log("delete pirate clicked!")
+    }
+
+    const viewMember = () => {
+        console.log("view pirate clicked!")
     }
 
     return (
         <>
             <InputForm addMember={addMember} />
-            <CrewContainer crew={crew} />
+            <CrewContainer crew={crew} clearMembers={clearMembers} deleteMember={deleteMember} viewMember={viewMember} />
         </>
     );
 }
