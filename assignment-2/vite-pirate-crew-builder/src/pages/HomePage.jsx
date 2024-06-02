@@ -36,6 +36,10 @@ function HomePage() {
         setCrew([...crew, member]);
     };
 
+    const clearMembers = () => {
+        setCrew([]);
+    }
+
     return (
         <>
             <InputForm addMember={addMember} />

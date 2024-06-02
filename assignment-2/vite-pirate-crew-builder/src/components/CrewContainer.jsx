@@ -4,12 +4,12 @@ import {v4 as uuidv4} from 'uuid';
 function CrewContainer({crew}) {
     return (
         <>
-            <div className="center">
-                <button id="clear-team-button">Clear Pirates</button>
-            </div>
             <div id="team-display">
                 <div>
                     <h2 className="mulish-heading">Your Crew</h2>
+                    <div className="center">
+                        <button id="clear-team-button">Clear Pirates</button>
+                    </div>
                     <ul id="team-list">
                         {crew.map((crewMember) => (
                             <li key={uuidv4()} className="each-card">
