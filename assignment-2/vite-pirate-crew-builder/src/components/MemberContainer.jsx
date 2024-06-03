@@ -1,21 +1,31 @@
 import React from 'react';
 import {removeAllMembers, removeMemberById} from "../features/memberSlice.js";
 import {useDispatch, useSelector} from "react-redux";
+import DetailedMember from "./DetailedMember.jsx";
 
 function MemberContainer() {
     const crew = useSelector((state) => state.member);
     const dispatch = useDispatch();
+
+    const [viewDetailed, setViewDetailed] = React.useState(false);
+    const [selectedMember, setSelectedMember] = React.useState(null);
 
     const handleClearMembers = () => {
         dispatch(removeAllMembers());
     }
 
     const handleDeleteMember = (id) => {
-        dispatch(removeMemberById(id))
+        dispatch(removeMemberById(id));
     }
 
-    const viewMember = (id) => {
-        console.log("view pirate clicked!", id)
+    const viewMember = (member) => {
+        setSelectedMember(member);
+        setViewDetailed(true);
+    }
+
+    const closeView = () => {
+        setSelectedMember(null);
+        setViewDetailed(false);
     }
     return (
         <>
@@ -35,7 +45,7 @@ function MemberContainer() {
                                     <img className="member-image" src={crewMember.image} alt={crewMember.name}
                                          width={300}/>
                                     <div>
-                                        <button className="view-member-button" onClick={() => viewMember(crewMember.id)}>View</button>
+                                        <button className="view-member-button" onClick={() => viewMember(crewMember)}>View</button>
                                         <button className="delete-member-button" onClick={() => handleDeleteMember(crewMember.id)}>Delete</button>
                                     </div>
                                 </div>
@@ -44,6 +54,8 @@ function MemberContainer() {
                     </ul>
                 </div>
             </div>
+
+            <DetailedMember isOpen={viewDetailed} onClose={closeView} member={selectedMember}/>
         </>
     );
 }
