@@ -1,10 +1,19 @@
 import React, {useState} from 'react';
+import {addMember} from "../features/memberSlice.js";
+import {v4 as uuidv4} from "uuid";
+import {useDispatch} from "react-redux";
 
-function InputForm({addMember}) {
+function InputForm() {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [age, setAge] = useState("");
     const [imageURL, setImageURL] = useState("");
+
+    const dispatch = useDispatch();
+
+    const handleAddMember = (member) => {
+        dispatch(addMember({...member, id: uuidv4()}))
+    };
 
     function resetForm() {
         setName("");
@@ -31,7 +40,7 @@ function InputForm({addMember}) {
             image: image
         };
 
-        addMember(newMember);
+        handleAddMember(newMember);
         resetForm();
     }
 

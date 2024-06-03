@@ -1,18 +1,33 @@
 import React from 'react';
-import {v4 as uuidv4} from 'uuid';
+import {removeAllMembers, removeMemberById} from "../features/memberSlice.js";
+import {useDispatch, useSelector} from "react-redux";
 
-function CrewContainer({crew, clearMembers, deleteMember, viewMember}) {
+function MemberContainer() {
+    const crew = useSelector((state) => state.member);
+    const dispatch = useDispatch();
+
+    const handleClearMembers = () => {
+        dispatch(removeAllMembers());
+    }
+
+    const handleDeleteMember = (id) => {
+        dispatch(removeMemberById(id))
+    }
+
+    const viewMember = (id) => {
+        console.log("view pirate clicked!", id)
+    }
     return (
         <>
             <div id="team-display">
                 <div>
                     <h2 className="mulish-heading">Your Crew</h2>
                     <div className="center">
-                        <button id="clear-team-button" onClick={() => clearMembers()}>Clear Pirates</button>
+                        <button id="clear-team-button" onClick={() => handleClearMembers()}>Clear Pirates</button>
                     </div>
                     <ul id="team-list">
                         {crew.map((crewMember) => (
-                            <li key={uuidv4()} className="each-card">
+                            <li key={crewMember.id} className="each-card">
                                 <div className="member-container">
                                     <span className="member-name">{crewMember.name}</span>
                                     <span className="member-age">{`${crewMember.age} y/o`}</span>
@@ -20,8 +35,8 @@ function CrewContainer({crew, clearMembers, deleteMember, viewMember}) {
                                     <img className="member-image" src={crewMember.image} alt={crewMember.name}
                                          width={300}/>
                                     <div>
-                                        <button className="view-member-button" onClick={() => viewMember()}>View</button>
-                                        <button className="delete-member-button" onClick={() => deleteMember()}>Delete</button>
+                                        <button className="view-member-button" onClick={() => viewMember(crewMember.id)}>View</button>
+                                        <button className="delete-member-button" onClick={() => handleDeleteMember(crewMember.id)}>Delete</button>
                                     </div>
                                 </div>
                             </li>
@@ -33,4 +48,4 @@ function CrewContainer({crew, clearMembers, deleteMember, viewMember}) {
     );
 }
 
-export default CrewContainer;
+export default MemberContainer;

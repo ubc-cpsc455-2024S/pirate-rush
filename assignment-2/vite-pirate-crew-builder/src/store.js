@@ -1,5 +1,8 @@
-// import { configureStore } from "@reduxjs/toolkit";
-//
-// export default configureStore({
-//     reducer: {}
-// })
+import { configureStore } from '@reduxjs/toolkit';
+import memberReducer from './features/memberSlice';
+
+export default configureStore({
+    reducer: {
+        member: memberReducer
+    }
+})
