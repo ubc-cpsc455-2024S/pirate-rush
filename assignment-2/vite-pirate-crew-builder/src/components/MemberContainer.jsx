@@ -40,8 +40,6 @@ function MemberContainer() {
                             <li key={crewMember.id} className="each-card">
                                 <div className="member-container">
                                     <span className="member-name">{crewMember.name}</span>
-                                    <span className="member-age">{`${crewMember.age} y/o`}</span>
-                                    <span className="member-description">{crewMember.description}</span>
                                     <img className="member-image" src={crewMember.image} alt={crewMember.name}
                                          width={300}/>
                                     <div>
