@@ -75,7 +75,7 @@ function InputForm() {
           className="form-container"
           onSubmit={handleSubmit}
         >
-          <div>
+          <div className="input-title-container">
             <h1 className="mulish-heading">Build Your Pirate Crew!</h1>
             <p>
               Fields marked with{" "}

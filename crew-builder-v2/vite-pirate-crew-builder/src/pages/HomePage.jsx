@@ -4,8 +4,10 @@ import MemberContainer from "../components/MemberContainer.jsx";
 function HomePage() {
   return (
     <>
-      <InputForm />
-      <MemberContainer />
+        <div id="main-container">
+            <InputForm />
+            <MemberContainer />
+        </div>
     </>
   );
 }

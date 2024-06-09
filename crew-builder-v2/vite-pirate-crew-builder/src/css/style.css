@@ -19,6 +19,14 @@ button {
   font-family: "Mulish", sans-serif;
 }
 
+#main-container {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px; /* Add some space between the two components */
+  padding: 20px; /* Optional padding */
+}
+
 #submit-button,
 #clear-fields-button,
 .view-member-button {
@@ -62,13 +70,20 @@ button {
 
 .form-container {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   margin: auto;
+  min-width: 300px; /* Ensure form doesn't shrink too small */
   max-width: 400px;
   background-color: #f6f8fa;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.input-title-container {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .input-field-container {
@@ -141,10 +156,10 @@ button {
 
 #team-display {
   display: flex;
+  flex: 2;
   justify-content: center;
-  width: 90%;
-  max-width: 900px;
-  margin: 20px auto;
+  width: 80%;
+  max-width: 700px;
   background-color: #f6f8fa;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
@@ -203,6 +218,11 @@ button {
 }
 
 @media (max-width: 768px) {
+  #main-container {
+    flex-direction: column; /* Stack vertically on small screens */
+    align-items: center;
+  }
+
   /* Ensure cards stack vertically */
   .member-container {
     width: 100%;
