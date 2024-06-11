@@ -1,5 +1,5 @@
 import React from "react";
-import { removeMemberById } from "../features/memberSlice.js";
+import { removeMemberById } from "../redux/members/reducer.js";
 import { useDispatch } from "react-redux";
 import DetailedMemberCard from "./DetailedMemberCard.jsx";
 
@@ -32,7 +32,7 @@ function MiniMemberCard({ crewMember }) {
             className="member-image"
             src={crewMember.image}
             alt={crewMember.name}
-            width={300}
+            width={250}
           />
           <div>
             <button

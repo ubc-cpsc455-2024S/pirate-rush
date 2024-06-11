@@ -13,9 +13,11 @@ const DetailedMemberCard = ({ isOpen, onClose, member }) => {
     <>
       <div className="detailed-container" onClick={handleClickOffView}>
         <div className="detailed-content">
-          <h2 className="mulish-heading">{member.name}</h2>
-          <p className="mulish-p">{`${member.age} y/o`}</p>
-          <p className="mulish-p">{member.description}</p>
+          <div className="detailed-text">
+            <h2 className="mulish-heading">{member.name}</h2>
+            <p className="mulish-p">{`${member.age} y/o`}</p>
+            <p className="mulish-p">{member.description}</p>
+          </div>
           <img
             className="detailed-image"
             src={member.image}

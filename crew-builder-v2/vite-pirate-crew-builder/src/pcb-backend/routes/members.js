@@ -1,20 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const { v4: uuid } = require("uuid");
 
-const crew = require("../data/initial_team.json").members;
+const crew = require('../data/initial_team.json').members
 
-/* GET members. */
+/* GET members */
 router.get("/", function (req, res, next) {
-  return res.json(crew);
+  return res.send(crew);
 });
 
 /* GET member by id */
 router.get("/:memberId", function (req, res, next) {
   const foundMember = crew.find((user) => user.id === req.params.memberId);
+  if (!foundMember) {
+    return res.status(404).json({ message: "Member not found" });
+  }
+  return res.send(foundMember);
 });
 
 /* POST member */
-router.post("/", function (req, res, next) {});
+router.post("/", function (req, res, next) {
+  // Handle post request logic here
+});
 
 module.exports = router;

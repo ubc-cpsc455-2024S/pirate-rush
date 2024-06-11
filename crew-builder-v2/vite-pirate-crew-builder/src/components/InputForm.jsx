@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addMember } from "../features/memberSlice.js";
+import { addMember } from "../redux/members/reducer.js";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 
