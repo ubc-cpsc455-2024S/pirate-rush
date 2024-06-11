@@ -40,7 +40,11 @@ export const memberSlice = createSlice({
   initialState: initialCrew,
   reducers: {
     addMember: (state, action) => {
-      state.push(action.payload);
+      if (state.length < 6) {
+        state.push(action.payload);
+      } else {
+        alert("You can only have up to 6 members in the crew.");
+      }
     },
     removeMemberById: (state, action) => {
       return state.filter((member) => member.memberId !== action.payload);
