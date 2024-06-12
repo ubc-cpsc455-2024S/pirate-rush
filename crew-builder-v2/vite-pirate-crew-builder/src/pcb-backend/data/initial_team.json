@@ -5,42 +5,42 @@
       "description": "Captain of the Straw Hat Pirates",
       "age": 19,
       "image": "https://optc-db.github.io/api/images/full/transparent/1/400/1404.png",
-      "memberId": 1
+      "memberId": "1"
     },
     {
       "name": "Zoro",
       "description": "Esteemed swordsman and pirate bounty hunter",
       "age": 21,
       "image": "https://optc-db.github.io/api/images/full/transparent/1/300/1362.png",
-      "memberId": 2
+      "memberId": "2"
     },
     {
       "name": "Nami",
       "description": "Elusive thief and self-proclaimed world-class navigator",
       "age": 20,
       "image": "https://optc-db.github.io/api/images/full/transparent/1/300/1366.png",
-      "memberId": 3
+      "memberId": "3"
     },
     {
       "name": "Usopp",
       "description": "Supreme sniper the bravest warrior of the sea",
       "age": 19,
       "image": "https://optc-db.github.io/api/images/full/transparent/1/400/1406.png",
-      "memberId": 4
+      "memberId": "4"
     },
     {
       "name": "Sanji",
       "description": "",
       "age": 20,
       "image": "https://optc-db.github.io/api/images/full/transparent/1/300/1368.png",
-      "memberId": 5
+      "memberId": "5"
     },
     {
       "name": "Robin",
       "description": "Archaeologist and the only person capable of deciphering the Poneglyph",
       "age": 22,
       "image": "https://optc-db.github.io/api/images/full/transparent/1/400/1408.png",
-      "memberId": 6
+      "memberId": "6"
     }
   ]
 }

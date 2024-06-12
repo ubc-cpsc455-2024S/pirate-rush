@@ -1,6 +1,6 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { actionTypes } from './actionTypes';
-import MemberService from './service';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { actionTypes } from "./actionTypes";
+import MemberService from "./service";
 
 export const getMembersAsync = createAsyncThunk(
   actionTypes.GET_MEMBERS,
@@ -12,6 +12,15 @@ export const getMembersAsync = createAsyncThunk(
 export const addMemberAsync = createAsyncThunk(
   actionTypes.ADD_MEMBER,
   async (member) => {
-    return await MemberService.addMember({ member });
+    return await MemberService.addMember(member);
+  }
+);
+
+export const deleteMemberAsync = createAsyncThunk(
+  actionTypes.DELETE_MEMBER,
+  async (memberId) => {
+    await MemberService.deleteMember(memberId);
+
+    return memberId
   }
 );

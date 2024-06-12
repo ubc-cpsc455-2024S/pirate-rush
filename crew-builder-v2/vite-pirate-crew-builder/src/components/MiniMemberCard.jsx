@@ -1,7 +1,7 @@
 import React from "react";
-import { removeMemberById } from "../redux/members/reducer.js";
 import { useDispatch } from "react-redux";
 import DetailedMemberCard from "./DetailedMemberCard.jsx";
+import { deleteMemberAsync } from "../redux/members/thunks.js";
 
 function MiniMemberCard({ crewMember }) {
   const [viewDetailed, setViewDetailed] = React.useState(false);
@@ -10,7 +10,7 @@ function MiniMemberCard({ crewMember }) {
   const dispatch = useDispatch();
 
   const handleDeleteMember = (id) => {
-    dispatch(removeMemberById(id));
+    dispatch(deleteMemberAsync(id));
   };
 
   const viewMember = (member) => {
