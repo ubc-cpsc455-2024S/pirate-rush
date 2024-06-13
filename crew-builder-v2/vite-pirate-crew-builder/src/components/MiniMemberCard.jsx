@@ -10,6 +10,7 @@ function MiniMemberCard({ crewMember }) {
   const dispatch = useDispatch();
 
   const handleDeleteMember = (id) => {
+    console.log(id)
     dispatch(deleteMemberAsync(id));
   };
 

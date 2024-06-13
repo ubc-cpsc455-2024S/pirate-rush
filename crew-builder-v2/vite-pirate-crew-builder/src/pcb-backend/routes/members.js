@@ -28,13 +28,14 @@ router.post("/", function (req, res, next) {
 router.delete("/:memberId", function (req, res, next) {
   const memberId = req.params.memberId;
   const initialLength = crew.length;
+
   crew = crew.filter(member => member.memberId !== memberId);
 
   if (crew.length === initialLength) {
     return res.status(404).json({ message: "Member not found" });
   }
 
-  return res.status(204)
+  return res.status(204).send();
 });
 
 module.exports = router;

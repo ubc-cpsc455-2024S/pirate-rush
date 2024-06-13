@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { REQUEST_STATE } from "../utils";
 import { addMemberAsync, getMembersAsync, deleteMemberAsync } from "./thunks";
 
@@ -56,9 +56,7 @@ export const reducer = createSlice({
       })
       .addCase(deleteMemberAsync.fulfilled, (state, action) => {
         state.deleteMember = REQUEST_STATE.FULFILLED;
-        console.log(state.list)
         state.list = state.list.filter(member => member.memberId !== action.payload);
-        console.log(state.list)
       })
       .addCase(deleteMemberAsync.rejected, (state, action) => {
         state.deleteMember = REQUEST_STATE.REJECTED;

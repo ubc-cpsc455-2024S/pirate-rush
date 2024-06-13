@@ -19,8 +19,6 @@ export const addMemberAsync = createAsyncThunk(
 export const deleteMemberAsync = createAsyncThunk(
   actionTypes.DELETE_MEMBER,
   async (memberId) => {
-    await MemberService.deleteMember(memberId);
-
-    return memberId
+    return await MemberService.deleteMember(memberId);
   }
 );
