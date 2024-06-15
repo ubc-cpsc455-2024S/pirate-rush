@@ -31,7 +31,7 @@ function MiniMemberCard({ crewMember }) {
           <span className="member-name">{crewMember.name}</span>
           <img
             className="member-image"
-            src={crewMember.image}
+            src={crewMember.images[crewMember.imgVersion]}
             alt={crewMember.name}
             width={250}
           />

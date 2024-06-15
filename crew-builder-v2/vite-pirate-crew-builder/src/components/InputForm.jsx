@@ -12,8 +12,8 @@ function InputForm() {
   const dispatch = useDispatch();
 
   const handleAddMember = (member) => {
-    const newMember = { ...member, memberId: uuidv4() }
-    dispatch(addMemberAsync(newMember))
+    const newMember = { ...member, memberId: uuidv4() };
+    dispatch(addMemberAsync(newMember));
   };
 
   function resetForm() {
@@ -26,19 +26,24 @@ function InputForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    let image;
+    let images;
 
     if (imageURL.trim() !== "") {
-      image = imageURL;
+      images = [
+        imageURL,
+        "https://optc-db.github.io/api/images/full/transparent/3/500/3514.png",
+        "https://optc-db.github.io/api/images/full/transparent/3/500/3515.png"
+      ];
     } else {
-      image = createImage(name);
+      images = createImage(name);
     }
 
     const newMember = {
       name: name,
       description: description,
       age: age,
-      image: image,
+      images: images,
+      imgVersion: 0
     };
 
     handleAddMember(newMember);
@@ -48,23 +53,47 @@ function InputForm() {
   function createImage(name) {
     switch (name.toLowerCase()) {
       case "luffy":
-        return "https://optc-db.github.io/api/images/full/transparent/1/400/1404.png";
+        return [
+          "https://optc-db.github.io/api/images/full/transparent/0/000/0002.png",
+          "https://optc-db.github.io/api/images/full/transparent/2/000/2073.png",
+          "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png"
+        ];
       case "zoro":
-        return "https://optc-db.github.io/api/images/full/transparent/1/300/1362.png";
+        return [
+          "https://optc-db.github.io/api/images/full/transparent/0/000/0005.png",
+          "https://optc-db.github.io/api/images/full/transparent/2/400/2476.png",
+          "https://optc-db.github.io/api/images/full/transparent/3/200/3202.png"
+        ];
       case "nami":
-        return "https://optc-db.github.io/api/images/full/transparent/1/300/1366.png";
+        return [
+          "https://optc-db.github.io/api/images/full/transparent/0/000/0009.png",
+          "https://optc-db.github.io/api/images/full/transparent/2/000/2073.png",
+          "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png"
+        ];
       case "usopp":
-        return "https://optc-db.github.io/api/images/full/transparent/1/400/1406.png";
+        return [
+          "https://optc-db.github.io/api/images/full/transparent/0/000/0013.png",
+          "https://optc-db.github.io/api/images/full/transparent/1/500/1531.png",
+          "https://optc-db.github.io/api/images/full/transparent/1/500/1543.png"
+        ];
       case "sanji":
-        return "https://optc-db.github.io/api/images/full/transparent/1/300/1368.png";
-      case "chopper":
-        return "https://optc-db.github.io/api/images/full/transparent/1/300/1370.png";
+        return [
+          "https://optc-db.github.io/api/images/full/transparent/0/000/0017.png",
+          "https://optc-db.github.io/api/images/full/transparent/1/500/1587.png",
+          "https://optc-db.github.io/api/images/full/transparent/1/500/1588.png"
+        ];
       case "robin":
-        return "https://optc-db.github.io/api/images/full/transparent/1/400/1408.png";
-      case "franky":
-        return "https://optc-db.github.io/api/images/full/transparent/1/300/1364.png";
+        return [
+          "https://optc-db.github.io/api/images/full/transparent/0/200/0209.png",
+          "https://optc-db.github.io/api/images/full/transparent/1/900/1950.png",
+          "https://optc-db.github.io/api/images/full/transparent/2/800/2830.png"
+        ];
       default:
-        return "https://optc-db.github.io/api/images/full/transparent/3/500/3515.png";
+        return [
+          "https://optc-db.github.io/api/images/full/transparent/3/600/3682.png",
+          "https://optc-db.github.io/api/images/full/transparent/3/500/3514.png",
+          "https://optc-db.github.io/api/images/full/transparent/3/500/3515.png"
+        ];
     }
   }
 
