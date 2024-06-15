@@ -33,15 +33,12 @@ export const reducer = createSlice({
       })
       .addCase(addMemberAsync.fulfilled, (state, action) => {
         state.addMember = REQUEST_STATE.FULFILLED;
-        if (state.list.length < 6) {
-          state.list.push(action.payload);
-        } else {
-          alert("You can only have up to 6 members in the crew.");
-        }
+        state.list.push(action.payload);
       })
       .addCase(addMemberAsync.rejected, (state, action) => {
         state.addMember = REQUEST_STATE.REJECTED;
         state.error = action.error;
+        alert(action.error.message)
       })
       .addCase(deleteMemberAsync.pending, (state) => {
         state.deleteMember = REQUEST_STATE.PENDING;
