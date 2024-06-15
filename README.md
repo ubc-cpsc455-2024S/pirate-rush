@@ -17,3 +17,7 @@ Team Builder Website 2.0
 
 Team Builder Website 2.1
 - Implement backend via Node.js and express. Added member upgrade feature.
+
+# References
+
+Assignment uses image URLs from: https://optc-db.github.io/

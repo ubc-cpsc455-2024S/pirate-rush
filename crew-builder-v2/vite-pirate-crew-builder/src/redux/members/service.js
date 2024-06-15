@@ -1,5 +1,7 @@
+const URL_PATH = "http://localhost:3000/members";
+
 const addMember = async (member) => {
-  const response = await fetch("http://localhost:3000/members", {
+  const response = await fetch(URL_PATH, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +19,7 @@ const addMember = async (member) => {
 };
 
 const getMembers = async () => {
-  const response = await fetch("http://localhost:3000/members", {
+  const response = await fetch(URL_PATH, {
     method: "GET",
   });
 
@@ -25,15 +27,24 @@ const getMembers = async () => {
 };
 
 const deleteMember = async (memberId) => {
-  await fetch("http://localhost:3000/members/" + memberId, {
+  await fetch(URL_PATH + "/" + memberId, {
     method: "DELETE",
   });
 
-  return memberId
+  return memberId;
+};
+
+const patchMemberVersion = async (memberId) => {
+  const response = await fetch(URL_PATH + "/" + memberId, {
+    method: "PATCH",
+  });
+
+  return response.json();
 };
 
 export default {
   addMember,
   getMembers,
   deleteMember,
+  patchMemberVersion,
 };
