@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import DetailedMemberCard from "./DetailedMemberCard.jsx";
-import { deleteMemberAsync } from "../redux/members/thunks.js";
+import { deleteMemberAsync, patchMemberVersionAsync } from "../redux/members/thunks.js";
 
 function MiniMemberCard({ crewMember }) {
   const [viewDetailed, setViewDetailed] = React.useState(false);
@@ -9,8 +9,11 @@ function MiniMemberCard({ crewMember }) {
 
   const dispatch = useDispatch();
 
+  const handleUpgradeMember = (id) => {
+    dispatch(patchMemberVersionAsync(id));
+  }
+
   const handleDeleteMember = (id) => {
-    console.log(id);
     dispatch(deleteMemberAsync(id));
   };
 
@@ -41,6 +44,12 @@ function MiniMemberCard({ crewMember }) {
               onClick={() => viewMember(crewMember)}
             >
               View
+            </button>
+            <button
+              className="upgrade-member-button"
+              onClick={() => handleUpgradeMember(crewMember)}
+            >
+              Upgrade
             </button>
             <button
               className="delete-member-button"
