@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { REQUEST_STATE } from "../utils";
 import { addMemberAsync, getMembersAsync, deleteMemberAsync } from "./thunks";
 
@@ -13,13 +13,6 @@ const INITIAL_STATE = {
 export const reducer = createSlice({
   name: "members",
   initialState: INITIAL_STATE,
-  // reducers: {
-  //   reorderMembers: (state, action) => {
-  //     const { srcIndex, destIndex } = action.payload;
-  //     const [removed] = state.list.splice(srcIndex, 1);
-  //     state.list.splice(destIndex, 0, removed);
-  //   }
-  // },
   extraReducers: (builder) => {
     builder
       .addCase(getMembersAsync.pending, (state) => {

@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
-
 import { getMembersAsync } from "../redux/members/thunks.js";
 import MiniMemberCard from "./MiniMemberCard.jsx";
 
@@ -12,17 +10,6 @@ function MemberContainer() {
   useEffect(() => {
     dispatch(getMembersAsync());
   }, []);
-
-  // const handleOnDragEnd = (result) => {
-  //   if (!result.destination) return;
-  //
-  //   dispatch(
-  //     reorderMembers({
-  //       srcIndex: result.source.index,
-  //       destinationIndex: result.destination.index,
-  //     }),
-  //   );
-  // };
 
   return (
     <>
@@ -36,41 +23,6 @@ function MemberContainer() {
               </li>
             ))}
           </ul>
-          {/*<DragDropContext onDragEnd={handleOnDragEnd}>*/}
-          {/*  <Droppable droppableId="droppable-crew">*/}
-          {/*    {(provided, snapshot) => (*/}
-          {/*      <div*/}
-          {/*        {...provided.droppableProps}*/}
-          {/*        ref={provided.innerRef}*/}
-          {/*        id="team-list"*/}
-          {/*        style={{*/}
-          {/*          backgroundColor: "rgba(173, 216, 230, 0.3)",*/}
-          {/*          borderRadius: 10,*/}
-          {/*        }}*/}
-          {/*      >*/}
-          {/*        {crew.map((member, index) => (*/}
-          {/*          <Draggable*/}
-          {/*            key={member.memberId}*/}
-          {/*            draggableId={String(member.memberId)}*/}
-          {/*            index={index}*/}
-          {/*          >*/}
-          {/*            {(provided) => (*/}
-          {/*              <div*/}
-          {/*                ref={provided.innerRef}*/}
-          {/*                {...provided.draggableProps}*/}
-          {/*                {...provided.dragHandleProps}*/}
-          {/*                className={"draggable-member"}*/}
-          {/*              >*/}
-          {/*                <MiniMemberCard crewMember={member} />*/}
-          {/*              </div>*/}
-          {/*            )}*/}
-          {/*          </Draggable>*/}
-          {/*        ))}*/}
-          {/*        {provided.placeholder}*/}
-          {/*      </div>*/}
-          {/*    )}*/}
-          {/*  </Droppable>*/}
-          {/*</DragDropContext>*/}
         </div>
       </div>
     </>

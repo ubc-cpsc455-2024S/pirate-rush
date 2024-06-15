@@ -25,12 +25,11 @@ const getMembers = async () => {
 };
 
 const deleteMember = async (memberId) => {
-  const response = await fetch("http://localhost:3000/members/" + memberId, {
+  await fetch("http://localhost:3000/members/" + memberId, {
     method: "DELETE",
   });
 
-  console.log(response)
-  // TODO
+  return memberId
 };
 
 export default {
