@@ -4,12 +4,12 @@ const router = express.Router();
 let crew = require("../data/initial_team.json").members;
 
 /* GET members */
-router.get("/", function (req, res, next) {
+router.get("/", function (req, res, _) {
   return res.status(200).send(crew);
 });
 
 /* GET member by id */
-router.get("/:memberId", function (req, res, next) {
+router.get("/:memberId", function (req, res, _) {
   const foundMember = crew.find(
     (user) => user.id === parseInt(req.params.memberId),
   );
@@ -20,7 +20,7 @@ router.get("/:memberId", function (req, res, next) {
 });
 
 /* POST member */
-router.post("/", function (req, res, next) {
+router.post("/", function (req, res, _) {
   const newMember = { ...req.body };
   const MAX_CREW_SIZE = 6;
   if (crew.length < MAX_CREW_SIZE) {
@@ -34,7 +34,7 @@ router.post("/", function (req, res, next) {
 });
 
 /* DELETE member by id */
-router.delete("/:memberId", function (req, res, next) {
+router.delete("/:memberId", function (req, res, _) {
   const memberId = req.params.memberId;
   const initialLength = crew.length;
 
@@ -47,7 +47,7 @@ router.delete("/:memberId", function (req, res, next) {
   return res.status(204).send();
 });
 
-router.patch("/:memberId", function (req, res, next) {
+router.patch("/:memberId", function (req, res, _) {
   const memberId = req.params.memberId;
   const memberIndex = crew.findIndex((member) => member.memberId === memberId);
 
@@ -63,9 +63,7 @@ router.patch("/:memberId", function (req, res, next) {
     return res.status(200).json(member);
   }
 
-  return res
-    .status(400)
-    .json({ message: "Member is at max level" });
+  return res.status(400).json({ message: "Member is at max level" });
 });
 
 module.exports = router;

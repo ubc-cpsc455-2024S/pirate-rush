@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   getMembers: REQUEST_STATE.IDLE,
   addMember: REQUEST_STATE.IDLE,
   deleteMember: REQUEST_STATE.IDLE,
-  patchMemberVersionAsync: REQUEST_STATE.IDLE,
+  patchMemberVersion: REQUEST_STATE.IDLE,
   error: null,
 };
 

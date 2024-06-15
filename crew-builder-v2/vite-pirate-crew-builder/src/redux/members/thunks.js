@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { actionTypes } from "./actionTypes";
 import MemberService from "./service";
-import { memo } from "react";
 
 export const getMembersAsync = createAsyncThunk(
   actionTypes.GET_MEMBERS,

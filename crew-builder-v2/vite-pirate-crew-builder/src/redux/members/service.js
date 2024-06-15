@@ -38,9 +38,18 @@ const patchMemberVersion = async (memberId) => {
   const response = await fetch(URL_PATH + "/" + memberId, {
     method: "PATCH",
   });
-
-  return response.json();
+  return await getResponse(response);
 };
+
+async function getResponse(response) {
+  const data = await response.json();
+
+  if (!response.ok) {
+    const errorMsg = data?.message;
+    throw new Error(errorMsg);
+  }
+  return data;
+}
 
 export default {
   addMember,
