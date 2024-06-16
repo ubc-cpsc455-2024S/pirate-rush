@@ -28,11 +28,17 @@ function MiniMemberCard({ crewMember }) {
     setViewDetailed(false);
   };
 
+  const memberLevel = crewMember.imgVersion + 1
+
   return (
     <>
       <div>
-        <div className="member-container">
-          <span className="member-name">{crewMember.name}</span>
+        <div className={"mini-member-container" + "-" + memberLevel}>
+          <div>
+            <span className="member-name">{crewMember.name}</span>
+            <span className="member-level"> LV {memberLevel}</span>
+          </div>
+
           <img
             className="member-image"
             src={crewMember.images[crewMember.imgVersion]}

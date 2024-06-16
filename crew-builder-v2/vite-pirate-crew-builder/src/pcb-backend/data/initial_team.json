@@ -3,7 +3,6 @@
     {
       "name": "Luffy",
       "description": "Captain of the Straw Hat Pirates",
-      "age": 19,
       "images": [
         "https://optc-db.github.io/api/images/full/transparent/0/000/0002.png",
         "https://optc-db.github.io/api/images/full/transparent/2/000/2073.png",
@@ -15,7 +14,6 @@
     {
       "name": "Zoro",
       "description": "Esteemed swordsman and pirate bounty hunter",
-      "age": 21,
       "images": [
         "https://optc-db.github.io/api/images/full/transparent/0/000/0005.png",
         "https://optc-db.github.io/api/images/full/transparent/2/400/2476.png",
@@ -27,7 +25,6 @@
     {
       "name": "Nami",
       "description": "Elusive thief and self-proclaimed world-class navigator",
-      "age": 20,
       "images": [
         "https://optc-db.github.io/api/images/full/transparent/0/000/0009.png",
         "https://optc-db.github.io/api/images/full/transparent/2/000/2075.png",
@@ -39,7 +36,6 @@
     {
       "name": "Usopp",
       "description": "Supreme sniper the bravest warrior of the sea",
-      "age": 19,
       "images": [
         "https://optc-db.github.io/api/images/full/transparent/0/000/0013.png",
         "https://optc-db.github.io/api/images/full/transparent/1/500/1531.png",
@@ -51,7 +47,6 @@
     {
       "name": "Sanji",
       "description": "",
-      "age": 20,
       "images": [
         "https://optc-db.github.io/api/images/full/transparent/0/000/0017.png",
         "https://optc-db.github.io/api/images/full/transparent/1/500/1587.png",
@@ -63,7 +58,6 @@
     {
       "name": "Robin",
       "description": "Archaeologist and the only person capable of deciphering the Poneglyph",
-      "age": 22,
       "images": [
         "https://optc-db.github.io/api/images/full/transparent/0/200/0209.png",
         "https://optc-db.github.io/api/images/full/transparent/1/900/1950.png",

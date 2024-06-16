@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { addMemberAsync } from "../redux/members/thunks.js";
+import { setImages, setImageVersion } from "../componentUtils/InputFormUtils.js";
 
 function InputForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [age, setAge] = useState("");
+  const [level, setLevel] = useState("");
   const [imageURL, setImageURL] = useState("");
 
   const dispatch = useDispatch();
@@ -19,82 +20,25 @@ function InputForm() {
   function resetForm() {
     setName("");
     setDescription("");
-    setAge("");
+    setLevel("");
     setImageURL("");
   }
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    let images;
-
-    if (imageURL.trim() !== "") {
-      images = [
-        imageURL,
-        "https://optc-db.github.io/api/images/full/transparent/3/500/3514.png",
-        "https://optc-db.github.io/api/images/full/transparent/3/500/3515.png",
-      ];
-    } else {
-      images = createImage(name);
-    }
+    let images = setImages(imageURL, name);
+    let imgVersion = setImageVersion(level);
 
     const newMember = {
       name: name,
       description: description,
-      age: age,
       images: images,
-      imgVersion: 0,
+      imgVersion: imgVersion,
     };
 
     handleAddMember(newMember);
     resetForm();
-  }
-
-  function createImage(name) {
-    switch (name.toLowerCase()) {
-      case "luffy":
-        return [
-          "https://optc-db.github.io/api/images/full/transparent/0/000/0002.png",
-          "https://optc-db.github.io/api/images/full/transparent/2/000/2073.png",
-          "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png",
-        ];
-      case "zoro":
-        return [
-          "https://optc-db.github.io/api/images/full/transparent/0/000/0005.png",
-          "https://optc-db.github.io/api/images/full/transparent/2/400/2476.png",
-          "https://optc-db.github.io/api/images/full/transparent/3/200/3202.png",
-        ];
-      case "nami":
-        return [
-          "https://optc-db.github.io/api/images/full/transparent/0/000/0009.png",
-          "https://optc-db.github.io/api/images/full/transparent/2/000/2073.png",
-          "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png",
-        ];
-      case "usopp":
-        return [
-          "https://optc-db.github.io/api/images/full/transparent/0/000/0013.png",
-          "https://optc-db.github.io/api/images/full/transparent/1/500/1531.png",
-          "https://optc-db.github.io/api/images/full/transparent/1/500/1543.png",
-        ];
-      case "sanji":
-        return [
-          "https://optc-db.github.io/api/images/full/transparent/0/000/0017.png",
-          "https://optc-db.github.io/api/images/full/transparent/1/500/1587.png",
-          "https://optc-db.github.io/api/images/full/transparent/1/500/1588.png",
-        ];
-      case "robin":
-        return [
-          "https://optc-db.github.io/api/images/full/transparent/0/200/0209.png",
-          "https://optc-db.github.io/api/images/full/transparent/1/900/1950.png",
-          "https://optc-db.github.io/api/images/full/transparent/2/800/2830.png",
-        ];
-      default:
-        return [
-          "https://optc-db.github.io/api/images/full/transparent/3/600/3682.png",
-          "https://optc-db.github.io/api/images/full/transparent/3/500/3514.png",
-          "https://optc-db.github.io/api/images/full/transparent/3/500/3515.png",
-        ];
-    }
   }
 
   return (
@@ -155,21 +99,17 @@ function InputForm() {
             />
           </div>
           <div className="input-field-container">
-            <label htmlFor="age">
-              Age
-              <span aria-label="required" className="required">
-                {" "}
-                *
-              </span>
+            <label htmlFor="level">
+              Level
             </label>
             <input
-              id="age"
+              id="level"
               min="1"
-              name="age"
-              required
+              max="3"
+              name="level"
               type="number"
-              value={age}
-              onChange={(e) => setAge(Number(e.target.value))}
+              value={level}
+              onChange={(e) => setLevel(Number(e.target.value))}
             />
           </div>
           <div className="input-field-container">

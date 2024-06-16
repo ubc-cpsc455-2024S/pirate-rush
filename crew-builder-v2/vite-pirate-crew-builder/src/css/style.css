@@ -183,7 +183,9 @@ button {
   padding: 10px;
 }
 
-.member-container {
+.mini-member-container-1,
+.mini-member-container-2,
+.mini-member-container-3 {
   background-color: #fbfbfb;
   border-radius: 8px;
   display: flex;
@@ -195,15 +197,50 @@ button {
     box-shadow 0.2s;
 }
 
-.member-container:hover {
-  box-shadow: 0 12px 18px rgb(172, 212, 234);
+@keyframes hoverAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  75% {
+    transform: translateY(-1px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
+
+.mini-member-container-1:hover {
+  box-shadow: 0 8px 14px rgb(183, 234, 172);
+}
+
+.mini-member-container-2:hover {
+  box-shadow: 0 12px 18px rgb(119, 188, 228);
+  animation: hoverAnimation 3s infinite linear;
+}
+
+.mini-member-container-3:hover {
+  box-shadow: 0 16px 22px rgb(239, 103, 72);
+  animation: hoverAnimation 2s infinite linear;
+}
+
 
 .member-name {
   font-weight: 800;
   font-size: 1.6rem;
   color: #101010;
-  margin-bottom: 5px;
+  text-align: center;
+}
+
+.member-level {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #5c5c5c;
   text-align: center;
 }
 
@@ -223,13 +260,17 @@ button {
   }
 
   /* Ensure cards stack vertically */
-  .member-container {
+  .mini-member-container-1,
+  .mini-member-container-2,
+  .mini-member-container-3 {
     width: 100%;
     max-width: 100%;
   }
 
   /* Ensure image width doesn't exceed card width */
-  .member-container img {
+  .mini-member-container-1 img,
+  .mini-member-container-2 img,
+  .mini-member-container-3 img {
     max-width: 70%;
     height: auto;
     min-width: unset; /* Reset minimum width for the image */
