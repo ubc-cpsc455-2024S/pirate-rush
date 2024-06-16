@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { addMemberAsync } from "../redux/members/thunks.js";
-import { setImages, setImageVersion } from "../componentUtils/InputFormUtils.js";
+import { setMemberImages, setMemberImgVersion, setMemberDescription } from "../componentUtils/InputFormUtils.js";
 
 function InputForm() {
   const [name, setName] = useState("");
@@ -27,14 +27,11 @@ function InputForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    let images = setImages(imageURL, name);
-    let imgVersion = setImageVersion(level);
-
     const newMember = {
       name: name,
-      description: description,
-      images: images,
-      imgVersion: imgVersion,
+      description: setMemberDescription(description),
+      images: setMemberImages(imageURL, name),
+      imgVersion: setMemberImgVersion(level),
     };
 
     handleAddMember(newMember);
@@ -80,18 +77,11 @@ function InputForm() {
             />
           </div>
           <div className="input-field-container">
-            <label htmlFor="description">
-              Description
-              <span aria-label="required" className="required">
-                {" "}
-                *
-              </span>
-            </label>
+            <label htmlFor="description">Description</label>
             <input
               id="description"
               maxLength="45"
               name="description"
-              required
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}

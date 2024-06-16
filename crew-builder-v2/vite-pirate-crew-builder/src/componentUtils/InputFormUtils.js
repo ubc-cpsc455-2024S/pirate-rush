@@ -1,3 +1,5 @@
+const DEFAULT_DESCRIPTION = "A powerful pirate and a dear friend";
+
 export function createImage(name) {
   switch (name.toLowerCase()) {
     case "luffy":
@@ -45,7 +47,7 @@ export function createImage(name) {
   }
 }
 
-export function setImages(imageURL, name) {
+export function setMemberImages(imageURL, name) {
   if (imageURL.trim() !== "") {
     return [
       imageURL,
@@ -57,10 +59,18 @@ export function setImages(imageURL, name) {
   }
 }
 
-export function setImageVersion(imageVersion) {
+export function setMemberImgVersion(imageVersion) {
   if (imageVersion !== null) {
     return imageVersion - 1;
   } else {
     return 0;
+  }
+}
+
+export function setMemberDescription(description) {
+  if (description.trim() !== "") {
+    return description;
+  } else {
+    return DEFAULT_DESCRIPTION;
   }
 }

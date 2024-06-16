@@ -46,7 +46,7 @@
     },
     {
       "name": "Sanji",
-      "description": "",
+      "description": "Masterful cook and a fierce foe with a kick",
       "images": [
         "https://optc-db.github.io/api/images/full/transparent/0/000/0017.png",
         "https://optc-db.github.io/api/images/full/transparent/1/500/1587.png",
@@ -57,7 +57,7 @@
     },
     {
       "name": "Robin",
-      "description": "Archaeologist and the only person capable of deciphering the Poneglyph",
+      "description": "Daring archaeologist capable of deciphering the Poneglyph",
       "images": [
         "https://optc-db.github.io/api/images/full/transparent/0/200/0209.png",
         "https://optc-db.github.io/api/images/full/transparent/1/900/1950.png",

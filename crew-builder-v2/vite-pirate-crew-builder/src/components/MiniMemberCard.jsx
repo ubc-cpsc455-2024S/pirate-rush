@@ -6,13 +6,31 @@ import { deleteMemberAsync, getMembersAsync, patchMemberVersionAsync } from "../
 function MiniMemberCard({ crewMember }) {
   const [viewDetailed, setViewDetailed] = React.useState(false);
   const [selectedMember, setSelectedMember] = React.useState(null);
+  const [isEvolving, setIsEvolving] = React.useState(false);
+  const [isSilhouette, setIsSilhouette] = React.useState(false);
 
   const dispatch = useDispatch();
 
   const handleUpgradeMember = async (id) => {
+    if (crewMember.imgVersion === 2) {
+      alert(`Crew member: ${id} is already at maximum level.`);
+      return;
+    }
+
+    setIsEvolving(true);
+
+    // Wait for evolve animation
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await dispatch(patchMemberVersionAsync(id));
-    await dispatch(getMembersAsync())
-  }
+    await dispatch(getMembersAsync());
+    setIsSilhouette(true);
+
+    // Wait for silhouette animation
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsSilhouette(false);
+    setIsEvolving(false);
+  };
+
 
   const handleDeleteMember = (id) => {
     dispatch(deleteMemberAsync(id));
@@ -28,19 +46,19 @@ function MiniMemberCard({ crewMember }) {
     setViewDetailed(false);
   };
 
-  const memberLevel = crewMember.imgVersion + 1
+  const memberLevel = crewMember.imgVersion + 1;
 
   return (
     <>
       <div>
-        <div className={"mini-member-container" + "-" + memberLevel}>
+        <div className={"mini-member-container-" + memberLevel}>
           <div>
             <span className="member-name">{crewMember.name}</span>
             <span className="member-level"> LV {memberLevel}</span>
           </div>
 
           <img
-            className="member-image"
+            className={`member-image ${isEvolving ? 'evolving' : ''} ${isSilhouette ? 'silhouette' : ''}`}
             src={crewMember.images[crewMember.imgVersion]}
             alt={crewMember.name}
             width={250}
@@ -62,7 +80,7 @@ function MiniMemberCard({ crewMember }) {
               className="delete-member-button"
               onClick={() => handleDeleteMember(crewMember.memberId)}
             >
-              Delete
+              Remove
             </button>
           </div>
         </div>
