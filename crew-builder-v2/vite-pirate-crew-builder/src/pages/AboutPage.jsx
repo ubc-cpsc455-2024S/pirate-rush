@@ -5,7 +5,7 @@ function AboutPage() {
         <h1 className="mulish-heading">Crew Builder</h1>
         <div className="about-content">
           <p className="mulish-p">
-            Hi, my name is Jackson and this is my pirate crew builder website. I
+            Hi, my name is Jackson and this is my pirate crew builder website for CPSC 455. I
             am a 4th year Computer Science student with a passion for software
             engineering, game design, and art!
           </p>
