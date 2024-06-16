@@ -22,11 +22,12 @@ function MiniMemberCard({ crewMember }) {
     // Wait for evolve animation
     await new Promise((resolve) => setTimeout(resolve, 500));
     await dispatch(patchMemberVersionAsync(id));
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await dispatch(getMembersAsync());
     setIsSilhouette(true);
 
     // Wait for silhouette animation
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSilhouette(false);
     setIsEvolving(false);
   };
