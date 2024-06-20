@@ -17,8 +17,8 @@ export function createImage(name) {
     case "nami":
       return [
         "https://optc-db.github.io/api/images/full/transparent/0/000/0009.png",
-        "https://optc-db.github.io/api/images/full/transparent/2/000/2073.png",
-        "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png",
+        "https://optc-db.github.io/api/images/full/transparent/2/000/2075.png",
+        "https://optc-db.github.io/api/images/full/transparent/2/500/2588.png",
       ];
     case "usopp":
       return [
@@ -56,14 +56,6 @@ export function setMemberImages(imageURL, name) {
     ];
   } else {
     return createImage(name);
-  }
-}
-
-export function setMemberImgVersion(imageVersion) {
-  if (imageVersion !== null) {
-    return imageVersion - 1;
-  } else {
-    return 0;
   }
 }
 

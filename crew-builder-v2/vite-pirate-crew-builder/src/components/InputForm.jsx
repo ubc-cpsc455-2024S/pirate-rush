@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { addMemberAsync } from "../redux/members/thunks.js";
-import { setMemberImages, setMemberImgVersion, setMemberDescription } from "../componentUtils/InputFormUtils.js";
+import { setMemberImages, setMemberDescription } from "../componentUtils/InputFormUtils.js";
 
 function InputForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [level, setLevel] = useState("");
+  const [level, setLevel] = useState(1);
   const [imageURL, setImageURL] = useState("");
 
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ function InputForm() {
       name: name,
       description: setMemberDescription(description),
       images: setMemberImages(imageURL, name),
-      imgVersion: setMemberImgVersion(level),
+      imgVersion: level,
     };
 
     handleAddMember(newMember);
