@@ -57,7 +57,7 @@ router.patch("/:memberId", function (req, res, _) {
 
   const member = crew[memberIndex];
 
-  if (member.unitLevel < member.images.length - 1) {
+  if (member.unitLevel < member.images.length) {
     member.unitLevel++;
     crew[memberIndex] = member;
     return res.status(200).json(member);

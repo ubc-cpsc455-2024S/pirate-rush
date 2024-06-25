@@ -9,7 +9,7 @@ const DetailedMemberCard = ({ isOpen, onClose, member }) => {
     }
   };
 
-  const memberLevel = member.unitLevel + 1
+  const memberLevel = member.unitLevel
 
   return (
     <>
@@ -24,7 +24,7 @@ const DetailedMemberCard = ({ isOpen, onClose, member }) => {
           </div>
           <img
             className="detailed-image"
-            src={member.images[member.unitLevel]}
+            src={member.images[member.unitLevel - 1]}
             alt={member.name}
           />
         </div>

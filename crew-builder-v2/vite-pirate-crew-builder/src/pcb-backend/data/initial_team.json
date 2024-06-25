@@ -9,7 +9,7 @@
         "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png"
       ],
       "memberId": "1",
-      "unitLevel": 0,
+      "unitLevel":1,
       "stats": {
         "TYPE": "STR",
         "ATK" : 3,
@@ -25,7 +25,7 @@
         "https://optc-db.github.io/api/images/full/transparent/3/200/3202.png"
       ],
       "memberId": "2",
-      "unitLevel": 0,
+      "unitLevel":1,
       "stats": {
         "TYPE": "STR",
         "ATK" : 4,
@@ -41,7 +41,7 @@
         "https://optc-db.github.io/api/images/full/transparent/2/500/2588.png"
       ],
       "memberId": "3",
-      "unitLevel": 0,
+      "unitLevel":1,
       "stats": {
         "TYPE": "QCK",
         "ATK" : 2,
@@ -57,7 +57,7 @@
         "https://optc-db.github.io/api/images/full/transparent/1/500/1543.png"
       ],
       "memberId": "4",
-      "unitLevel": 0,
+      "unitLevel":1,
       "stats": {
         "TYPE": "DEX",
         "ATK" : 1,
@@ -73,7 +73,7 @@
         "https://optc-db.github.io/api/images/full/transparent/1/500/1588.png"
       ],
       "memberId": "5",
-      "unitLevel": 0,
+      "unitLevel":1,
       "stats": {
         "TYPE": "QCK",
         "ATK" : 3,
@@ -89,7 +89,7 @@
         "https://optc-db.github.io/api/images/full/transparent/2/800/2830.png"
       ],
       "memberId": "6",
-      "unitLevel": 0,
+      "unitLevel":1,
       "stats": {
         "TYPE": "DEX",
         "ATK" : 2,

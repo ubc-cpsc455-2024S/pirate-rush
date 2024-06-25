@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import DetailedMemberCard from "./DetailedMemberCard.jsx";
 import { deleteMemberAsync, getMembersAsync, patchMemberVersionAsync } from "../redux/members/thunks.js";
 
-const MAX_LEVEL = 2;
+const MAX_LEVEL = 3;
 
 function MiniMemberCard({ crewMember }) {
   const [viewDetailed, setViewDetailed] = React.useState(false);
@@ -49,7 +49,7 @@ function MiniMemberCard({ crewMember }) {
     setViewDetailed(false);
   };
 
-  const memberLevel = crewMember.unitLevel + 1;
+  const memberLevel = crewMember.unitLevel;
 
   return (
     <>
@@ -62,7 +62,7 @@ function MiniMemberCard({ crewMember }) {
 
           <img
             className={`member-image ${isEvolving ? 'evolving' : ''} ${isSilhouette ? 'silhouette' : ''}`}
-            src={crewMember.images[crewMember.unitLevel]}
+            src={crewMember.images[memberLevel - 1]}
             alt={crewMember.name}
             width={220}
           />
