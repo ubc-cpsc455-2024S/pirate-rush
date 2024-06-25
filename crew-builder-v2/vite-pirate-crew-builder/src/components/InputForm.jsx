@@ -116,10 +116,10 @@ function InputForm() {
             />
           </div>
           <div>
-            <input id="submit-button" type="submit" value="Add Pirate" />
+            <input id="submit-button" type="submit" value="Recruit!" />
           </div>
           <div>
-            <button
+            <button // TODO - Remove Clear Fields functionality
               id="clear-fields-button"
               type="reset"
               onClick={() => resetForm()}
