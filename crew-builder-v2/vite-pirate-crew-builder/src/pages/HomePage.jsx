@@ -9,9 +9,7 @@ function HomePage() {
                 <InputForm/>
                 <MemberContainer/>
             </div>
-            <div>
-                <Footer/>
-            </div>
+            <Footer/>
         </>
     );
 }

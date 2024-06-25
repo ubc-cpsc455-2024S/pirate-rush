@@ -9,7 +9,11 @@
         "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png"
       ],
       "memberId": "1",
-      "unitLevel": 0
+      "unitLevel": 0,
+      "stats": {
+        "ATK" : 3,
+        "HP" : 2
+      }
     },
     {
       "name": "Zoro",
@@ -20,7 +24,11 @@
         "https://optc-db.github.io/api/images/full/transparent/3/200/3202.png"
       ],
       "memberId": "2",
-      "unitLevel": 0
+      "unitLevel": 0,
+      "stats": {
+        "ATK" : 4,
+        "HP" : 2
+      }
     },
     {
       "name": "Nami",
@@ -31,7 +39,11 @@
         "https://optc-db.github.io/api/images/full/transparent/2/500/2588.png"
       ],
       "memberId": "3",
-      "unitLevel": 0
+      "unitLevel": 0,
+      "stats": {
+        "ATK" : 2,
+        "HP" : 2
+      }
     },
     {
       "name": "Usopp",
@@ -42,7 +54,11 @@
         "https://optc-db.github.io/api/images/full/transparent/1/500/1543.png"
       ],
       "memberId": "4",
-      "unitLevel": 0
+      "unitLevel": 0,
+      "stats": {
+        "ATK" : 1,
+        "HP" : 3
+      }
     },
     {
       "name": "Sanji",
@@ -53,7 +69,11 @@
         "https://optc-db.github.io/api/images/full/transparent/1/500/1588.png"
       ],
       "memberId": "5",
-      "unitLevel": 0
+      "unitLevel": 0,
+      "stats": {
+        "ATK" : 3,
+        "HP" : 3
+      }
     },
     {
       "name": "Robin",
@@ -64,7 +84,11 @@
         "https://optc-db.github.io/api/images/full/transparent/2/800/2830.png"
       ],
       "memberId": "6",
-      "unitLevel": 0
+      "unitLevel": 0,
+      "stats": {
+        "ATK" : 2,
+        "HP" : 4
+      }
     }
   ]
 }
