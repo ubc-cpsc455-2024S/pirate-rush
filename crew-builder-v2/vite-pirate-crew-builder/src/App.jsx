@@ -1,9 +1,10 @@
-import "./css/style.css";
+import "./style.css";
 
 import NavBar from "./components/NavBar.jsx";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
