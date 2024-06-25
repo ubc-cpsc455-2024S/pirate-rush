@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import DetailedMemberCard from "./DetailedMemberCard.jsx";
 import { deleteMemberAsync, getMembersAsync, patchMemberVersionAsync } from "../redux/members/thunks.js";
 
-const MAX_LEVEL = 3;
+import {MAX_LEVEL} from "../constants.js";
 
 function MiniMemberCard({ crewMember }) {
   const [viewDetailed, setViewDetailed] = React.useState(false);
