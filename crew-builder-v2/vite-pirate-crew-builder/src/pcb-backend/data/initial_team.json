@@ -11,6 +11,7 @@
       "memberId": "1",
       "unitLevel": 0,
       "stats": {
+        "TYPE": "STR",
         "ATK" : 3,
         "HP" : 2
       }
@@ -26,6 +27,7 @@
       "memberId": "2",
       "unitLevel": 0,
       "stats": {
+        "TYPE": "STR",
         "ATK" : 4,
         "HP" : 2
       }
@@ -41,6 +43,7 @@
       "memberId": "3",
       "unitLevel": 0,
       "stats": {
+        "TYPE": "QCK",
         "ATK" : 2,
         "HP" : 2
       }
@@ -56,6 +59,7 @@
       "memberId": "4",
       "unitLevel": 0,
       "stats": {
+        "TYPE": "DEX",
         "ATK" : 1,
         "HP" : 3
       }
@@ -71,6 +75,7 @@
       "memberId": "5",
       "unitLevel": 0,
       "stats": {
+        "TYPE": "QCK",
         "ATK" : 3,
         "HP" : 3
       }
@@ -86,6 +91,7 @@
       "memberId": "6",
       "unitLevel": 0,
       "stats": {
+        "TYPE": "DEX",
         "ATK" : 2,
         "HP" : 4
       }
