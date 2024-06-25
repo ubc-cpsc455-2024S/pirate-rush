@@ -9,22 +9,22 @@ const DetailedMemberCard = ({ isOpen, onClose, member }) => {
     }
   };
 
-  const memberVersion = member.imgVersion + 1
+  const memberLevel = member.unitLevel + 1
 
   return (
     <>
       <div className="detailed-container" onClick={handleClickOffView}>
-        <div className={"detailed-content" + "-" + memberVersion}>
+        <div className={"detailed-content" + "-" + memberLevel}>
           <div className="detailed-text">
             <div>
               <span className="member-name">{member.name}</span>
-              <span className="member-level"> LV {memberVersion}</span>
+              <span className="member-level"> LV {memberLevel}</span>
             </div>
             <span className="mulish-p">{member.description}</span>
           </div>
           <img
             className="detailed-image"
-            src={member.images[member.imgVersion]}
+            src={member.images[member.unitLevel]}
             alt={member.name}
           />
         </div>

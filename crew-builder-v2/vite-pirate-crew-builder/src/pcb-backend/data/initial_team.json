@@ -9,7 +9,7 @@
         "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png"
       ],
       "memberId": "1",
-      "imgVersion": 0
+      "unitLevel": 0
     },
     {
       "name": "Zoro",
@@ -20,7 +20,7 @@
         "https://optc-db.github.io/api/images/full/transparent/3/200/3202.png"
       ],
       "memberId": "2",
-      "imgVersion": 0
+      "unitLevel": 0
     },
     {
       "name": "Nami",
@@ -31,7 +31,7 @@
         "https://optc-db.github.io/api/images/full/transparent/2/500/2588.png"
       ],
       "memberId": "3",
-      "imgVersion": 0
+      "unitLevel": 0
     },
     {
       "name": "Usopp",
@@ -42,7 +42,7 @@
         "https://optc-db.github.io/api/images/full/transparent/1/500/1543.png"
       ],
       "memberId": "4",
-      "imgVersion": 0
+      "unitLevel": 0
     },
     {
       "name": "Sanji",
@@ -53,7 +53,7 @@
         "https://optc-db.github.io/api/images/full/transparent/1/500/1588.png"
       ],
       "memberId": "5",
-      "imgVersion": 0
+      "unitLevel": 0
     },
     {
       "name": "Robin",
@@ -64,7 +64,7 @@
         "https://optc-db.github.io/api/images/full/transparent/2/800/2830.png"
       ],
       "memberId": "6",
-      "imgVersion": 0
+      "unitLevel": 0
     }
   ]
 }

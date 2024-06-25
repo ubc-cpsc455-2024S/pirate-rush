@@ -31,7 +31,7 @@ function InputForm() {
       name: name,
       description: setMemberDescription(description),
       images: setMemberImages(imageURL, name),
-      imgVersion: level,
+      unitLevel: level,
     };
 
     handleAddMember(newMember);

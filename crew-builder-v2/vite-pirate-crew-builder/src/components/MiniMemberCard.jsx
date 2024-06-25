@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import DetailedMemberCard from "./DetailedMemberCard.jsx";
 import { deleteMemberAsync, getMembersAsync, patchMemberVersionAsync } from "../redux/members/thunks.js";
 
+const MAX_LEVEL = 2;
+
 function MiniMemberCard({ crewMember }) {
   const [viewDetailed, setViewDetailed] = React.useState(false);
   const [selectedMember, setSelectedMember] = React.useState(null);
@@ -12,7 +14,7 @@ function MiniMemberCard({ crewMember }) {
   const dispatch = useDispatch();
 
   const handleUpgradeMember = async (id) => {
-    if (crewMember.imgVersion === 2) {
+    if (crewMember.unitLevel === MAX_LEVEL) {
       alert(`Crew member: ${id} is already at maximum level.`);
       return;
     }
@@ -22,7 +24,7 @@ function MiniMemberCard({ crewMember }) {
     // Wait for evolve animation
     await new Promise((resolve) => setTimeout(resolve, 500));
     await dispatch(patchMemberVersionAsync(id));
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 200));
     await dispatch(getMembersAsync());
     setIsSilhouette(true);
 
@@ -47,7 +49,7 @@ function MiniMemberCard({ crewMember }) {
     setViewDetailed(false);
   };
 
-  const memberLevel = crewMember.imgVersion + 1;
+  const memberLevel = crewMember.unitLevel + 1;
 
   return (
     <>
@@ -60,9 +62,9 @@ function MiniMemberCard({ crewMember }) {
 
           <img
             className={`member-image ${isEvolving ? 'evolving' : ''} ${isSilhouette ? 'silhouette' : ''}`}
-            src={crewMember.images[crewMember.imgVersion]}
+            src={crewMember.images[crewMember.unitLevel]}
             alt={crewMember.name}
-            width={250}
+            width={220}
           />
           <div>
             <button
