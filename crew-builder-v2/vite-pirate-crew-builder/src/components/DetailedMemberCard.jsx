@@ -9,7 +9,7 @@ const DetailedMemberCard = ({ isOpen, onClose, member }) => {
     }
   };
 
-  const memberLevel = member.unitLevel
+  const memberLevel = member.unitLevel;
 
   return (
     <>

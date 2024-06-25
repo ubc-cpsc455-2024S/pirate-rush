@@ -63,7 +63,9 @@ router.patch("/:memberId", function (req, res, _) {
     return res.status(200).json(member);
   }
 
-  return res.status(400).json({ message: `Pirate ${member.memberId} is already at MAX level` });
+  return res
+    .status(400)
+    .json({ message: `Pirate ${member.memberId} is already at MAX level` });
 });
 
 module.exports = router;

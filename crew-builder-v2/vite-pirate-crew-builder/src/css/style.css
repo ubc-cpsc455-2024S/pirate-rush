@@ -9,7 +9,10 @@ ul {
   padding: 0;
 }
 
-span, .mulish-heading, .mulish-p, button {
+span,
+.mulish-heading,
+.mulish-p,
+button {
   font-family: "Mulish", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -149,7 +152,9 @@ button,
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .navbar-item a:hover {
@@ -210,11 +215,14 @@ button,
   flex-direction: column;
   align-items: center;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.2s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.2s;
 }
 
 @keyframes hoverAnimation {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   25% {
@@ -284,12 +292,17 @@ button,
 }
 
 @keyframes shimmer-glow {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.5);
+  0%,
+  100% {
+    box-shadow:
+      0 0 10px rgba(255, 0, 0, 0.5),
+      0 0 20px rgba(255, 0, 0, 0.5);
     border-color: #ff0000;
   }
   50% {
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.9), 0 0 40px rgba(255, 215, 0, 0.9);
+    box-shadow:
+      0 0 30px rgba(255, 215, 0, 0.9),
+      0 0 40px rgba(255, 215, 0, 0.9);
     border-color: #ffd700;
   }
 }
@@ -417,7 +430,8 @@ button,
 
 /* Animation Effects */
 @keyframes evolve {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }

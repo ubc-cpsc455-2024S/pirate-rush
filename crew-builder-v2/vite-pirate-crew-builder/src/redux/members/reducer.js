@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { REQUEST_STATE } from "../utils";
-import { addMemberAsync, getMembersAsync, deleteMemberAsync, patchMemberVersionAsync } from "./thunks";
+import {
+  addMemberAsync,
+  getMembersAsync,
+  deleteMemberAsync,
+  patchMemberVersionAsync,
+} from "./thunks";
 
 const INITIAL_STATE = {
   list: [],
@@ -62,14 +67,16 @@ export const reducer = createSlice({
       })
       .addCase(patchMemberVersionAsync.fulfilled, (state, action) => {
         state.patchMemberVersion = REQUEST_STATE.FULFILLED;
-        const memberIndex = state.list.findIndex((member) => member.memberId === action.payload.memberId);
+        const memberIndex = state.list.findIndex(
+          (member) => member.memberId === action.payload.memberId,
+        );
         state.list[memberIndex].patchMemberVersion = action.payload;
       })
       .addCase(patchMemberVersionAsync.rejected, (state, action) => {
         state.patchMemberVersion = REQUEST_STATE.REJECTED;
         state.error = action.error;
         alert(action.error.message);
-      })
+      });
   },
 });
 

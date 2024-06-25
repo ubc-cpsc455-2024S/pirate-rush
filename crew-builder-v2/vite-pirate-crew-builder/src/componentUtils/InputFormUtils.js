@@ -52,7 +52,7 @@ export function setMemberImages(imageURL, name) {
     return [
       imageURL,
       "https://optc-db.github.io/api/images/full/transparent/3/500/3514.png",
-      "https://optc-db.github.io/api/images/full/transparent/3/500/3515.png"
+      "https://optc-db.github.io/api/images/full/transparent/3/500/3515.png",
     ];
   } else {
     return createImage(name);

@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { addMemberAsync } from "../redux/members/thunks.js";
-import { setMemberImages, setMemberDescription } from "../componentUtils/InputFormUtils.js";
+import {
+  setMemberImages,
+  setMemberDescription,
+} from "../componentUtils/InputFormUtils.js";
 
 function InputForm() {
   const [name, setName] = useState("");
@@ -89,9 +92,7 @@ function InputForm() {
             />
           </div>
           <div className="input-field-container">
-            <label htmlFor="level">
-              Level
-            </label>
+            <label htmlFor="level">Level</label>
             <input
               id="level"
               min="1"

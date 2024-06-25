@@ -1,9 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import DetailedMemberCard from "./DetailedMemberCard.jsx";
-import { deleteMemberAsync, getMembersAsync, patchMemberVersionAsync } from "../redux/members/thunks.js";
+import {
+  deleteMemberAsync,
+  getMembersAsync,
+  patchMemberVersionAsync,
+} from "../redux/members/thunks.js";
 
-import {MAX_LEVEL} from "../constants.js";
+import { MAX_LEVEL } from "../constants.js";
 
 function MiniMemberCard({ crewMember }) {
   const [viewDetailed, setViewDetailed] = React.useState(false);
@@ -34,7 +38,6 @@ function MiniMemberCard({ crewMember }) {
     setIsEvolving(false);
   };
 
-
   const handleDeleteMember = (id) => {
     dispatch(deleteMemberAsync(id));
   };
@@ -61,7 +64,7 @@ function MiniMemberCard({ crewMember }) {
           </div>
 
           <img
-            className={`member-image ${isEvolving ? 'evolving' : ''} ${isSilhouette ? 'silhouette' : ''}`}
+            className={`member-image ${isEvolving ? "evolving" : ""} ${isSilhouette ? "silhouette" : ""}`}
             src={crewMember.images[memberLevel - 1]}
             alt={crewMember.name}
             width={220}
