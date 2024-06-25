@@ -36,7 +36,7 @@ button {
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
-  padding: 20px;
+  padding: 60px 20px 20px;
 }
 
 /* Button Styles */
@@ -129,6 +129,12 @@ button,
 .navbar {
   background-color: #24292e;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays on top of other content */
+
 }
 
 .navbar-list {
@@ -368,10 +374,11 @@ button,
 /* About Page */
 .about {
   text-align: center;
-  padding: 20px;
+
+  padding: 15px;
   background-color: #f0f4f8;
   border-radius: 10px;
-  margin: 20px auto;
+  margin: 60px auto;
   width: 90%;
   max-width: 800px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -440,4 +447,48 @@ button,
 
 .silhouette {
   animation: silhouette 0.5s ease-in-out forwards;
+}
+/* Footer Styles */
+.footer {
+  background-color: #24292e;
+  padding: 20px 0;
+  text-align: center;
+  color: white;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content p {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-links li {
+  display: inline;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #ddd;
 }
