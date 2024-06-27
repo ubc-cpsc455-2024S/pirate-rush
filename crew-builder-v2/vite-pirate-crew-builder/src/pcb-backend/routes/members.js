@@ -1,11 +1,25 @@
 const express = require("express");
 const router = express.Router();
+const {db} = require("../db");
 
-let crew = require("../data/initial_team.json").members;
+const Members = require("../models/members");
+const Member = require("../models/member")
 
-/* GET members */
-router.get("/", function (req, res, _) {
-  return res.status(200).send(crew);
+const DEFAULT_TEAM_COLLECTION = "default_team"
+const USER_TEAM_MEMBERS = "members"
+
+router.get("/", async (req, res) => {
+  try {
+    const membersArr = await db.collection(DEFAULT_TEAM_COLLECTION).find({}).toArray();
+    // TODO set the default team to the user team
+    if (membersArr[0]) {
+      res.json(membersArr[0].members);
+    } else {
+      res.status(404).json({ message: "No members found" });
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 /* GET member by id */

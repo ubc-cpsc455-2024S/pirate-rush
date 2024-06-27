@@ -1,14 +1,27 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(
-  "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.0ozt3va.mongodb.net/",
-);
+function connectDB() {
+  const url = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.0ozt3va.mongodb.net/pirate_rush";
 
-const db = mongoose.connection;
+  try {
+    mongoose.connect(url);
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+  const dbConnection = mongoose.connection;
 
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("Connected to MongoDB");
-});
+  dbConnection.once("open", () => {
+    console.log(`Database connected`);
+  });
 
-module.exports = db;
+  dbConnection.on("error", (err) => {
+    console.error(`connection error: ${err}`);
+  });
+
+  return dbConnection;
+}
+
+const db = connectDB();
+
+exports.db = db;

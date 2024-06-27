@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content mulish-p">
         <p>
-          &copy; {new Date().getFullYear()} Pirate Rumble. All rights reserved.
+          &copy; {new Date().getFullYear()} Pirate Rush. All rights reserved.
         </p>
       </div>
     </footer>
