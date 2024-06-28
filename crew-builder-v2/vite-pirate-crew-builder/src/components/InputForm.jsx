@@ -16,14 +16,22 @@ function InputForm() {
   const dispatch = useDispatch();
 
   const handleAddMember = (member) => {
-    const newMember = { ...member, memberId: uuidv4() };
+    const newMember = {
+      ...member,
+      stats: {
+        TYPE: "STR",
+        ATK: 1,
+        HP: 1,
+      },
+      memberId: uuidv4()
+    };
     dispatch(addMemberAsync(newMember));
   };
 
   function resetForm() {
     setName("");
     setDescription("");
-    setLevel("");
+    setLevel(1);
     setImageURL("");
   }
 

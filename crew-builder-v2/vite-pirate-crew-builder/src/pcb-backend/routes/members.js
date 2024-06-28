@@ -2,18 +2,17 @@ const express = require("express");
 const router = express.Router();
 const {db} = require("../db");
 
-const Members = require("../models/members");
-const Member = require("../models/member")
-
 const DEFAULT_TEAM_COLLECTION = "default_team"
 const USER_TEAM_MEMBERS = "members"
+const POOL_= "pool"
+const MAX_CREW_SIZE = 6;
 
 router.get("/", async (req, res) => {
   try {
-    const membersArr = await db.collection(DEFAULT_TEAM_COLLECTION).find({}).toArray();
-    // TODO set the default team to the user team
-    if (membersArr[0]) {
-      res.json(membersArr[0].members);
+    const membersArr = await db.collection(USER_TEAM_MEMBERS).find({}).toArray();
+
+    if (membersArr) {
+      res.json(membersArr);
     } else {
       res.status(404).json({ message: "No members found" });
     }
@@ -23,10 +22,10 @@ router.get("/", async (req, res) => {
 });
 
 /* GET member by id */
-router.get("/:memberId", function (req, res, _) {
-  const foundMember = crew.find(
-    (user) => user.id === parseInt(req.params.memberId),
-  );
+router.get("/:memberId", async (req, res, _) => {
+  const memberId = parseInt(req.params.memberId)
+  const foundMember = await db.collection(USER_TEAM_MEMBERS).findOne({"memberId": memberId});
+
   if (!foundMember) {
     return res.status(404).json({ message: "Member not found" });
   }
@@ -34,11 +33,12 @@ router.get("/:memberId", function (req, res, _) {
 });
 
 /* POST member */
-router.post("/", function (req, res, _) {
+router.post("/", async (req, res, _) => {
   const newMember = { ...req.body };
-  const MAX_CREW_SIZE = 6;
-  if (crew.length < MAX_CREW_SIZE) {
-    crew.push(newMember);
+  const membersArr = await db.collection(USER_TEAM_MEMBERS).find({}).toArray();
+
+  if (membersArr.length < MAX_CREW_SIZE) {
+    await db.collection(USER_TEAM_MEMBERS).insertOne(newMember);
   } else {
     return res
       .status(403)
@@ -48,38 +48,33 @@ router.post("/", function (req, res, _) {
 });
 
 /* DELETE member by id */
-router.delete("/:memberId", function (req, res, _) {
+router.delete("/:memberId", async (req, res, _) => {
   const memberId = req.params.memberId;
-  const initialLength = crew.length;
 
-  crew = crew.filter((member) => member.memberId !== memberId);
-
-  if (crew.length === initialLength) {
-    return res.status(404).json({ message: "Member not found" });
-  }
+  await db.collection(USER_TEAM_MEMBERS).deleteOne({"memberId": memberId})
 
   return res.status(204).send();
 });
 
-router.patch("/:memberId", function (req, res, _) {
+router.patch("/:memberId", async (req, res, _) => {
   const memberId = req.params.memberId;
-  const memberIndex = crew.findIndex((member) => member.memberId === memberId);
 
-  if (memberIndex === -1) {
+  const member = await db.collection(USER_TEAM_MEMBERS).findOne({"memberId": memberId});
+  console.log(member);
+  if (!member) {
     return res.status(404).json({ message: "Member not found" });
   }
 
-  const member = crew[memberIndex];
-
-  if (member.unitLevel < member.images.length) {
-    member.unitLevel++;
-    crew[memberIndex] = member;
-    return res.status(200).json(member);
+  if (member.unitLevel === member.images.length) {
+    return res
+        .status(400)
+        .json({ message: `Pirate ${member.memberId} is already at MAX level` });
   }
 
-  return res
-    .status(400)
-    .json({ message: `Pirate ${member.memberId} is already at MAX level` });
+  await db.collection(USER_TEAM_MEMBERS).updateOne({"memberId": memberId}, {$set: {"unitLevel": member.unitLevel + 1}});
+
+  return res.status(200).json(member);
+
 });
 
 module.exports = router;
