@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import { addMemberAsync } from "../redux/members/thunks.js";
 import {
   setMemberImages,
-  setMemberDescription,
+  setMemberDescription
 } from "../componentUtils/InputFormUtils.js";
+import {CHARACTER_NAMES} from "../constants.js";
 
 function InputForm() {
   const [name, setName] = useState("");
@@ -23,7 +24,7 @@ function InputForm() {
         ATK: 1,
         HP: 1,
       },
-      memberId: uuidv4()
+      memberId: uuidv4(),
     };
     dispatch(addMemberAsync(newMember));
   };
@@ -48,6 +49,13 @@ function InputForm() {
     handleAddMember(newMember);
     resetForm();
   }
+
+  const handleNameChange = (e) => {
+    const selectedName = e.target.value;
+    setName(selectedName);
+    setDescription("");
+    setImageURL("");
+  };
 
   return (
     <>
@@ -76,16 +84,20 @@ function InputForm() {
                 *
               </span>
             </label>
-            <input
+            <select
               id="name"
-              maxLength="16"
               name="name"
-              required
-              type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter name here..."
-            />
+              onChange={handleNameChange}
+              required
+            >
+              <option value="">Select a member...</option>
+              {CHARACTER_NAMES.map((character) => (
+                <option key={character} value={character}>
+                  {character}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="input-field-container">
             <label htmlFor="description">Description</label>
@@ -127,7 +139,7 @@ function InputForm() {
             <input id="submit-button" type="submit" value="Recruit!" />
           </div>
           <div>
-            <button // TODO - Remove Clear Fields functionality
+            <button
               id="clear-fields-button"
               type="reset"
               onClick={() => resetForm()}

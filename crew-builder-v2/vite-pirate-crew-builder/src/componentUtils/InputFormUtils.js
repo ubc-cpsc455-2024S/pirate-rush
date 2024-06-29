@@ -1,3 +1,4 @@
+
 const DEFAULT_DESCRIPTION = "A powerful pirate and a dear friend";
 
 export function createImage(name) {

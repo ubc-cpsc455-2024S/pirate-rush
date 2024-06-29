@@ -1,15 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const {db} = require("../db");
+const { db } = require("../db");
 
-const DEFAULT_TEAM_COLLECTION = "default_team"
-const USER_TEAM_MEMBERS = "members"
-const POOL_= "pool"
+const DEFAULT_TEAM_COLLECTION = "default_team";
+const USER_TEAM_MEMBERS = "members";
+const POOL_ = "pool";
 const MAX_CREW_SIZE = 6;
 
 router.get("/", async (req, res) => {
   try {
-    const membersArr = await db.collection(USER_TEAM_MEMBERS).find({}).toArray();
+    const membersArr = await db
+      .collection(USER_TEAM_MEMBERS)
+      .find({})
+      .toArray();
 
     if (membersArr) {
       res.json(membersArr);
@@ -23,8 +26,10 @@ router.get("/", async (req, res) => {
 
 /* GET member by id */
 router.get("/:memberId", async (req, res, _) => {
-  const memberId = parseInt(req.params.memberId)
-  const foundMember = await db.collection(USER_TEAM_MEMBERS).findOne({"memberId": memberId});
+  const memberId = parseInt(req.params.memberId);
+  const foundMember = await db
+    .collection(USER_TEAM_MEMBERS)
+    .findOne({ memberId: memberId });
 
   if (!foundMember) {
     return res.status(404).json({ message: "Member not found" });
@@ -51,7 +56,7 @@ router.post("/", async (req, res, _) => {
 router.delete("/:memberId", async (req, res, _) => {
   const memberId = req.params.memberId;
 
-  await db.collection(USER_TEAM_MEMBERS).deleteOne({"memberId": memberId})
+  await db.collection(USER_TEAM_MEMBERS).deleteOne({ memberId: memberId });
 
   return res.status(204).send();
 });
@@ -59,7 +64,9 @@ router.delete("/:memberId", async (req, res, _) => {
 router.patch("/:memberId", async (req, res, _) => {
   const memberId = req.params.memberId;
 
-  const member = await db.collection(USER_TEAM_MEMBERS).findOne({"memberId": memberId});
+  const member = await db
+    .collection(USER_TEAM_MEMBERS)
+    .findOne({ memberId: memberId });
   console.log(member);
   if (!member) {
     return res.status(404).json({ message: "Member not found" });
@@ -67,14 +74,18 @@ router.patch("/:memberId", async (req, res, _) => {
 
   if (member.unitLevel === member.images.length) {
     return res
-        .status(400)
-        .json({ message: `Pirate ${member.memberId} is already at MAX level` });
+      .status(400)
+      .json({ message: `Pirate ${member.memberId} is already at MAX level` });
   }
 
-  await db.collection(USER_TEAM_MEMBERS).updateOne({"memberId": memberId}, {$set: {"unitLevel": member.unitLevel + 1}});
+  await db
+    .collection(USER_TEAM_MEMBERS)
+    .updateOne(
+      { memberId: memberId },
+      { $set: { unitLevel: member.unitLevel + 1 } },
+    );
 
   return res.status(200).json(member);
-
 });
 
 module.exports = router;

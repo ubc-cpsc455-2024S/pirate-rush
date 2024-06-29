@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 function connectDB() {
-  const url = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.0ozt3va.mongodb.net/pirate_rush";
+  const url =
+    "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.0ozt3va.mongodb.net/pirate_rush";
 
   try {
     mongoose.connect(url);

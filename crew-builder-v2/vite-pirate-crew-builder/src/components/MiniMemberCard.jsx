@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import DetailedMemberCard from "./DetailedMemberCard.jsx";
 import {
   deleteMemberAsync,
@@ -56,61 +56,61 @@ function MiniMemberCard({ crewMember }) {
   const memberLevel = crewMember.unitLevel;
 
   return (
-      <>
-        <div>
-          <div className={"mini-member-container-" + memberLevel}>
-            <div>
-              <span className="member-name">{crewMember.name}</span>
-              <span className="member-level"> LV {memberLevel}</span>
-            </div>
-
-            <img
-                className={`member-image ${isEvolving ? "evolving" : ""} ${isSilhouette ? "silhouette" : ""}`}
-                src={crewMember.images[memberLevel - 1]}
-                alt={crewMember.name}
-                width={220}
-            />
-            <div>
-              <button
-                  className="view-member-button"
-                  onClick={() => viewMember(crewMember)}
-              >
-                View
-              </button>
-              <button
-                  className="upgrade-member-button"
-                  onClick={() => handleUpgradeMember(crewMember.memberId)}
-              >
-                Upgrade
-              </button>
-              <button
-                  className="delete-member-button"
-                  onClick={() => handleDeleteMember(crewMember.memberId)}
-              >
-                Remove
-              </button>
-            </div>
-          </div>
+    <>
+      <div>
+        <div className={"mini-member-container-" + memberLevel}>
           <div>
-            <DetailedMemberCard
-                isOpen={viewDetailed}
-                onClose={closeView}
-                member={selectedMember}
-            />
+            <span className="member-name">{crewMember.name}</span>
+            <span className="member-level"> LV {memberLevel}</span>
+          </div>
+
+          <img
+            className={`member-image ${isEvolving ? "evolving" : ""} ${isSilhouette ? "silhouette" : ""}`}
+            src={crewMember.images[memberLevel - 1]}
+            alt={crewMember.name}
+            width={220}
+          />
+          <div>
+            <button
+              className="view-member-button"
+              onClick={() => viewMember(crewMember)}
+            >
+              View
+            </button>
+            <button
+              className="upgrade-member-button"
+              onClick={() => handleUpgradeMember(crewMember.memberId)}
+            >
+              Upgrade
+            </button>
+            <button
+              className="delete-member-button"
+              onClick={() => handleDeleteMember(crewMember.memberId)}
+            >
+              Remove
+            </button>
           </div>
         </div>
-        <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            hideProgressBar={true}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-        />
-      </>
+        <div>
+          <DetailedMemberCard
+            isOpen={viewDetailed}
+            onClose={closeView}
+            member={selectedMember}
+          />
+        </div>
+      </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 }
 
