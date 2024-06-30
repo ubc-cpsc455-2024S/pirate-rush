@@ -3,7 +3,7 @@ const path = require("path");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const indexRouter = require("./routes/index");
+const indexRouter = require("./routes");
 const membersRouter = require("./routes/members");
 
 const app = express();

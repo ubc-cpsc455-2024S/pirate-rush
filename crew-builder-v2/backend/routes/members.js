@@ -2,15 +2,16 @@ const express = require("express");
 const router = express.Router();
 const { db } = require("../db");
 
-const DEFAULT_TEAM_COLLECTION = "default_team";
-const USER_TEAM_MEMBERS = "members";
-const POOL_ = "pool";
 const MAX_CREW_SIZE = 6;
+
+const DEFAULT_TEAM_COLL = "default_team";
+const USER_TEAM_COLL = "members";
+const POOL_COLL = "pool";
 
 router.get("/", async (req, res) => {
   try {
     const membersArr = await db
-      .collection(USER_TEAM_MEMBERS)
+      .collection(USER_TEAM_COLL)
       .find({})
       .toArray();
 
@@ -28,7 +29,7 @@ router.get("/", async (req, res) => {
 router.get("/:memberId", async (req, res, _) => {
   const memberId = parseInt(req.params.memberId);
   const foundMember = await db
-    .collection(USER_TEAM_MEMBERS)
+    .collection(USER_TEAM_COLL)
     .findOne({ memberId: memberId });
 
   if (!foundMember) {
@@ -40,10 +41,10 @@ router.get("/:memberId", async (req, res, _) => {
 /* POST member */
 router.post("/", async (req, res, _) => {
   const newMember = { ...req.body };
-  const membersArr = await db.collection(USER_TEAM_MEMBERS).find({}).toArray();
+  const membersArr = await db.collection(USER_TEAM_COLL).find({}).toArray();
 
   if (membersArr.length < MAX_CREW_SIZE) {
-    await db.collection(USER_TEAM_MEMBERS).insertOne(newMember);
+    await db.collection(USER_TEAM_COLL).insertOne(newMember);
   } else {
     return res
       .status(403)
@@ -56,7 +57,7 @@ router.post("/", async (req, res, _) => {
 router.delete("/:memberId", async (req, res, _) => {
   const memberId = req.params.memberId;
 
-  await db.collection(USER_TEAM_MEMBERS).deleteOne({ memberId: memberId });
+  await db.collection(USER_TEAM_COLL).deleteOne({ memberId: memberId });
 
   return res.status(204).send();
 });
@@ -65,7 +66,7 @@ router.patch("/:memberId", async (req, res, _) => {
   const memberId = req.params.memberId;
 
   const member = await db
-    .collection(USER_TEAM_MEMBERS)
+    .collection(USER_TEAM_COLL)
     .findOne({ memberId: memberId });
   console.log(member);
   if (!member) {
@@ -79,7 +80,7 @@ router.patch("/:memberId", async (req, res, _) => {
   }
 
   await db
-    .collection(USER_TEAM_MEMBERS)
+    .collection(USER_TEAM_COLL)
     .updateOne(
       { memberId: memberId },
       { $set: { unitLevel: member.unitLevel + 1 } },

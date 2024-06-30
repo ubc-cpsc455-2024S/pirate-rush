@@ -195,7 +195,7 @@ button,
   background-color: #f6f8fa;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-  max-width: 920px;
+  max-width: 890px;
 }
 
 #team-list {
@@ -227,13 +227,19 @@ button,
   }
 }
 
+.mini-button-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
 /* Mini Member Containers */
 .mini-member-container-1,
 .mini-member-container-2,
 .mini-member-container-3 {
-  width: 275px;
+  width: 260px;
   gap: 5px;
-  padding: 5px;
+  padding: 3px;
   background-color: #fbfbfb;
   border-radius: 8px;
   display: flex;
