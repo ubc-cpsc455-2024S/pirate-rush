@@ -24,6 +24,7 @@ function InputForm() {
         ATK: 1,
         HP: 1,
       },
+      cost: 5,
       memberId: uuidv4(),
     };
     dispatch(addMemberAsync(newMember));
@@ -67,22 +68,10 @@ function InputForm() {
         >
           <div className="input-title-container">
             <h1 className="mulish-heading">Build Your Pirate Crew!</h1>
-            <p>
-              Fields marked with{" "}
-              <span aria-label="required" className="required">
-                {" "}
-                *
-              </span>{" "}
-              are required.
-            </p>
           </div>
           <div className="input-field-container">
             <label htmlFor="name">
               Member Name
-              <span aria-label="required" className="required">
-                {" "}
-                *
-              </span>
             </label>
             <select
               id="name"

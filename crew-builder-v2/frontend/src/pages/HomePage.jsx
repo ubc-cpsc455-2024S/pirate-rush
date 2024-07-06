@@ -1,5 +1,5 @@
 import InputForm from "../components/InputForm.jsx";
-import MemberContainer from "../components/MemberContainer.jsx";
+import MemberCardContainer from "../components/MemberCardContainer.jsx";
 import Footer from "../components/Footer.jsx";
 
 function HomePage() {
@@ -7,7 +7,7 @@ function HomePage() {
     <>
       <div id="main-container">
         <InputForm />
-        <MemberContainer />
+        <MemberCardContainer />
       </div>
       <Footer />
     </>

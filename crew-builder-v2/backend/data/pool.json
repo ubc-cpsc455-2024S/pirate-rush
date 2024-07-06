@@ -1,0 +1,324 @@
+[
+  {
+    "name": "Luffy",
+    "description": "Captain of the Straw Hat Pirates",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/000/0002.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/000/2073.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/300/2363.png"
+    ],
+    "memberId": "1",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "STR",
+      "ATK": 3,
+      "HP": 2
+    },
+    "rarity": "common",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 5
+  },
+  {
+    "name": "Zoro",
+    "description": "Esteemed swordsman and pirate bounty hunter",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/000/0005.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/400/2476.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/200/3202.png"
+    ],
+    "memberId": "2",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "STR",
+      "ATK": 4,
+      "HP": 2
+    },
+    "rarity": "common",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 5
+  },
+  {
+    "name": "Nami",
+    "description": "Elusive thief and self-proclaimed world-class navigator",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/000/0009.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/000/2075.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/500/2588.png"
+    ],
+    "memberId": "3",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "QCK",
+      "ATK": 2,
+      "HP": 2
+    },
+    "rarity": "common",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 5
+  },
+  {
+    "name": "Usopp",
+    "description": "Supreme sniper the bravest warrior of the sea",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/000/0013.png",
+      "https://optc-db.github.io/api/images/full/transparent/1/500/1531.png",
+      "https://optc-db.github.io/api/images/full/transparent/1/500/1543.png"
+    ],
+    "memberId": "4",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "DEX",
+      "ATK": 1,
+      "HP": 3
+    },
+    "rarity": "common",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 5
+  },
+  {
+    "name": "Sanji",
+    "description": "Masterful cook and a fierce foe with a kick",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/000/0017.png",
+      "https://optc-db.github.io/api/images/full/transparent/1/500/1587.png",
+      "https://optc-db.github.io/api/images/full/transparent/1/500/1588.png"
+    ],
+    "memberId": "5",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "QCK",
+      "ATK": 3,
+      "HP": 3
+    },
+    "rarity": "common",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 5
+  },
+  {
+    "name": "Robin",
+    "description": "Daring archaeologist capable of deciphering the Poneglyph",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/200/0209.png",
+      "https://optc-db.github.io/api/images/full/transparent/1/900/1950.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/800/2830.png"
+    ],
+    "memberId": "6",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "DEX",
+      "ATK": 2,
+      "HP": 4
+    },
+    "rarity": "common",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 5
+  },
+  {
+    "name": "Chopper",
+    "description": "Cute reindeer and diligent doctor",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/000/0021.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/000/2072.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/600/3682.png"
+    ],
+    "memberId": "7",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "QCK",
+      "ATK": 2,
+      "HP": 3
+    },
+    "rarity": "common",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 5
+  },
+  {
+    "name": "Franky",
+    "description": "Placeholder description for Franky",
+    "images": [
+      "placeholder_image_url_1",
+      "placeholder_image_url_2",
+      "placeholder_image_url_3"
+    ],
+    "memberId": "13",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "QCK",
+      "ATK": 4,
+      "HP": 3
+    },
+    "rarity": "epic",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 10
+  },
+  {
+    "name": "Brook",
+    "description": "Old soul and cool swordsman",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/400/0423.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/200/2235.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/500/3510.png"
+    ],
+    "memberId": "8",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "DEX",
+      "ATK": 3,
+      "HP": 2
+    },
+    "rarity": "epic",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 10
+  },
+  {
+    "name": "Jinbei",
+    "description": "Respected fishman and ambassador of the sea",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/2/600/2693.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/200/2264.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/000/2066.png"
+    ],
+    "memberId": "9",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "QCK",
+      "ATK": 3,
+      "HP": 3
+    },
+    "rarity": "epic",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 10
+  },
+  {
+    "name": "Yamato",
+    "description": "Son of Kaido and a fierce fighter",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/3/900/3965.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/800/3835.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/400/3430.png"
+    ],
+    "memberId": "10",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "STR",
+      "ATK": 4,
+      "HP": 4
+    },
+    "rarity": "legendary",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 20
+  },
+  {
+    "name": "Gol D. Roger",
+    "description": "Legendary King of Pirates",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/3/100/3176.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/100/3177.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/700/3786.png"
+    ],
+    "memberId": "11",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "STR",
+      "ATK": 6,
+      "HP": 7
+    },
+    "rarity": "legendary",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 20
+  },
+  {
+    "name": "Oden Kozuki",
+    "description": "Ruler of Wano, a great husband, father and samurai",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/3/100/3174.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/100/3175.png",
+      "https://optc-db.github.io/api/images/full/transparent/3/500/3519.png"
+    ],
+    "memberId": "12",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "DEX",
+      "ATK": 7,
+      "HP": 6
+    },
+    "rarity": "legendary",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 20
+  },
+  {
+    "name": "Portgas D. Ace",
+    "description": "Luffy's dear brother and a stunning solo pirate",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/1/600/1604.png",
+      "https://optc-db.github.io/api/images/full/transparent/0/500/0561.png",
+      "https://optc-db.github.io/api/images/full/transparent/1/800/1816.png"
+    ],
+    "memberId": "14",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "STR",
+      "ATK": 8,
+      "HP": 4
+    },
+    "rarity": "legendary",
+    "icons": [
+      "placeholder",
+      "placeholder",
+      "placeholder"
+    ],
+    "cost": 20
+  }
+]

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMembersAsync } from "../redux/members/thunks.js";
-import MiniMemberCard from "./MiniMemberCard.jsx";
+import MemberCardMini from "./MemberCardMini.jsx";
 
-function MemberContainer() {
+function MemberCardContainer() {
   const crew = useSelector((state) => state.members.list);
   const dispatch = useDispatch();
 
@@ -15,11 +15,14 @@ function MemberContainer() {
     <>
       <div id="team-display">
         <div>
-          <h2 className="mulish-heading">Your Crew</h2>
+          <div className="member-container-headings">
+            <h2 className="mulish-heading">Your Crew</h2>
+            <h2 className="mulish-heading">Berries ($):</h2>
+          </div>
           <ul id="team-list">
             {crew.map((crewMember) => (
               <li key={crewMember.memberId} className="each-card">
-                <MiniMemberCard crewMember={crewMember} />
+                <MemberCardMini crewMember={crewMember} />
               </li>
             ))}
           </ul>
@@ -29,4 +32,4 @@ function MemberContainer() {
   );
 }
 
-export default MemberContainer;
+export default MemberCardContainer;

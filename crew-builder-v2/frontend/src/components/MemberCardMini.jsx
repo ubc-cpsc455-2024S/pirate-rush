@@ -1,8 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DetailedMemberCard from "./DetailedMemberCard.jsx";
+import MemberCardPopup from "./MemberCardPopup.jsx";
 import {
   deleteMemberAsync,
   getMembersAsync,
@@ -10,7 +9,7 @@ import {
 } from "../redux/members/thunks.js";
 import { MAX_LEVEL } from "../../global_const.js";
 
-function MiniMemberCard({ crewMember }) {
+function MemberCardMini({ crewMember }) {
   const [viewDetailed, setViewDetailed] = React.useState(false);
   const [selectedMember, setSelectedMember] = React.useState(null);
   const [isEvolving, setIsEvolving] = React.useState(false);
@@ -18,12 +17,16 @@ function MiniMemberCard({ crewMember }) {
 
   const dispatch = useDispatch();
 
-  const handleUpgradeMember = async (id) => {
+  const handleUpgradeMember = async (id, name) => {
     if (crewMember.unitLevel === MAX_LEVEL) {
-      toast.info(`Crew member: ${id} is already at maximum level.`);
+      alert(`Crew member ${name} is at max level.`);
       return;
     }
 
+    await evolveMember(id);
+  };
+
+  const evolveMember = async (id) => {
     setIsEvolving(true);
 
     // Wait for evolve animation
@@ -37,7 +40,7 @@ function MiniMemberCard({ crewMember }) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSilhouette(false);
     setIsEvolving(false);
-  };
+  }
 
   const handleDeleteMember = (id) => {
     dispatch(deleteMemberAsync(id));
@@ -69,19 +72,14 @@ function MiniMemberCard({ crewMember }) {
             src={crewMember.images[memberLevel - 1]}
             alt={crewMember.name}
             width={220}
+            onClick={() => viewMember(crewMember)}
           />
           <div className="mini-button-container">
             <button
-              className="view-member-button"
-              onClick={() => viewMember(crewMember)}
-            >
-              View
-            </button>
-            <button
               className="upgrade-member-button"
-              onClick={() => handleUpgradeMember(crewMember.memberId)}
+              onClick={() => handleUpgradeMember(crewMember.memberId, crewMember.name)}
             >
-              Upgrade
+              {`Upgrade [${crewMember.cost}$]`}
             </button>
             <button
               className="delete-member-button"
@@ -92,26 +90,15 @@ function MiniMemberCard({ crewMember }) {
           </div>
         </div>
         <div>
-          <DetailedMemberCard
+          <MemberCardPopup
             isOpen={viewDetailed}
             onClose={closeView}
             member={selectedMember}
           />
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   );
 }
 
-export default MiniMemberCard;
+export default MemberCardMini;

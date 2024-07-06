@@ -1,6 +1,6 @@
 import React from "react";
 
-const DetailedMemberCard = ({isOpen, onClose, member}) => {
+const MemberCardPopup = ({isOpen, onClose, member}) => {
     if (!isOpen) return null;
 
     const handleClickOffView = (e) => {
@@ -50,4 +50,4 @@ const DetailedMemberCard = ({isOpen, onClose, member}) => {
     );
 };
 
-export default DetailedMemberCard;
+export default MemberCardPopup;

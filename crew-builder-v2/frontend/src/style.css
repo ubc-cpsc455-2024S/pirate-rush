@@ -19,7 +19,7 @@ button {
 }
 
 .mulish-heading {
-  font-weight: 600;
+  font-weight: 550;
   text-align: center;
   padding: 2px;
   margin: 2px;
@@ -49,19 +49,17 @@ button,
   margin: 2px;
   border: 2px solid transparent;
   font-size: 1rem;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 #submit-button,
-#clear-fields-button,
-.view-member-button {
+#clear-fields-button {
   background-color: #202020;
   color: white;
 }
 
 #submit-button:hover,
-#clear-fields-button:hover,
-.view-member-button:hover {
+#clear-fields-button:hover {
   background-color: #515151;
 }
 
@@ -187,7 +185,12 @@ button,
   color: #131313;
 }
 
-/* Team Display */
+.member-container-headings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 #team-display {
   display: flex;
   flex: 2;
@@ -251,29 +254,36 @@ button,
     box-shadow 0.2s;
 }
 
+.mini-member-container-1 :hover,
+.mini-member-container-2 :hover,
+.mini-member-container-3 :hover {
+  cursor: pointer;
+}
+
 @keyframes hoverAnimation {
   0%,
   100% {
     transform: translateY(0);
   }
   25% {
-    transform: translateY(-1px);
+    transform: translateY(-0.5px);
   }
   50% {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
   75% {
-    transform: translateY(-1px);
+    transform: translateY(-0.5px);
   }
 }
 
 .mini-member-container-1:hover {
   box-shadow: 0 8px 14px rgb(183, 234, 172);
+  animation: hoverAnimation 2s infinite linear;
 }
 
 .mini-member-container-2:hover {
   box-shadow: 0 12px 18px rgb(119, 188, 228);
-  animation: hoverAnimation 3s infinite linear;
+  animation: hoverAnimation 2s infinite linear;
 }
 
 .mini-member-container-3:hover {
@@ -282,15 +292,15 @@ button,
 }
 
 .member-name {
-  font-weight: 800;
-  font-size: 1.6rem;
+  font-weight: 600;
+  font-size: 1.5rem;
   color: #101010;
   text-align: center;
 }
 
 .member-level {
-  font-weight: 500;
-  font-size: 1.2rem;
+  font-weight: 300;
+  font-size: 1.1rem;
   color: #5c5c5c;
   text-align: center;
 }
@@ -402,7 +412,7 @@ table, th, td {
 }
 
 .detailed-image-container {
-  width: 90%;
+  width: 85%;
   display: flex;
   justify-content: center;
 }

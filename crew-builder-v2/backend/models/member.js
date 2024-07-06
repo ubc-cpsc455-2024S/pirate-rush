@@ -11,6 +11,9 @@ const memberSchema = new mongoose.Schema({
     ATK: Number,
     HP: Number,
   },
+  rarity: { type: String, required: true },
+  icons: { type: [String], required: true },
+  cost: { type: Number, required: true }
 });
 
 const Member = mongoose.model("Member", memberSchema);
