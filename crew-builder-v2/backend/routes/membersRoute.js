@@ -4,7 +4,6 @@ const { db } = require("../db");
 
 const MAX_CREW_SIZE = 6;
 
-const DEFAULT_TEAM_COLL = "default_team";
 const USER_TEAM_COLL = "members";
 const POOL_COLL = "pool";
 
@@ -62,13 +61,14 @@ router.delete("/:memberId", async (req, res, _) => {
   return res.status(204).send();
 });
 
+/* PATCH member by id -> Upgrade */
 router.patch("/:memberId", async (req, res, _) => {
   const memberId = req.params.memberId;
 
   const member = await db
     .collection(USER_TEAM_COLL)
     .findOne({ memberId: memberId });
-  console.log(member);
+
   if (!member) {
     return res.status(404).json({ message: "Member not found" });
   }

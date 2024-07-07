@@ -4,7 +4,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const indexRouter = require("./routes");
-const membersRouter = require("./routes/members");
+const membersRouter = require("./routes/membersRoute");
+const playersRouter = require("./routes/playersRoute");
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/members", membersRouter);
+app.use("/players", playersRouter);
 
 module.exports = app;

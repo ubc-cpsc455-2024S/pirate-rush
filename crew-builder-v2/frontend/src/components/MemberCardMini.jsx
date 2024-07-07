@@ -2,102 +2,125 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import MemberCardPopup from "./MemberCardPopup.jsx";
 import {
-  deleteMemberAsync,
-  getMembersAsync,
-  patchMemberVersionAsync,
+    deleteMemberAsync,
+    getMembersAsync,
+    patchMemberVersionAsync,
 } from "../redux/members/thunks.js";
 import { MAX_LEVEL } from "../../global_const.js";
+import { patchBerriesAsync } from "../redux/players/thunks.js";
 
-function MemberCardMini({ crewMember }) {
-  const [viewDetailed, setViewDetailed] = React.useState(false);
-  const [selectedMember, setSelectedMember] = React.useState(null);
-  const [isEvolving, setIsEvolving] = React.useState(false);
-  const [isSilhouette, setIsSilhouette] = React.useState(false);
+function MemberCardMini({ crewMember, player }) {
+    const [viewDetailed, setViewDetailed] = React.useState(false);
+    const [selectedMember, setSelectedMember] = React.useState(null);
+    const [isEvolving, setIsEvolving] = React.useState(false);
+    const [isSilhouette, setIsSilhouette] = React.useState(false);
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  const handleUpgradeMember = async (id, name) => {
-    if (crewMember.unitLevel === MAX_LEVEL) {
-      alert(`Crew member ${name} is at max level.`);
-      return;
-    }
+    const handleUpgradeMember = async () => {
+        if (crewMember.unitLevel === MAX_LEVEL) {
+            alert(`Crew member ${crewMember.name} is at max level.`);
+            return;
+        }
 
-    await evolveMember(id);
-  };
+        if (crewMember.cost > player.berries) {
+            alert(`Not enough berries to upgrade ${crewMember.name}.`);
+            return;
+        }
 
-  const evolveMember = async (id) => {
-    setIsEvolving(true);
+        try {
+            await spendToUpgrade();
+            await evolveMember();
+        } catch (error) {
+            console.error("Error during upgrade:", error);
+            alert(`Failed to upgrade ${crewMember.name}: ${error.message}`);
+        }
+    };
 
-    // Wait for evolve animation
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    await dispatch(patchMemberVersionAsync(id));
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    await dispatch(getMembersAsync());
-    setIsSilhouette(true);
+    const spendToUpgrade = async () => {
+        await dispatch(
+            patchBerriesAsync({
+                playerId: player.playerId,
+                amount: crewMember.cost,
+            }),
+        );
+    };
 
-    // Wait for silhouette animation
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSilhouette(false);
-    setIsEvolving(false);
-  }
+    const evolveMember = async () => {
+        // Wait for evolve animation
+        setIsEvolving(true);
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        await dispatch(patchMemberVersionAsync(crewMember.memberId));
+        await new Promise((resolve) => setTimeout(resolve, 150));
+        await dispatch(getMembersAsync());
+        setIsEvolving(false);
 
-  const handleDeleteMember = (id) => {
-    dispatch(deleteMemberAsync(id));
-  };
+        // Wait for silhouette animation
+        setIsSilhouette(true);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setIsSilhouette(false);
+    };
 
-  const viewMember = (member) => {
-    setSelectedMember(member);
-    setViewDetailed(true);
-  };
+    const handleDeleteMember = () => {
+        dispatch(deleteMemberAsync(crewMember.memberId));
+    };
 
-  const closeView = () => {
-    setSelectedMember(null);
-    setViewDetailed(false);
-  };
+    const viewMember = () => {
+        setSelectedMember(crewMember);
+        setViewDetailed(true);
+    };
 
-  const memberLevel = crewMember.unitLevel;
+    const closeView = () => {
+        setSelectedMember(null);
+        setViewDetailed(false);
+    };
 
-  return (
-    <>
-      <div>
-        <div className={"mini-member-container-" + memberLevel}>
-          <div>
-            <span className="member-name">{crewMember.name}</span>
-            <span className="member-level"> LV {memberLevel}</span>
-          </div>
+    return (
+        <>
+            <div>
+                <div
+                    className={"mini-member-container-" + crewMember.unitLevel}
+                >
+                    <div>
+                        <span className="member-name">{crewMember.name}</span>
+                        <span className="member-level">
+                            {" "}
+                            LV {crewMember.unitLevel}
+                        </span>
+                    </div>
 
-          <img
-            className={`member-image ${isEvolving ? "evolving" : ""} ${isSilhouette ? "silhouette" : ""}`}
-            src={crewMember.images[memberLevel - 1]}
-            alt={crewMember.name}
-            width={220}
-            onClick={() => viewMember(crewMember)}
-          />
-          <div className="mini-button-container">
-            <button
-              className="upgrade-member-button"
-              onClick={() => handleUpgradeMember(crewMember.memberId, crewMember.name)}
-            >
-              {`Upgrade [${crewMember.cost}$]`}
-            </button>
-            <button
-              className="delete-member-button"
-              onClick={() => handleDeleteMember(crewMember.memberId)}
-            >
-              Remove
-            </button>
-          </div>
-        </div>
-        <div>
-          <MemberCardPopup
-            isOpen={viewDetailed}
-            onClose={closeView}
-            member={selectedMember}
-          />
-        </div>
-      </div>
-    </>
-  );
+                    <img
+                        className={`member-image ${isEvolving ? "evolving" : ""} ${isSilhouette ? "silhouette" : ""}`}
+                        src={crewMember.images[crewMember.unitLevel - 1]}
+                        alt={crewMember.name}
+                        width={220}
+                        onClick={() => viewMember()}
+                    />
+                    <div className="mini-button-container">
+                        <button
+                            className="upgrade-member-button"
+                            onClick={() => handleUpgradeMember()}
+                        >
+                            {`Upgrade [${crewMember.cost}$]`}
+                        </button>
+                        <button
+                            className="delete-member-button"
+                            onClick={() => handleDeleteMember()}
+                        >
+                            Remove
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <MemberCardPopup
+                        isOpen={viewDetailed}
+                        onClose={closeView}
+                        member={selectedMember}
+                    />
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default MemberCardMini;

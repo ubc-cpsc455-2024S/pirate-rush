@@ -1,59 +1,53 @@
+import axios from "axios";
+
 const URL_PATH = "http://localhost:3000/members";
 
 const addMember = async (member) => {
-  const response = await fetch(URL_PATH, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(member),
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    const errorMsg = data?.message;
-    throw new Error(errorMsg);
-  }
-  return data;
+    try {
+        const response = await axios.post(URL_PATH, member, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        return response.data;
+    } catch (error) {
+        const errorMsg = error.response?.data?.message;
+        throw new Error(errorMsg || "Error adding member");
+    }
 };
 
 const getMembers = async () => {
-  const response = await fetch(URL_PATH, {
-    method: "GET",
-  });
-
-  return response.json();
+    try {
+        const response = await axios.get(URL_PATH);
+        return response.data;
+    } catch (error) {
+        throw new Error("Error fetching members");
+    }
 };
 
 const deleteMember = async (memberId) => {
-  await fetch(URL_PATH + "/" + memberId, {
-    method: "DELETE",
-  });
-
-  return memberId;
+    try {
+        await axios.delete(`${URL_PATH}/${memberId}`);
+        return memberId;
+    } catch (error) {
+        const errorMsg = error.response?.data?.message;
+        throw new Error(errorMsg || "Error deleting member");
+    }
 };
 
 const patchMemberVersion = async (memberId) => {
-  const response = await fetch(URL_PATH + "/" + memberId, {
-    method: "PATCH",
-  });
-  return await getResponse(response);
+    try {
+        const response = await axios.patch(`${URL_PATH}/${memberId}`);
+        return response.data;
+    } catch (error) {
+        const errorMsg = error.response?.data?.message;
+        throw new Error(errorMsg || "Error patching member");
+    }
 };
 
-async function getResponse(response) {
-  const data = await response.json();
-
-  if (!response.ok) {
-    const errorMsg = data?.message;
-    throw new Error(errorMsg);
-  }
-  return data;
-}
-
 export default {
-  addMember,
-  getMembers,
-  deleteMember,
-  patchMemberVersion,
+    addMember,
+    getMembers,
+    deleteMember,
+    patchMemberVersion,
 };

@@ -7,19 +7,19 @@ import AboutPage from "./pages/AboutPage.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-  return (
-    <>
-      <div id="all">
-        <Router>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/About" element={<AboutPage />} />
-          </Routes>
-        </Router>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div id="all">
+                <Router>
+                    <NavBar />
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/About" element={<AboutPage />} />
+                    </Routes>
+                </Router>
+            </div>
+        </>
+    );
 }
 
 export default App;
