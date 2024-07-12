@@ -10,12 +10,12 @@ export const SANJI = "Sanji";
 export const ROBIN = "Robin";
 export const CHOPPER = "Chopper";
 export const BROOK = "Brook";
+export const FRANKY = "Franky";
 export const JINBEI = "Jinbei";
+export const PORTGAS_D_ACE = "Portgas D. Ace";
 export const YAMATO = "Yamato";
 export const GOL_D_ROGER = "Gol D. Roger";
 export const ODEN_KOZUKI = "Oden Kozuki";
-export const FRANKY = "Franky";
-export const PORTGAS_D_ACE = "Portgas D. Ace";
 
 export const CHARACTER_NAMES = [
     LUFFY,
@@ -25,11 +25,11 @@ export const CHARACTER_NAMES = [
     SANJI,
     ROBIN,
     CHOPPER,
-    FRANKY,
     BROOK,
+    FRANKY,
     JINBEI,
     YAMATO,
+    PORTGAS_D_ACE,
     GOL_D_ROGER,
     ODEN_KOZUKI,
-    PORTGAS_D_ACE,
 ];
