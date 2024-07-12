@@ -21,7 +21,7 @@ Team Builder Website 2.1
 # Assignment 4
 
 Team Builder Website 2.2
-- Connect backend to MongoDB. Use mongoose schema and added more member fields.
+- Connect backend to MongoDB. Use mongoose schema and added more member fields. Add functionality to upgrade crew with monetary resources (Berries)
 
 # References
 
