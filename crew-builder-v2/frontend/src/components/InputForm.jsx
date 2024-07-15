@@ -6,7 +6,7 @@ import {
     setMemberImages,
     setMemberDescription,
 } from "../componentUtils/InputFormUtils.js";
-import { CHARACTER_NAMES } from "../../global_const.js";
+import { CHARACTER_NAMES } from "../../consts.js";
 
 function InputForm() {
     const [name, setName] = useState("");

@@ -6,7 +6,7 @@ import {
     getMembersAsync,
     patchMemberVersionAsync,
 } from "../redux/members/thunks.js";
-import { MAX_LEVEL } from "../../global_const.js";
+import { MAX_LEVEL } from "../../consts.js";
 import { patchBerriesAsync } from "../redux/players/thunks.js";
 
 function MemberCardMini({ crewMember, player }) {
