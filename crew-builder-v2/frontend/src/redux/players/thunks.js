@@ -3,15 +3,15 @@ import { actionTypes } from "./actionTypes";
 import PlayerService from "./service";
 
 export const getPlayerAsync = createAsyncThunk(
-    actionTypes.GET_PLAYER,
-    async ({ playerId }) => {
-        return await PlayerService.getPlayerById(playerId);
-    },
+  actionTypes.GET_PLAYER,
+  async ({ playerId }) => {
+    return await PlayerService.getPlayerById(playerId);
+  },
 );
 
 export const patchBerriesAsync = createAsyncThunk(
-    actionTypes.PATCH_BERRIES,
-    async ({ playerId, amount }) => {
-        return await PlayerService.patchPlayerBerries(playerId, amount);
-    },
+  actionTypes.PATCH_BERRIES,
+  async ({ playerId, amount }) => {
+    return await PlayerService.patchPlayerBerries(playerId, amount);
+  },
 );
