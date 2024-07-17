@@ -1,3 +1,7 @@
+#!/bin/bash
+
+echo "Build script"
+
 cd backend || exit
 npm install
 cd ../frontend || exit
