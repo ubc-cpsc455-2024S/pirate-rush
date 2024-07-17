@@ -16,9 +16,9 @@
     },
     "rarity": "common",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/000/0002.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/000/2073.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/300/2363.png"
     ],
     "cost": 5
   },
@@ -39,9 +39,9 @@
     },
     "rarity": "common",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/000/0005.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/400/2476.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/200/3202.png"
     ],
     "cost": 5
   },
@@ -62,9 +62,9 @@
     },
     "rarity": "common",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/000/0009.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/000/2075.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/500/2588.png"
     ],
     "cost": 5
   },
@@ -85,9 +85,9 @@
     },
     "rarity": "common",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/000/0013.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/1/500/1531.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/1/500/1543.png"
     ],
     "cost": 5
   },
@@ -96,7 +96,7 @@
     "description": "Masterful cook and a fierce foe with a kick",
     "images": [
       "https://optc-db.github.io/api/images/full/transparent/0/000/0017.png",
-      "https://optc-db.github.io/api/images/full/transparent/1/500/1587.png",
+      "https://optc-db.github.io/api/images/full/transparent/0/000/0020.png",
       "https://optc-db.github.io/api/images/full/transparent/1/500/1588.png"
     ],
     "memberId": "5",
@@ -108,9 +108,9 @@
     },
     "rarity": "common",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/000/0017.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/000/0020.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/1/500/1588.png"
     ],
     "cost": 5
   },
@@ -131,11 +131,11 @@
     },
     "rarity": "common",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/200/0209.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/1/900/1950.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/800/2830.png"
     ],
-    "cost": 5
+    "cost": 10
   },
   {
     "name": "Chopper",
@@ -154,32 +154,9 @@
     },
     "rarity": "common",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
-    ],
-    "cost": 5
-  },
-  {
-    "name": "Franky",
-    "description": "Placeholder description for Franky",
-    "images": [
-      "placeholder_image_url_1",
-      "placeholder_image_url_2",
-      "placeholder_image_url_3"
-    ],
-    "memberId": "13",
-    "unitLevel": 1,
-    "stats": {
-      "TYPE": "QCK",
-      "ATK": 4,
-      "HP": 3
-    },
-    "rarity": "epic",
-    "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/000/0021.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/000/2072.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/600/3682.png"
     ],
     "cost": 10
   },
@@ -200,11 +177,34 @@
     },
     "rarity": "epic",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/400/0423.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/200/2235.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/500/3510.png"
     ],
-    "cost": 10
+    "cost": 25
+  },
+  {
+    "name": "Franky",
+    "description": "Placeholder description for Franky",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/0/300/0336.png",
+      "https://optc-db.github.io/api/images/full/transparent/1/900/1934.png",
+      "https://optc-db.github.io/api/images/full/transparent/2/300/2300.png"
+    ],
+    "memberId": "13",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "QCK",
+      "ATK": 4,
+      "HP": 3
+    },
+    "rarity": "epic",
+    "icons": [
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/300/0336.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/1/900/1934.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/300/2300.png"
+    ],
+    "cost": 25
   },
   {
     "name": "Jinbei",
@@ -223,11 +223,34 @@
     },
     "rarity": "epic",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/600/2693.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/200/2264.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/2/000/2066.png"
     ],
-    "cost": 10
+    "cost": 25
+  },
+  {
+    "name": "Portgas D. Ace",
+    "description": "Luffy's dear brother and a stunning solo pirate",
+    "images": [
+      "https://optc-db.github.io/api/images/full/transparent/1/600/1604.png",
+      "https://optc-db.github.io/api/images/full/transparent/0/500/0561.png",
+      "https://optc-db.github.io/api/images/full/transparent/1/800/1816.png"
+    ],
+    "memberId": "14",
+    "unitLevel": 1,
+    "stats": {
+      "TYPE": "STR",
+      "ATK": 8,
+      "HP": 4
+    },
+    "rarity": "epic",
+    "icons": [
+      "https://optc-db.github.io/api/images/thumbnail/jap/1/600/1604.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/0/500/0561.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/1/800/1816.png"
+    ],
+    "cost": 50
   },
   {
     "name": "Yamato",
@@ -244,13 +267,13 @@
       "ATK": 4,
       "HP": 4
     },
-    "rarity": "legendary",
+    "rarity": "epic",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/900/3965.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/800/3835.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/400/3430.png"
     ],
-    "cost": 20
+    "cost": 50
   },
   {
     "name": "Gol D. Roger",
@@ -269,11 +292,11 @@
     },
     "rarity": "legendary",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/100/3176.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/100/3177.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/700/3786.png"
     ],
-    "cost": 20
+    "cost": 100
   },
   {
     "name": "Oden Kozuki",
@@ -292,33 +315,10 @@
     },
     "rarity": "legendary",
     "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/100/3174.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/100/3175.png",
+      "https://optc-db.github.io/api/images/thumbnail/jap/3/500/3519.png"
     ],
-    "cost": 20
-  },
-  {
-    "name": "Portgas D. Ace",
-    "description": "Luffy's dear brother and a stunning solo pirate",
-    "images": [
-      "https://optc-db.github.io/api/images/full/transparent/1/600/1604.png",
-      "https://optc-db.github.io/api/images/full/transparent/0/500/0561.png",
-      "https://optc-db.github.io/api/images/full/transparent/1/800/1816.png"
-    ],
-    "memberId": "14",
-    "unitLevel": 1,
-    "stats": {
-      "TYPE": "STR",
-      "ATK": 8,
-      "HP": 4
-    },
-    "rarity": "legendary",
-    "icons": [
-      "placeholder",
-      "placeholder",
-      "placeholder"
-    ],
-    "cost": 20
+    "cost": 100
   }
 ]

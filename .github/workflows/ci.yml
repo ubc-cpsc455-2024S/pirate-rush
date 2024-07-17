@@ -31,12 +31,13 @@ jobs:
 
       - name: Run backend tests
         working-directory: ./crew-builder-v2/backend
-        run: npm run test
+        run: npm test
 
       - name: Check frontend code style with Prettier
         working-directory: ./crew-builder-v2/frontend
         run: npm run prettier:check
 
       - name: Check backend code style with Prettier
+
         working-directory: ./crew-builder-v2/backend
         run: npm run prettier:check
