@@ -21,7 +21,7 @@ function MemberCardContainer() {
   }, [dispatch]);
 
   if (getPlayerStatus === REQUEST_STATE.PENDING || !player) {
-    return <div>Loading...</div>;
+    return <div className="mulish-p">Loading Your Crew...</div>;
   }
 
   return (
