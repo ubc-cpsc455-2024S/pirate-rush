@@ -35,9 +35,9 @@ jobs:
 
       - name: Check frontend code style with Prettier
         working-directory: ./crew-builder-v2/frontend
-        run: npm run prettier:check
+        run: npm run lint:check
 
       - name: Check backend code style with Prettier
 
         working-directory: ./crew-builder-v2/backend
-        run: npm run prettier:check
+        run: npm run lint:check
