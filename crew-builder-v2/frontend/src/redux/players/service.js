@@ -6,7 +6,7 @@ const BERRIES_PATH = "berries";
 const getPlayerById = async (playerId) => {
   try {
     const response = await axios.get(`${URL_PATH}/${playerId}`);
-    return response.data[0];
+    return response.data;
   } catch (error) {
     const errorMsg = error.response?.data?.message;
     throw new Error(errorMsg || "Error fetching player: " + playerId);

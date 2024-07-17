@@ -12,11 +12,12 @@ function MemberCardContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMembersAsync());
-  }, [dispatch]);
+    async function fetchData() {
+      await dispatch(getMembersAsync());
+      await dispatch(getPlayerAsync({ playerId: "123456" }))
+    }
 
-  useEffect(() => {
-    dispatch(getPlayerAsync({ playerId: "123456" }));
+    fetchData();
   }, [dispatch]);
 
   if (getPlayerStatus === REQUEST_STATE.PENDING || !player) {
