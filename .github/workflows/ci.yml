@@ -19,13 +19,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: '16'
 
       - name: Install dependencies
+        working-directory: ./crew-builder-v2/backend
         run: npm install
 
       - name: Run tests
+        working-directory: ./crew-builder-v2/backend
         run: npm test
 
-      - name: Run Prettier
+      - name: Check code style with Prettier
+        working-directory: ./crew-builder-v2/backend
         run: npm run prettier:check
