@@ -1,3 +1,4 @@
+https://github.com/ubc-cpsc455-2024S/assignment-jacksonliiii/actions/workflows/ci.yml/badge.svg
 # CPSC 455 Assignment Repositories
 
 Use this repo for your CPSC 455 assignments!
