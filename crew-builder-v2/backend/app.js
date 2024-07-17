@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(express.static('dist'))
 
 app.use("/", indexRouter);
-app.use("/members", membersRouter);
-app.use("/players", playersRouter);
+app.use("/api/members", membersRouter);
+app.use("/api/players", playersRouter);
 
 module.exports = app;

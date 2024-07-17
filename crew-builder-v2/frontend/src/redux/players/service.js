@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const URL_PATH = "http://localhost:3000/players";
+const BASE_URL = "api/players";
 const BERRIES_PATH = "berries";
 
 const getPlayerById = async (playerId) => {
   try {
-    const response = await axios.get(`${URL_PATH}/${playerId}`);
+    const response = await axios.get(`${BASE_URL}/${playerId}`);
     return response.data;
   } catch (error) {
     const errorMsg = error.response?.data?.message;
@@ -16,7 +16,7 @@ const getPlayerById = async (playerId) => {
 const patchPlayerBerries = async (playerId, amount) => {
   try {
     const response = await axios.patch(
-      `${URL_PATH}/${playerId}/${BERRIES_PATH}`,
+      `${BASE_URL}/${playerId}/${BERRIES_PATH}`,
       { amount },
       {
         headers: {

@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const URL_PATH = "http://localhost:3000/members";
+const BASE_URL = "/api/members";
 
 const addMember = async (member) => {
   try {
-    const response = await axios.post(URL_PATH, member, {
+    const response = await axios.post(BASE_URL, member, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -18,7 +18,7 @@ const addMember = async (member) => {
 
 const getMembers = async () => {
   try {
-    const response = await axios.get(URL_PATH);
+    const response = await axios.get(BASE_URL);
     return response.data;
   } catch (error) {
     throw new Error("Error fetching members");
@@ -27,7 +27,7 @@ const getMembers = async () => {
 
 const deleteMember = async (memberId) => {
   try {
-    await axios.delete(`${URL_PATH}/${memberId}`);
+    await axios.delete(`${BASE_URL}/${memberId}`);
     return memberId;
   } catch (error) {
     const errorMsg = error.response?.data?.message;
@@ -37,7 +37,7 @@ const deleteMember = async (memberId) => {
 
 const patchMemberVersion = async (memberId) => {
   try {
-    const response = await axios.patch(`${URL_PATH}/${memberId}`);
+    const response = await axios.patch(`${BASE_URL}/${memberId}`);
     return response.data;
   } catch (error) {
     const errorMsg = error.response?.data?.message;
