@@ -43,7 +43,9 @@ describe("GET /players/:playerId", () => {
     const response = await request(app).get(`/players/${playerId}`);
 
     expect(response.status).toBe(404);
-    expect(response.body).toEqual({ message: `Player with id: ${playerId} not found` });
+    expect(response.body).toEqual({
+      message: `Player with id: ${playerId} not found`,
+    });
     expect(db.collection().findOne).toHaveBeenCalledWith({ playerId });
   });
 
@@ -121,7 +123,9 @@ describe("PATCH /players/:playerId/berries", () => {
       .send({ amount: 20 });
 
     expect(response.status).toBe(404);
-    expect(response.body).toEqual({ message: `Player with id: ${playerId} not found` });
+    expect(response.body).toEqual({
+      message: `Player with id: ${playerId} not found`,
+    });
     expect(db.collection().findOne).toHaveBeenCalledWith({ playerId });
     expect(db.collection().updateOne).not.toHaveBeenCalled();
   });

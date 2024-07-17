@@ -31,7 +31,9 @@ router.get("/:memberId", async (req, res) => {
       .findOne({ memberId: memberId });
 
     if (!foundMember) {
-      return res.status(404).json({ message: `Member with id: ${memberId} not found` });
+      return res
+        .status(404)
+        .json({ message: `Member with id: ${memberId} not found` });
     }
 
     return res.status(200).json(foundMember);
@@ -63,10 +65,14 @@ router.post("/", async (req, res) => {
 router.delete("/:memberId", async (req, res) => {
   const memberId = req.params.memberId;
   try {
-    const result = await db.collection(USER_TEAM_COLL).deleteOne({ memberId: memberId });
+    const result = await db
+      .collection(USER_TEAM_COLL)
+      .deleteOne({ memberId: memberId });
 
     if (result.deletedCount === 0) {
-      return res.status(404).json({ message: `Member with id: ${memberId} not found` });
+      return res
+        .status(404)
+        .json({ message: `Member with id: ${memberId} not found` });
     }
 
     return res.status(204).send();
@@ -97,7 +103,7 @@ router.patch("/:memberId", async (req, res) => {
       .collection(USER_TEAM_COLL)
       .updateOne(
         { memberId: memberId },
-        { $set: { unitLevel: member.unitLevel + 1 } }
+        { $set: { unitLevel: member.unitLevel + 1 } },
       );
 
     // Update the member object to reflect the new level

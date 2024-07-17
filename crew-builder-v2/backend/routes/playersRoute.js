@@ -8,10 +8,14 @@ const PLAYERS_COLL = "players";
 router.get("/:playerId", async (req, res) => {
   const playerId = req.params.playerId;
   try {
-    const player = await db.collection(PLAYERS_COLL).findOne({ playerId: playerId });
+    const player = await db
+      .collection(PLAYERS_COLL)
+      .findOne({ playerId: playerId });
 
     if (!player) {
-      return res.status(404).json({ message: `Player with id: ${playerId} not found` });
+      return res
+        .status(404)
+        .json({ message: `Player with id: ${playerId} not found` });
     }
 
     return res.status(200).json(player);
@@ -30,15 +34,21 @@ router.patch("/:playerId/berries", async (req, res) => {
   }
 
   try {
-    const player = await db.collection(PLAYERS_COLL).findOne({ playerId: playerId });
+    const player = await db
+      .collection(PLAYERS_COLL)
+      .findOne({ playerId: playerId });
 
     if (!player) {
-      return res.status(404).json({ message: `Player with id: ${playerId} not found` });
+      return res
+        .status(404)
+        .json({ message: `Player with id: ${playerId} not found` });
     }
 
     const newBerries = player.berries + amount;
 
-    await db.collection(PLAYERS_COLL).updateOne({ playerId: playerId }, { $set: { berries: newBerries } });
+    await db
+      .collection(PLAYERS_COLL)
+      .updateOne({ playerId: playerId }, { $set: { berries: newBerries } });
 
     return res.status(200).json(newBerries);
   } catch (err) {

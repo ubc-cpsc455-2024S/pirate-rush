@@ -29,7 +29,10 @@ beforeEach(() => {
 
 describe("GET /members", () => {
   it("should return all members", async () => {
-    const mockMembers = [{ memberId: "1", name: "Luffy" }, { memberId: "2", name: "Zoro" }];
+    const mockMembers = [
+      { memberId: "1", name: "Luffy" },
+      { memberId: "2", name: "Zoro" },
+    ];
 
     db.collection().toArray.mockResolvedValueOnce(mockMembers);
 
@@ -86,7 +89,9 @@ describe("GET /members/:memberId", () => {
     const response = await request(app).get(`/members/${memberId}`);
 
     expect(response.status).toBe(404);
-    expect(response.body).toEqual({ message: `Member with id: ${memberId} not found` });
+    expect(response.body).toEqual({
+      message: `Member with id: ${memberId} not found`,
+    });
     expect(db.collection().findOne).toHaveBeenCalledWith({ memberId });
   });
 
@@ -129,7 +134,9 @@ describe("POST /members", () => {
     const response = await request(app).post("/members").send(newMember);
 
     expect(response.status).toBe(403);
-    expect(response.body).toEqual({ message: `Cannot exceed max crew size of ${MAX_CREW_SIZE}` });
+    expect(response.body).toEqual({
+      message: `Cannot exceed max crew size of ${MAX_CREW_SIZE}`,
+    });
     expect(db.collection().find).toHaveBeenCalledWith({});
     expect(db.collection().toArray).toHaveBeenCalled();
     expect(db.collection().insertOne).not.toHaveBeenCalled();
@@ -170,7 +177,9 @@ describe("DELETE /members/:memberId", () => {
     const response = await request(app).delete(`/members/${memberId}`);
 
     expect(response.status).toBe(404);
-    expect(response.body).toEqual({ message: `Member with id: ${memberId} not found` });
+    expect(response.body).toEqual({
+      message: `Member with id: ${memberId} not found`,
+    });
     expect(db.collection().deleteOne).toHaveBeenCalledWith({ memberId });
   });
 
@@ -191,7 +200,11 @@ describe("PATCH /members/:memberId", () => {
   it("should upgrade the member's unit level", async () => {
     const memberId = "123";
     const initialUnitLevel = 1;
-    const mockMember = { memberId, unitLevel: initialUnitLevel, images: ["image1", "image2", "image3"] };
+    const mockMember = {
+      memberId,
+      unitLevel: initialUnitLevel,
+      images: ["image1", "image2", "image3"],
+    };
 
     db.collection().findOne.mockResolvedValueOnce(mockMember);
     db.collection().updateOne.mockResolvedValueOnce({ modifiedCount: 1 });
@@ -199,18 +212,25 @@ describe("PATCH /members/:memberId", () => {
     const response = await request(app).patch(`/members/${memberId}`).send();
 
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ ...mockMember, unitLevel: initialUnitLevel + 1 });
+    expect(response.body).toEqual({
+      ...mockMember,
+      unitLevel: initialUnitLevel + 1,
+    });
     expect(db.collection().findOne).toHaveBeenCalledWith({ memberId });
     expect(db.collection().updateOne).toHaveBeenCalledWith(
       { memberId },
-      { $set: { unitLevel: initialUnitLevel + 1 } }
+      { $set: { unitLevel: initialUnitLevel + 1 } },
     );
   });
 
   it("should return 400 if the member is already at MAX level", async () => {
     const memberId = "123";
     const maxUnitLevel = 3;
-    const mockMember = { memberId, unitLevel: maxUnitLevel, images: ["image1", "image2", "image3"] };
+    const mockMember = {
+      memberId,
+      unitLevel: maxUnitLevel,
+      images: ["image1", "image2", "image3"],
+    };
 
     db.collection().findOne.mockResolvedValueOnce(mockMember);
 
@@ -254,7 +274,7 @@ describe("PATCH /members/:memberId", () => {
     expect(db.collection().findOne).toHaveBeenCalledWith({ memberId });
     expect(db.collection().updateOne).toHaveBeenCalledWith(
       { memberId },
-      { $set: { unitLevel: 2 } }
+      { $set: { unitLevel: 2 } },
     );
   });
 });
