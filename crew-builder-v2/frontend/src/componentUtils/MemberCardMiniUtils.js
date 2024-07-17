@@ -36,7 +36,7 @@ const spendToUpgrade = async (crewMember, player, dispatch) => {
   await dispatch(
     patchBerriesAsync({
       playerId: player.playerId,
-      amount: crewMember.cost,
+      amount: -crewMember.cost,
     }),
   );
 };

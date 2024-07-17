@@ -4,7 +4,6 @@ import { getMembersAsync } from "../redux/members/thunks.js";
 import { getPlayerAsync } from "../redux/players/thunks.js";
 import MemberCardMini from "./MemberCardMini.jsx";
 import { REQUEST_STATE } from "../redux/utils.js";
-import Loading from "./Loading.jsx";
 
 function MemberCardContainer() {
   const crew = useSelector((state) => state.members.list);
@@ -21,7 +20,7 @@ function MemberCardContainer() {
   }, [dispatch]);
 
   if (getPlayerStatus === REQUEST_STATE.PENDING || !player) {
-    return <Loading />;
+    return <div>Loading...</div>;
   }
 
   return (

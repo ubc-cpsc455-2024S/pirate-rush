@@ -13,7 +13,7 @@ const memberSchema = new mongoose.Schema({
   },
   rarity: { type: String, required: true },
   icons: { type: [String], required: true },
-  cost: { type: Number, required: true }
+  cost: { type: Number, required: true },
 });
 
 const Member = mongoose.model("Member", memberSchema);
