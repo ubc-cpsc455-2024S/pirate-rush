@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "api/players";
+const BASE_URL = "/api/players";
 const BERRIES_PATH = "berries";
 
 const getPlayerById = async (playerId) => {
