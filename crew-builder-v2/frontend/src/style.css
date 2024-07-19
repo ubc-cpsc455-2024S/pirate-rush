@@ -281,28 +281,14 @@ button,
     box-shadow 0.2s;
 }
 
-.mini-member-container-1 :hover,
-.mini-member-container-2 :hover,
-.mini-member-container-3 :hover {
+.mini-member-container-1:hover,
+.mini-member-container-2:hover,
+.mini-member-container-3:hover {
   cursor: pointer;
-  animation: hoverAnimation 2s infinite linear;
+  transform: translateY(-3px);
+  transition: transform 0.3s ease;
 }
 
-@keyframes hoverAnimation {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  25% {
-    transform: translateY(-0.5px);
-  }
-  50% {
-    transform: translateY(-1.2px);
-  }
-  75% {
-    transform: translateY(-0.5px);
-  }
-}
 
 .mini-member-container-1:hover {
   box-shadow: 0 8px 14px rgb(183, 234, 172);
@@ -364,7 +350,7 @@ button,
   padding: 10px;
   background: #fff;
   width: 470px;
-  height: 450px;
+  height: 440px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -372,10 +358,19 @@ button,
   border-radius: 5px;
 }
 
+.detailed-content-1 > *,
+.detailed-content-2 > *,
+.detailed-content-3 > * {
+  max-width: 100%; /* Prevents horizontal overflow */
+  max-height: 100%; /* Prevents vertical overflow */
+  box-sizing: border-box;
+}
+
 table {
   width: 90%;
   border-collapse: collapse;
   margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 th,
