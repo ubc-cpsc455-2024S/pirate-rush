@@ -34,7 +34,7 @@ jobs:
         run: npm test
 
       - name: Deploy to Render
-      # Only run this step if the branch is main
+        # Only run this step if the branch is main
         if: github.ref == 'refs/heads/main'
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
