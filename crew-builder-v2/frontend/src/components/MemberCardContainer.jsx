@@ -5,7 +5,7 @@ import { getPlayerAsync } from "../redux/players/thunks.js";
 import MemberCardMini from "./MemberCardMini.jsx";
 import { REQUEST_STATE } from "../redux/utils.js";
 
-function MemberCardContainer() {
+function MemberCardContainer({ playerId }) {
   const crew = useSelector((state) => state.members.list);
   const player = useSelector((state) => state.players.player);
   const getPlayerStatus = useSelector((state) => state.players.getPlayer);
@@ -14,7 +14,7 @@ function MemberCardContainer() {
   useEffect(() => {
     async function fetchData() {
       await dispatch(getMembersAsync());
-      await dispatch(getPlayerAsync({ playerId: "123456" }))
+      await dispatch(getPlayerAsync({ playerId: "123456" }));
     }
 
     fetchData();

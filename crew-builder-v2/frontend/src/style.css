@@ -1,5 +1,6 @@
 /* Global Styles */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -288,7 +289,6 @@ button,
   transform: translateY(-3px);
   transition: transform 0.3s ease;
 }
-
 
 .mini-member-container-1:hover {
   box-shadow: 0 8px 14px rgb(183, 234, 172);

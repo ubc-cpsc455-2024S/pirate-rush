@@ -8,7 +8,7 @@ import {
 } from "../componentUtils/InputFormUtils.js";
 import { CHARACTER_NAMES } from "../../consts.js";
 
-function InputForm() {
+function InputForm({ playerId }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [level, setLevel] = useState(1);
