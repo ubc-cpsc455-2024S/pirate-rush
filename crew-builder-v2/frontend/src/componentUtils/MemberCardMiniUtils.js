@@ -25,7 +25,7 @@ export const handleUpgradeMember = async (
 
   try {
     await spendToUpgrade(crewMember, player, dispatch);
-    await evolveMember(crewMember, dispatch, setIsEvolving, setIsSilhouette);
+    await evolveMember(player.playerId, crewMember, dispatch, setIsEvolving, setIsSilhouette);
   } catch (error) {
     console.error("Error during upgrade:", error);
     alert(`Failed to upgrade ${crewMember.name}: ${error.message}`);
@@ -42,6 +42,7 @@ const spendToUpgrade = async (crewMember, player, dispatch) => {
 };
 
 const evolveMember = async (
+  playerId,
   crewMember,
   dispatch,
   setIsEvolving,
@@ -50,7 +51,7 @@ const evolveMember = async (
   // Wait for evolve animation
   setIsEvolving(true);
   await new Promise((resolve) => setTimeout(resolve, 500));
-  await dispatch(patchMemberVersionAsync(crewMember.memberId));
+  await dispatch(patchMemberVersionAsync({playerId: playerId, memberId: crewMember.memberId}));
   await new Promise((resolve) => setTimeout(resolve, 150));
   await dispatch(getMembersAsync());
   setIsEvolving(false);
@@ -61,6 +62,6 @@ const evolveMember = async (
   setIsSilhouette(false);
 };
 
-export const handleDeleteMember = (crewMember, dispatch) => {
-  dispatch(deleteMemberAsync(crewMember.memberId));
+export const handleDeleteMember = ( playerId, crewMember, dispatch) => {
+  dispatch(deleteMemberAsync({playerId: playerId, memberId: crewMember.memberId}));
 };
