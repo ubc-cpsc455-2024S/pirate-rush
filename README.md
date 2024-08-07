@@ -1,7 +1,9 @@
 ![CI](https://github.com/ubc-cpsc455-2024S/assignment-jacksonliiii/actions/workflows/ci.yml/badge.svg)
 
 # Pirate Rush
-Idle-clicker game in the theme of One Piece! Do you want to become the pirate king? Recruit and upgrade your pirate crew, fight dangerous foes and conquer the seas!
+Idle-clicker game in the theme of One Piece! Do you want to become the pirate king? Recruit and upgrade your pirate crew, fight dangerous foes, and conquer the seas!
+
+Play now on: https://pirate-rush.onrender.com/
 
 ## Milestone 5
 Pirate Rush 3.0
