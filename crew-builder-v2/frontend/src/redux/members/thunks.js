@@ -4,28 +4,28 @@ import MemberService from "./service";
 
 export const getMembersAsync = createAsyncThunk(
   actionTypes.GET_MEMBERS,
-  async () => {
-    return await MemberService.getMembers();
+  async ({playerId}) => {
+    return await MemberService.getMembers(playerId);
   },
 );
 
 export const addMemberAsync = createAsyncThunk(
   actionTypes.ADD_MEMBER,
-  async (member) => {
-    return await MemberService.addMember(member);
+  async ({playerId, memberName}) => {
+    return await MemberService.addMember(playerId, memberName);
   },
 );
 
 export const deleteMemberAsync = createAsyncThunk(
   actionTypes.DELETE_MEMBER,
-  async (memberId) => {
-    return await MemberService.deleteMember(memberId);
+  async ({playerId, memberId}) => {
+    return await MemberService.deleteMember(playerId, memberId);
   },
 );
 
 export const patchMemberVersionAsync = createAsyncThunk(
   actionTypes.PATCH_MEMBER_VERSION,
-  async (memberId) => {
-    return await MemberService.patchMemberVersion(memberId);
+  async ({playerId, memberId}) => {
+    return await MemberService.patchMemberVersion(playerId, memberId);
   },
 );

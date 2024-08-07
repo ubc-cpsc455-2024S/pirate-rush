@@ -37,7 +37,7 @@ function MemberCardMini({ crewMember, player }) {
             className={`member-image ${isEvolving ? "evolving" : ""} ${isSilhouette ? "silhouette" : ""}`}
             src={crewMember.images[crewMember.unitLevel - 1]}
             alt={crewMember.name}
-            width={220}
+            width={200}
             onClick={() => viewMember()}
           />
           <div className="mini-button-container">
@@ -53,11 +53,11 @@ function MemberCardMini({ crewMember, player }) {
                 )
               }
             >
-              {`Upgrade [${crewMember.cost}$]`}
+                {`LVL UP [${crewMember.cost}$]`}
             </button>
             <button
               className="delete-member-button"
-              onClick={() => handleDeleteMember(crewMember, dispatch)}
+              onClick={() => handleDeleteMember(player.playerId, crewMember, dispatch)}
             >
               Remove
             </button>

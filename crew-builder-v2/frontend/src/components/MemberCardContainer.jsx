@@ -4,8 +4,9 @@ import { getMembersAsync } from "../redux/members/thunks.js";
 import { getPlayerAsync } from "../redux/players/thunks.js";
 import MemberCardMini from "./MemberCardMini.jsx";
 import { REQUEST_STATE } from "../redux/utils.js";
+import "./MiscStyle.css"
 
-function MemberCardContainer() {
+function MemberCardContainer({ playerId }) {
   const crew = useSelector((state) => state.members.list);
   const player = useSelector((state) => state.players.player);
   const getPlayerStatus = useSelector((state) => state.players.getPlayer);
@@ -13,28 +14,28 @@ function MemberCardContainer() {
 
   useEffect(() => {
     async function fetchData() {
-      await dispatch(getMembersAsync());
-      await dispatch(getPlayerAsync({ playerId: "123456" }))
+      await dispatch(getMembersAsync({ playerId: playerId }));
+      await dispatch(getPlayerAsync({ playerId: playerId }));
     }
 
     fetchData();
   }, [dispatch]);
 
   if (getPlayerStatus === REQUEST_STATE.PENDING || !player) {
-    return <div className="mulish-p">Loading Your Crew...</div>;
+    return <div className="loading mulish-p">Loading Your Crew...</div>;
   }
 
   return (
     <>
       <div id="team-display">
-        <div>
+        <div className="team-display-container">
           <div className="member-container-headings">
             <h2 className="mulish-heading">{`${player.username}'s Crew`}</h2>
             <h2 className="mulish-heading">{`Berries ($): ${player.berries}`}</h2>
           </div>
           <ul id="team-list">
             {crew.map((crewMember) => (
-              <li key={crewMember.memberId} className="each-card">
+              <li key={crewMember.name} className="each-card">
                 <MemberCardMini crewMember={crewMember} player={player} />
               </li>
             ))}
