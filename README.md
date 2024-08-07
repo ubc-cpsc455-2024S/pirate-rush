@@ -27,4 +27,4 @@ filling forms and displaying them as a list
 
 ## References
 
-The assignment uses image URLs from: https://optc-db.github.io/
+The project uses image URLs from: https://optc-db.github.io/
