@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function BossContainer({ playerId }) {
+function BossContainer({ player }) {
   return (
     <>
       <div id="boss-container">

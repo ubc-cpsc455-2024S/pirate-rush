@@ -1,21 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMembersAsync } from "../redux/members/thunks.js";
-import { getPlayerAsync } from "../redux/players/thunks.js";
 import MemberCardMini from "./MemberCardMini.jsx";
 import { REQUEST_STATE } from "../redux/utils.js";
 import "./MiscStyle.css"
 
-function MemberCardContainer({ playerId }) {
+function MemberCardContainer({ player }) {
   const crew = useSelector((state) => state.members.list);
-  const player = useSelector((state) => state.players.player);
+  const playerId = player.playerId;
   const getPlayerStatus = useSelector((state) => state.players.getPlayer);
   const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
       await dispatch(getMembersAsync({ playerId: playerId }));
-      await dispatch(getPlayerAsync({ playerId: playerId }));
     }
 
     fetchData();

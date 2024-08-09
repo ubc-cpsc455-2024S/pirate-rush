@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import { addMemberAsync } from "../redux/members/thunks.js";
 import { CHARACTER_NAMES } from "../../consts.js";
 
-function InputForm({ playerId }) {
+function InputForm({ player }) {
+  const playerId = player.playerId
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
 
   // For when a character is available but not yet recruited
-  // const NEW = "NEW!"
-
+  const NEW = "NEW!"
   let recruitButtonText = "Recruit"
 
 
