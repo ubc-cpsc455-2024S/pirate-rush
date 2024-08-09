@@ -28,6 +28,28 @@ router.get('/:playerId/members', async (req, res) => {
   }
 })
 
+/* GET member by id */
+router.get('/:playerId/members/:memberId', async (req, res) => {
+  const playerId = req.params.playerId;
+  const memberId = req.params.memberId;
+  try {
+    const player = await db.collection(PLAYERS_COLLECTION).findOne({ playerId: playerId });
+    if (!player) {
+      return res.status(404).json({ message: `Player with id: ${playerId} not found` });
+    }
+
+    const member = player.currentCrew.find(member => member.memberId === memberId);
+    if (!member) {
+      return res.status(404).json({ message: `Member with id: ${memberId} not found` });
+    }
+
+    res.json(member);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error: ' + err.message });
+  }
+});
+
+
 /* POST member */
 router.post('/:playerId/members', async (req, res) => {
   const playerId = req.params.playerId

@@ -30,6 +30,15 @@ const getMembers = async (playerId) => {
   }
 };
 
+const getMemberById = async (playerId, memberId) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/${playerId}/${MEMBERS_PATH}/${memberId}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Error fetching member with memberId: " + memberId);
+  }
+};
+
 const deleteMember = async (playerId, memberId) => {
   try {
     await axios.delete(`${BASE_URL}/${playerId}/${MEMBERS_PATH}/${memberId}`);
@@ -53,6 +62,7 @@ const patchMemberVersion = async (playerId, memberId) => {
 export default {
   addMember,
   getMembers,
+  getMemberById,
   deleteMember,
   patchMemberVersion,
 };

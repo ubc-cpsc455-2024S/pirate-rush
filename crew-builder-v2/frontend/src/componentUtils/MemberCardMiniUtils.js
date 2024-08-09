@@ -53,7 +53,7 @@ const evolveMember = async (
   await new Promise((resolve) => setTimeout(resolve, 500));
   await dispatch(patchMemberVersionAsync({playerId: playerId, memberId: crewMember.memberId}));
   await new Promise((resolve) => setTimeout(resolve, 150));
-  await dispatch(getMembersAsync());
+  await dispatch(getMembersAsync({playerId: playerId}));
   setIsEvolving(false);
 
   // Wait for silhouette animation

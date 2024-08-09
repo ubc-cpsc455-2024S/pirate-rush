@@ -71,6 +71,70 @@ describe('GET /players/:playerId/members', () => {
   });
 });
 
+describe('GET /players/:playerId/members/:memberId', () => {
+  it('should return the member with the given ID', async () => {
+    const playerId = 'player1';
+    const memberId = '123';
+    const mockMember = { memberId, name: 'Luffy', unitLevel: 3 };
+    const mockPlayer = {
+      playerId,
+      currentCrew: [mockMember],
+    };
+
+    db.collection().findOne.mockResolvedValueOnce(mockPlayer);
+
+    const response = await request(app).get(`/players/${playerId}/members/${memberId}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(mockMember);
+    expect(db.collection().findOne).toHaveBeenCalledWith({ playerId });
+  });
+
+  it('should return 404 if the member is not found', async () => {
+    const playerId = 'player1';
+    const memberId = '123';
+    const mockPlayer = {
+      playerId,
+      currentCrew: [], // No members
+    };
+
+    db.collection().findOne.mockResolvedValueOnce(mockPlayer);
+
+    const response = await request(app).get(`/players/${playerId}/members/${memberId}`);
+
+    expect(response.status).toBe(404);
+    expect(response.body).toEqual({ message: `Member with id: ${memberId} not found` });
+    expect(db.collection().findOne).toHaveBeenCalledWith({ playerId });
+  });
+
+  it('should return 404 if the player is not found', async () => {
+    const playerId = 'player1';
+    const memberId = '123';
+
+    db.collection().findOne.mockResolvedValueOnce(null); // No player found
+
+    const response = await request(app).get(`/players/${playerId}/members/${memberId}`);
+
+    expect(response.status).toBe(404);
+    expect(response.body).toEqual({ message: `Player with id: ${playerId} not found` });
+    expect(db.collection().findOne).toHaveBeenCalledWith({ playerId });
+  });
+
+  it('should return 500 if there is a server error', async () => {
+    const playerId = 'player1';
+    const memberId = '123';
+
+    db.collection().findOne.mockRejectedValueOnce(new Error('Server error'));
+
+    const response = await request(app).get(`/players/${playerId}/members/${memberId}`);
+
+    expect(response.status).toBe(500);
+    expect(response.body).toEqual({ message: 'Server error: Server error' });
+    expect(db.collection().findOne).toHaveBeenCalledWith({ playerId });
+  });
+});
+
+
 describe('POST /players/:playerId/members', () => {
   it('should create a new member', async () => {
     const playerId = 'player1';
