@@ -1,30 +1,37 @@
 ![CI](https://github.com/ubc-cpsc455-2024S/assignment-jacksonliiii/actions/workflows/ci.yml/badge.svg)
 
-# CPSC 455 Assignment Repositories
+# Pirate Rush
+Idle-clicker game in the theme of One Piece! Do you want to become the pirate king? Recruit and upgrade your pirate crew, fight dangerous foes, and conquer the seas!
 
-Use this repo for your CPSC 455 assignments!
+Play now on: https://pirate-rush.onrender.com/
 
-# Assignment 1
+## Notes
+### Challenges
+The core gameplay involves players clicking rapidly on a boss character to inflict damage. Managing this interaction in a React-Redux setup presents unique challenges, especially due to the high frequency of actions and the necessity to maintain responsive and accurate game state updates. A key concern is the efficiency of updating the boss's health; making an API call to update the health with every click would be impractical and inefficient.
 
-Team Builder Website
+To address this, we have introduced a caching mechanism that batches these health updates, thereby reducing the number of API calls. This system ensures that the game's performance remains optimal, even as players interact with the game rapidly.
+
+## Progress
+### Milestone 5
+Pirate Rush 3.0
+
+### Milestone 4
+Pirate Rush 2.2
+- Connect the backend to MongoDB. Use Mongoose schema and add more member fields. Add functionality to upgrade crew with monetary resources (Berries)
+
+### Milestone 3
+Pirate Rush 2.1
+- Implement backend via Node.js and express. Added member upgrade feature.
+
+### Milestone 2
+Pirate Rush 2.0
+- Recreate assignment 1 using React and Redux. Add a new feature to select a member to show a detailed view.
+
+### Milestone 1
+Pirate Rush 1.0
 - Using only HTML, CSS, and JavaScript, build a website to create teams via 
 filling forms and displaying them as a list
 
-# Assignment 2
+## References
 
-Team Builder Website 2.0
-- Recreate assignment 1 using React and Redux. Add a new feature to select a member to show a detailed view.
-
-# Assignment 3
-
-Team Builder Website 2.1
-- Implement backend via Node.js and express. Added member upgrade feature.
-
-# Assignment 4
-
-Team Builder Website 2.2
-- Connect backend to MongoDB. Use mongoose schema and added more member fields. Add functionality to upgrade crew with monetary resources (Berries)
-
-# References
-
-Assignment uses image URLs from: https://optc-db.github.io/
+The project uses image URLs from: https://optc-db.github.io/
