@@ -94,12 +94,12 @@ button,
 }
 
 .upgrade-member-button {
-  background-color: #50ba33;
+  background-color: #47aa2c;
   color: white;
 }
 
 .upgrade-member-button:hover {
-  background-color: #6bdd4c;
+  background-color: #66d548;
 }
 
 .delete-member-button {
@@ -109,21 +109,6 @@ button,
 
 .delete-member-button:hover {
   background-color: #bf3636;
-}
-
-.form-container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  min-width: 300px;
-  max-width: 400px;
-  height: 100%;
-  background-color: #f6f8fa;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-  padding-bottom: 10px;
 }
 
 .select-container {

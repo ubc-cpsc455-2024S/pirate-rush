@@ -2,67 +2,85 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addMemberAsync } from "../redux/members/thunks.js";
 import { CHARACTER_NAMES } from "../../consts.js";
+import { isUnlocked, isRecruited } from "../componentUtils/InputFormUtils.js";
+import './InputForm.css';
 
 function InputForm({ player }) {
-  const playerId = player.playerId
-  const [name, setName] = useState("");
-
+  const playerId = player.playerId;
+  const [selectedName, setSelectedName] = useState("");
+  const [buttonText, setButtonText] = useState("");
   const dispatch = useDispatch();
 
-  // For when a character is available but not yet recruited
-  const NEW = "NEW!"
-  let recruitButtonText = "Recruit"
-
-
   const handleAddMember = (memberName) => {
-    dispatch(addMemberAsync({playerId: playerId, memberName: memberName}));
+    dispatch(addMemberAsync({ playerId: playerId, memberName: memberName }));
   };
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    handleAddMember(name);
-    setName("");
-  }
+    if (selectedName) {
+      handleAddMember(selectedName);
+      setSelectedName("");
+      setButtonText("");
+    }
+  };
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const handleCharacterClick = (character) => {
+    const unlocked = isUnlocked(character, player.unlockedPirates);
+    const recruited = isRecruited(character, player.currentCrew, player.benchCrew);
+    const inPlay = player.currentCrew.some((member) => member.name === character);
+
+    if (!inPlay && unlocked && !recruited) {
+      setButtonText(`Recruit: ${character}`);
+    } else if (!inPlay && recruited) {
+      setButtonText(`Sub in: ${character}`);
+    }
+
+    if (!inPlay && unlocked) {
+      setSelectedName(character);
+    }
   };
 
   return (
-    <>
-      <div className="mulish-p" id="create-team-form">
-        <form
-          id="member-form"
-          className="form-container"
-          onSubmit={handleSubmit}
-        >
-          <div className="input-title-container">
-            <h1 className="mulish-heading">Assemble your Crew!</h1>
-          </div>
-          <div className="select-container">
-            <div className="input-field-container">
-              <select
-                id="name"
-                name="name"
-                value={name}
-                onChange={handleNameChange}
-                required
+    <div className="mulish-p">
+      <form id="member-form" className="form-container" onSubmit={handleSubmit}>
+        <h1 className="mulish-heading">Assemble your Crew!</h1>
+        <div className="character-list">
+          {CHARACTER_NAMES.map((character) => {
+            const unlocked = isUnlocked(character, player.unlockedPirates);
+            const recruited = isRecruited(character, player.currentCrew, player.benchCrew);
+            const isNew = unlocked && !recruited;
+            const inPlay = player.currentCrew.some((member) => member.name === character);
+
+            return (
+              <div
+                key={character}
+                className={`character-item ${
+                  recruited || !unlocked ? "grayed-out" : ""
+                } ${isNew ? "new-character" : ""} ${
+                  inPlay ? "in-play-character" : ""
+                }`}
+                onClick={() => handleCharacterClick(character)}
               >
-                <option value="">Select a member...</option>
-                {CHARACTER_NAMES.map((character) => (
-                  <option key={character} value={character}>
-                    {character}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <input id="submit-button" type="submit" value={recruitButtonText} />
-            </div>
-          </div>
-        </form>
-      </div>
-    </>
+                <span className="character-name">
+                  {unlocked ? character : "???"}
+                </span>
+                {isNew && <span className="new-badge">NEW!</span>}
+                {inPlay && <span className="gray-badge">IN PLAY</span>}
+                {!unlocked && <span className="gray-badge">LOCKED</span>}
+              </div>
+            );
+          })}
+        </div>
+        <div className="recruit-container">
+          <input
+            id="submit-button"
+            type="submit"
+            value={buttonText || "Select a Pirate"}
+            disabled={!selectedName}
+          />
+        </div>
+      </form>
+    </div>
   );
 }
 
