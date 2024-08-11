@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addMemberAsync } from '../../redux/members/thunks.js'
 import { CHARACTER_NAMES } from '../../../consts.js'
-import { isUnlocked, isRecruited } from './InputFormUtils.js'
+import { isUnlocked, isRecruited, isInPlay, isBenched } from "./InputFormUtils.js";
 import './InputForm.css'
 
 function InputForm({ player }) {
@@ -32,7 +32,7 @@ function InputForm({ player }) {
     if (!inPlay && unlocked && !recruited) {
       setButtonText(`Recruit: ${character}`)
     } else if (!inPlay && recruited) {
-      setButtonText(`Sub in: ${character}`)
+      setButtonText(`Add In: ${character}`)
     }
 
     if (!inPlay && unlocked) {
@@ -44,19 +44,27 @@ function InputForm({ player }) {
     <div className="mulish-p">
       <form id="member-form" className="form-container" onSubmit={handleSubmit}>
         <h1 className="mulish-heading">Assemble your Crew!</h1>
+        <div className="recruit-container">
+          <input id="submit-button" type="submit" value={buttonText || 'Select a Pirate'} disabled={!selectedName} />
+        </div>
         <div className="character-list">
           {CHARACTER_NAMES.map((character) => {
             const unlocked = isUnlocked(character, player.unlockedPirates)
             const recruited = isRecruited(character, player.currentCrew, player.benchCrew)
+            const benched = isBenched(character, player.benchCrew)
+            const inPlay = isInPlay(character, player.currentCrew)
             const isNew = unlocked && !recruited
-            const inPlay = player.currentCrew.some((member) => member.name === character)
 
             return (
               <div
                 key={character}
-                className={`character-item ${
-                  recruited || !unlocked ? 'grayed-out' : ''
-                } ${isNew ? 'new-character' : ''} ${inPlay ? 'in-play-character' : ''}`}
+                className={
+                  `character-item 
+                ${inPlay || !unlocked ? 'grayed-out' : ''} 
+                ${isNew ? 'new-character' : ''} 
+                ${inPlay ? 'in-play-character' : ''}
+                ${benched ? 'old-character' : ''}
+                `}
                 onClick={() => handleCharacterClick(character)}
               >
                 <span className="character-name">{unlocked ? character : '???'}</span>
@@ -66,9 +74,6 @@ function InputForm({ player }) {
               </div>
             )
           })}
-        </div>
-        <div className="recruit-container">
-          <input id="submit-button" type="submit" value={buttonText || 'Select a Pirate'} disabled={!selectedName} />
         </div>
       </form>
     </div>

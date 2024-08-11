@@ -45,7 +45,8 @@
 }
 
 /* Styling for new characters */
-.new-character {
+.new-character,
+.old-character {
   border-left: 4px solid #ff9800;
 }
 
@@ -95,7 +96,7 @@
   align-items: center;
   width: 100%;
   max-width: 400px;
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
   background-color: #f6f8fa;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
@@ -110,10 +111,10 @@
   color: white;
   border: none;
   border-radius: 8px;
-  margin-top: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 100%; /* Make it full width */
+  margin: 5px;
 }
 
 #submit-button:hover {

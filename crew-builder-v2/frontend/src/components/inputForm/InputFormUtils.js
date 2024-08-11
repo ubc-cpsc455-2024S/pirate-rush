@@ -8,3 +8,12 @@ export const isRecruited = (character, currentCrew, benchCrew) => {
 
   return isInCurrentCrew || isInBenchCrew
 }
+
+export const isInPlay = (character, currentCrew) => {
+  return currentCrew.some((member) => member.name === character)
+}
+
+export const isBenched = (character, benchCrew) => {
+  return benchCrew.some((member) => member.name === character)
+}
+
