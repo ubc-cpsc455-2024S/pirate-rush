@@ -5,7 +5,7 @@ function LeaderboardPage() {
         <h1 className="mulish-heading">Leaderboard</h1>
       </div>
     </>
-  );
+  )
 }
 
-export default LeaderboardPage;
+export default LeaderboardPage

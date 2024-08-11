@@ -13,7 +13,7 @@ const playerSchema = new mongoose.Schema({
   },
   currentCrew: [Member.schema],
   benchCrew: [Member.schema],
-  berries: { type: Number, default: 100 }
+  berries: { type: Number, default: 100 },
 })
 
 const Player = mongoose.model('Player', playerSchema)

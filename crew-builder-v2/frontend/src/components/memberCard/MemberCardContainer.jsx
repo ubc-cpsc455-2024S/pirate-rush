@@ -1,26 +1,25 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getMembersAsync } from "../redux/members/thunks.js";
-import MemberCardMini from "./MemberCardMini.jsx";
-import { REQUEST_STATE } from "../redux/utils.js";
-import "./MiscStyle.css"
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getMembersAsync } from '../../redux/members/thunks.js'
+import MemberCardMini from './MemberCardMini.jsx'
+import { REQUEST_STATE } from '../../redux/utils.js'
 
 function MemberCardContainer({ player }) {
-  const crew = useSelector((state) => state.members.list);
-  const playerId = player.playerId;
-  const getPlayerStatus = useSelector((state) => state.players.getPlayer);
-  const dispatch = useDispatch();
+  const crew = useSelector((state) => state.members.list)
+  const playerId = player.playerId
+  const getPlayerStatus = useSelector((state) => state.players.getPlayer)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     async function fetchData() {
-      await dispatch(getMembersAsync({ playerId: playerId }));
+      await dispatch(getMembersAsync({ playerId: playerId }))
     }
 
-    fetchData();
-  }, [dispatch]);
+    fetchData()
+  }, [dispatch])
 
   if (getPlayerStatus === REQUEST_STATE.PENDING || !player) {
-    return <div className="loading mulish-p">Loading Your Crew...</div>;
+    return <div className="loading mulish-p">Loading Your Crew...</div>
   }
 
   return (
@@ -41,7 +40,7 @@ function MemberCardContainer({ player }) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default MemberCardContainer;
+export default MemberCardContainer

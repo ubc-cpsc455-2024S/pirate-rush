@@ -1,32 +1,26 @@
-import React from "react";
+import React from 'react'
 
 const MemberCardPopup = ({ isOpen, onClose, member }) => {
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   const handleClickOffView = (e) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      onClose()
     }
-  };
+  }
 
-  const memberLevel = member.unitLevel;
+  const memberLevel = member.unitLevel
 
   return (
     <>
       <div className="detailed-container" onClick={handleClickOffView}>
-        <div className={"detailed-content" + "-" + memberLevel}>
+        <div className={'detailed-content' + '-' + memberLevel}>
           <div className="detailed-text-container">
             <span className="detailed-member-name">{member.name}</span>
-            <span className="detailed-member-description">
-              {member.description}
-            </span>
+            <span className="detailed-member-description">{member.description}</span>
           </div>
           <div className="detailed-image-container">
-            <img
-              className="detailed-image"
-              src={member.images[member.unitLevel - 1]}
-              alt={member.name}
-            />
+            <img className="detailed-image" src={member.images[member.unitLevel - 1]} alt={member.name} />
           </div>
           <table className="mulish-p">
             <tbody>
@@ -49,7 +43,7 @@ const MemberCardPopup = ({ isOpen, onClose, member }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default MemberCardPopup;
+export default MemberCardPopup

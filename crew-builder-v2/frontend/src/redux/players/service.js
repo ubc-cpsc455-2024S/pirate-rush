@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios from 'axios'
 
-const BASE_URL = "/api/players";
-const BERRIES_PATH = "berries";
+const BASE_URL = '/api/players'
+const BERRIES_PATH = 'berries'
 
 const getPlayerById = async (playerId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/${playerId}`);
-    return response.data;
+    const response = await axios.get(`${BASE_URL}/${playerId}`)
+    return response.data
   } catch (error) {
-    const errorMsg = error.response?.data?.message;
-    throw new Error(errorMsg || "Error fetching player: " + playerId);
+    const errorMsg = error.response?.data?.message
+    throw new Error(errorMsg || 'Error fetching player: ' + playerId)
   }
-};
+}
 
 const patchPlayerBerries = async (playerId, amount) => {
   try {
@@ -20,19 +20,19 @@ const patchPlayerBerries = async (playerId, amount) => {
       { amount },
       {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      },
-    );
+      }
+    )
 
-    return response.data;
+    return response.data
   } catch (error) {
-    const errorMsg = error.response?.data?.error;
-    throw new Error(errorMsg || "Error patching berries");
+    const errorMsg = error.response?.data?.error
+    throw new Error(errorMsg || 'Error patching berries')
   }
-};
+}
 
 export default {
   getPlayerById,
   patchPlayerBerries,
-};
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react'
 
 function BossContainer({ player }) {
   return (
@@ -7,7 +7,7 @@ function BossContainer({ player }) {
         <span>Boss goes here</span>
       </div>
     </>
-  );
+  )
 }
 
-export default BossContainer;
+export default BossContainer
