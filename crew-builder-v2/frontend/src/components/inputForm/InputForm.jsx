@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addMemberAsync } from '../../redux/members/thunks.js'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addMemberAsync, getMembersAsync } from '../../redux/members/thunks.js'
+import { getBenchCrewAsync } from '../../redux/players/thunks.js'
 import { CHARACTER_NAMES } from '../../../consts.js'
 import { isUnlocked, isRecruited, isInPlay, isBenched } from "./InputFormUtils.js";
 import './InputForm.css'
 
 function InputForm({ player }) {
   const playerId = player.playerId
-  const [selectedName, setSelectedName] = useState('')
-  const [buttonText, setButtonText] = useState('')
   const dispatch = useDispatch()
 
-  const handleAddMember = (memberName) => {
-    dispatch(addMemberAsync({ playerId: playerId, memberName: memberName }))
+  const [selectedName, setSelectedName] = useState('')
+  const [buttonText, setButtonText] = useState('')
+
+  const handleAddMember = async (memberName) => {
+    await dispatch(addMemberAsync({ playerId, memberName }))
   }
 
   const handleSubmit = (event) => {
@@ -70,6 +72,7 @@ function InputForm({ player }) {
                 <span className="character-name">{unlocked ? character : '???'}</span>
                 {isNew && <span className="new-badge">NEW!</span>}
                 {inPlay && <span className="gray-badge">IN PLAY</span>}
+                {benched && <span className="bench-badge">IN BENCH</span>}
                 {!unlocked && <span className="gray-badge">LOCKED</span>}
               </div>
             )

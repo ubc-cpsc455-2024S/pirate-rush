@@ -18,24 +18,24 @@ router.get('/:playerId/members', asyncHandler(async (req, res) => {
   if (members.length > 0) {
     res.json(members)
   } else {
-    res.status(404).json({ message: 'No members found' })
+    res.json([])
   }
 }))
 
 /* GET member by id */
-router.get('/:playerId/members/:memberId', asyncHandler(async (req, res) => {
-  const playerId = req.params.playerId
-  const memberId = req.params.memberId
-  const member = await playerService.getMemberById(playerId, memberId)
-
-  if (!member) {
-    return res
-      .status(404)
-      .json({ message: `Member with id: ${memberId} not found` })
-  }
-
-  res.json(member)
-}))
+// router.get('/:playerId/members/:memberId', asyncHandler(async (req, res) => {
+//   const playerId = req.params.playerId
+//   const memberId = req.params.memberId
+//   const member = await playerService.getMemberById(playerId, memberId)
+//
+//   if (!member) {
+//     return res
+//       .status(404)
+//       .json({ message: `Member with id: ${memberId} not found` })
+//   }
+//
+//   res.json(member)
+// }))
 
 /* POST member */
 router.post('/:playerId/members', asyncHandler(async (req, res) => {

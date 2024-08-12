@@ -1,38 +1,32 @@
 import axios from 'axios'
+import { handleApiCall } from '../utils.js'
 
 const BASE_URL = '/api/players'
 const BERRIES_PATH = 'berries'
+const BENCH_PATH = 'benchCrew'
 
-const getPlayerById = async (playerId) => {
-  try {
-    const response = await axios.get(`${BASE_URL}/${playerId}`)
-    return response.data
-  } catch (error) {
-    const errorMsg = error.response?.data?.message
-    throw new Error(errorMsg || 'Error fetching player: ' + playerId)
-  }
+const getPlayerById = (playerId) => {
+  return handleApiCall(
+    () => axios.get(`${BASE_URL}/${playerId}`),
+    `Error fetching player: ${playerId}`
+  )
 }
 
-const patchPlayerBerries = async (playerId, amount) => {
-  try {
-    const response = await axios.patch(
-      `${BASE_URL}/${playerId}/${BERRIES_PATH}`,
-      { amount },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+const patchPlayerBerries = (playerId, amount) => {
+  return handleApiCall(() => axios.patch(`${BASE_URL}/${playerId}/${BERRIES_PATH}`, { amount }, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }), `Error patching berries for player: ${playerId}`)
+}
 
-    return response.data
-  } catch (error) {
-    const errorMsg = error.response?.data?.error
-    throw new Error(errorMsg || 'Error patching berries')
-  }
+const getBenchCrew = (playerId) => {
+  return handleApiCall(
+    () => axios.get(`${BASE_URL}/${playerId}/${BENCH_PATH}`),
+    `Error getting crew info for player: ${playerId}`
+  )
 }
 
 export default {
-  getPlayerById,
-  patchPlayerBerries,
+  getPlayerById, patchPlayerBerries, getCrewInfo: getBenchCrew,
 }

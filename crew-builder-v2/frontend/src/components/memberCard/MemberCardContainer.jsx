@@ -16,20 +16,24 @@ function MemberCardContainer({ player }) {
     }
 
     fetchData()
-  }, [dispatch])
+  }, [dispatch, playerId])
 
   if (getPlayerStatus === REQUEST_STATE.PENDING || !player) {
     return <div className="loading mulish-p">Loading Your Crew...</div>
   }
 
   return (
-    <>
-      <div id="team-display">
-        <div className="team-display-container">
-          <div className="member-container-headings">
-            <h2 className="mulish-heading">{`${player.username}'s Crew`}</h2>
-            <h2 className="mulish-heading">{`Berries ($): ${player.berries}`}</h2>
+    <div id="team-display">
+      <div className="team-display-container">
+        <div className="member-container-headings">
+          <h2 className="mulish-heading">{`${player.username}'s Crew`}</h2>
+          <h2 className="mulish-heading">{`Berries ($): ${player.berries}`}</h2>
+        </div>
+        {crew.length === 0 ? (
+          <div className="empty mulish-p">
+            Your crew is currently empty.
           </div>
+        ) : (
           <ul id="team-list">
             {crew.map((crewMember) => (
               <li key={crewMember.name} className="each-card">
@@ -37,9 +41,9 @@ function MemberCardContainer({ player }) {
               </li>
             ))}
           </ul>
-        </div>
+        )}
       </div>
-    </>
+    </div>
   )
 }
 

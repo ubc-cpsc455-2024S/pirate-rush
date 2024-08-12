@@ -23,7 +23,8 @@ ul {
 }
 
 .loading,
-.loading-player {
+.loading-player,
+.empty {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,9 +32,8 @@ ul {
   font-family: 'Mulish', sans-serif;
   color: #555;
   height: 100px;
-  width: 30%;
   text-align: center;
-  background-color: #f8f8f8;
+  background-color: #eceef0;
   border: 2px dashed #ccc;
   border-radius: 10px;
   margin: 10px;
