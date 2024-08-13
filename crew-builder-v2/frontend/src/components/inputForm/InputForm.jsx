@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addMemberAsync, getMembersAsync } from '../../redux/members/thunks.js'
-import { getBenchCrewAsync } from '../../redux/players/thunks.js'
+import { addMemberAsync } from '../../redux/members/thunks.js'
 import { CHARACTER_NAMES } from '../../../consts.js'
-import { isUnlocked, isRecruited, isInPlay, isBenched } from "./InputFormUtils.js";
 import './InputForm.css'
+import { getBenchCrewAsync, getPlayerAsync } from '../../redux/players/thunks.js'
 
 function InputForm({ player }) {
+  const crew = useSelector((state) => state.members.list)
   const playerId = player.playerId
   const dispatch = useDispatch()
 
   const [selectedName, setSelectedName] = useState('')
   const [buttonText, setButtonText] = useState('')
+
+  useEffect(() => {
+    async function updatePlayer() {
+        await dispatch(getPlayerAsync({ playerId: playerId }))
+    }
+
+    updatePlayer()
+  }, [crew, dispatch])
 
   const handleAddMember = async (memberName) => {
     await dispatch(addMemberAsync({ playerId, memberName }))
@@ -27,8 +35,8 @@ function InputForm({ player }) {
   }
 
   const handleCharacterClick = (character) => {
-    const unlocked = isUnlocked(character, player.unlockedPirates)
-    const recruited = isRecruited(character, player.currentCrew, player.benchCrew)
+    const unlocked = player.unlockedPirates.includes(character)
+    const recruited = isRecruited(character)
     const inPlay = player.currentCrew.some((member) => member.name === character)
 
     if (!inPlay && unlocked && !recruited) {
@@ -42,6 +50,13 @@ function InputForm({ player }) {
     }
   }
 
+  const isRecruited = (character) => {
+    const isInCurrentCrew = player.currentCrew.some((member) => member.name === character)
+    const isInBenchCrew = player.benchCrew ? player.benchCrew.some((member) => member.name === character) : false
+
+    return isInCurrentCrew || isInBenchCrew
+  }
+
   return (
     <div className="mulish-p">
       <form id="member-form" className="form-container" onSubmit={handleSubmit}>
@@ -51,10 +66,10 @@ function InputForm({ player }) {
         </div>
         <div className="character-list">
           {CHARACTER_NAMES.map((character) => {
-            const unlocked = isUnlocked(character, player.unlockedPirates)
-            const recruited = isRecruited(character, player.currentCrew, player.benchCrew)
-            const benched = isBenched(character, player.benchCrew)
-            const inPlay = isInPlay(character, player.currentCrew)
+            const unlocked = player?.unlockedPirates?.includes(character) || false;
+            const recruited = isRecruited(character)
+            const benched = player.benchCrew.some((member) => member.name === character)
+            const inPlay = player.currentCrew.some((member) => member.name === character)
             const isNew = unlocked && !recruited
 
             return (

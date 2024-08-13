@@ -29,13 +29,13 @@ async function updatePlayerBerries(playerId, amount) {
   return newBerries;
 }
 
-// async function getMemberById(playerId, memberId) {
-//   const player = await getPlayer(playerId)
-//   if (!player) {
-//     throw new Error(`Player with id: ${playerId} not found`)
-//   }
-//   return player.currentCrew.find((member) => member.memberId === memberId)
-// }
+async function getMemberById(playerId, memberId) {
+  const player = await getPlayer(playerId)
+  if (!player) {
+    throw new Error(`Player with id: ${playerId} not found`)
+  }
+  return player.currentCrew.find((member) => member.memberId === memberId)
+}
 
 async function getAllMembers(playerId) {
   const player = await getPlayer(playerId)

@@ -10,6 +10,6 @@ export const patchBerriesAsync = createAsyncThunk(actionTypes.PATCH_BERRIES, asy
   return await PlayerService.patchPlayerBerries(playerId, amount)
 })
 
-export const getBenchCrewAsync = createAsyncThunk(actionTypes.GET_CREW_INFO, async ({ playerId}) => {
-  return await PlayerService.getCrewInfo(playerId)
+export const getBenchCrewAsync = createAsyncThunk(actionTypes.GET_BENCH_CREW, async ({ playerId}) => {
+  return await PlayerService.getBenchCrew(playerId)
 })

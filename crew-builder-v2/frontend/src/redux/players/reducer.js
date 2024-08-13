@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   currentCrew: [],
   benchCrew: [],
   getPlayer: REQUEST_STATE.IDLE,
+  getBenchCrew: REQUEST_STATE.IDLE,
   patchBerries: REQUEST_STATE.IDLE,
   error: null,
 }
@@ -43,15 +44,18 @@ const playerSlice = createSlice({
         state.error = action.error
       })
       .addCase(getBenchCrewAsync.pending, (state) => {
-        state.getPlayer = REQUEST_STATE.PENDING
+        state.getBenchCrew = REQUEST_STATE.PENDING
         state.error = null
       })
       .addCase(getBenchCrewAsync.fulfilled, (state, action) => {
-        state.getPlayer = REQUEST_STATE.FULFILLED
-        state.player = action.payload
+        state.getBenchCrew = REQUEST_STATE.FULFILLED
+        if (state.player) {
+          state.player.benchCrew = action.payload
+          state.benchCrew = action.payload
+        }
       })
       .addCase(getBenchCrewAsync.rejected, (state, action) => {
-        state.getPlayer = REQUEST_STATE.REJECTED
+        state.getBenchCrew = REQUEST_STATE.REJECTED
         state.error = action.error
       })
   },

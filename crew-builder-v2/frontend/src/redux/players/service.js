@@ -28,5 +28,5 @@ const getBenchCrew = (playerId) => {
 }
 
 export default {
-  getPlayerById, patchPlayerBerries, getCrewInfo: getBenchCrew,
+  getPlayerById, patchPlayerBerries, getBenchCrew,
 }
