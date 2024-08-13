@@ -4,7 +4,7 @@ function connectDB() {
   const url = process.env.MONGODB_URI
 
   try {
-    mongoose.connect(url)
+    mongoose.connect(url).then(() => console.log('MongoDB connected'))
   } catch (err) {
     console.error(err.message)
     process.exit(1)
