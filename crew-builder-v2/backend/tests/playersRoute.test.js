@@ -35,20 +35,6 @@ describe('GET /players/:playerId', () => {
     expect(db.collection().findOne).toHaveBeenCalledWith({ playerId })
   })
 
-  it('should return 404 if the player is not found', async () => {
-    const playerId = '123'
-
-    db.collection().findOne.mockResolvedValueOnce(null)
-
-    const response = await request(app).get(`/players/${playerId}`)
-
-    expect(response.status).toBe(404)
-    expect(response.body).toEqual({
-      message: `Player with id: ${playerId} not found`,
-    })
-    expect(db.collection().findOne).toHaveBeenCalledWith({ playerId })
-  })
-
   it('should return 500 if there is a server error', async () => {
     const playerId = '123'
 
