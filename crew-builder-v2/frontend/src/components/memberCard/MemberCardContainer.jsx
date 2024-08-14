@@ -23,7 +23,7 @@ function MemberCardContainer({ player }) {
   }
 
   return (
-    <div id="team-display">
+    <div id="team-display-container">
       <div className="team-display-container">
         <div className="member-container-headings">
           <h2 className="mulish-heading">{`${player.username}'s Crew`}</h2>

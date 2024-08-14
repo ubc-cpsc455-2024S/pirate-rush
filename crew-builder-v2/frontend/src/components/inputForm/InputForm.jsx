@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addMemberAsync } from '../../redux/members/thunks.js'
 import { CHARACTER_NAMES } from '../../../consts.js'
 import './InputForm.css'
-import { getBenchCrewAsync, getPlayerAsync } from '../../redux/players/thunks.js'
+import { getPlayerAsync } from '../../redux/players/thunks.js'
 
 function InputForm({ player }) {
   const crew = useSelector((state) => state.members.list)
@@ -58,7 +58,7 @@ function InputForm({ player }) {
   }
 
   return (
-    <div className="mulish-p">
+    <div id="input-form-container">
       <form id="member-form" className="form-container" onSubmit={handleSubmit}>
         <h1 className="mulish-heading">Assemble your Crew!</h1>
         <div className="recruit-container">

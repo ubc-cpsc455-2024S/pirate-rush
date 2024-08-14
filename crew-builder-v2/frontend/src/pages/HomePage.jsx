@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { PLAYER_ID } from '../../consts.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPlayerAsync } from '../redux/players/thunks.js'
+import "./HomePage.css"
 
 function HomePage() {
   const [loading, setLoading] = useState(true)
@@ -33,6 +34,9 @@ function HomePage() {
         <BossContainer player={player} />
         <MemberCardContainer player={player} />
         <InputForm player={player} />
+        <div className="dropdown">
+
+        </div>
       </div>
       {/*<Footer />*/}
     </div>

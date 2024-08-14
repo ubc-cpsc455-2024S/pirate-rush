@@ -40,31 +40,6 @@ ul {
   padding: 10px;
 }
 
-#home-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-#main-container {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  gap: 15px;
-  padding: 15px;
-}
-
-.footer {
-  background-color: #24292e;
-  padding: 20px 0;
-  text-align: center;
-  color: white;
-  width: 100%;
-  margin-top: auto;
-}
-
 span,
 .mulish-heading,
 .mulish-p,
@@ -183,54 +158,33 @@ button,
   border-radius: 5px;
 }
 
-.navbar {
-  background-color: #24292e;
-  overflow: hidden;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-item {
-  display: inline-block;
-}
-
-.navbar-item a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
-}
-
-.navbar-item a:hover {
-  background-color: #ddd;
-  color: #131313;
-}
-
 .member-container-headings {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-#team-display {
+#boss-container {
+  display: flex;
+  justify-content: center;
+  background-color: #f6f8fa;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+}
+
+#input-form-container {
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+}
+
+#team-display-container {
   display: flex;
   flex: 2;
   justify-content: center;
   background-color: #f6f8fa;
   border-radius: 10px;
   padding-bottom: 5px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
   max-width: 700px; /* For repeat(2, 2fr) */
   /*max-width: 560px; For repeat(3, 2fr */
 }
@@ -251,7 +205,7 @@ button,
     grid-template-columns: repeat(2, 2fr);
   }
 
-  #team-display {
+  #team-display-container {
     min-width: 600px;
     max-width: 600px;
   }
@@ -262,7 +216,7 @@ button,
     grid-template-columns: repeat(1, 1fr);
   }
 
-  #team-display {
+  #team-display-container {
     min-width: 320px;
     max-width: 320px;
   }
