@@ -12,6 +12,31 @@ async function getPlayer(playerId) {
   return await db.collection(PLAYERS_COLLECTION).findOne({ playerId: playerId })
 }
 
+// TODO - Balance numbers, use boss data
+async function createPlayer(playerId) {
+  const newPlayer = {
+    playerId: playerId,
+    username: "New Pirate",
+    unlockedPirates: ['Luffy', 'Zoro'],
+    currentBoss: {
+      name: "TODO",
+      level: 1,
+      HP: 100,
+      ATK: 10,
+    },
+    currentCrew: [],
+    benchCrew: [],
+    berries: 1000,
+  }
+
+  await db.collection(PLAYERS_COLLECTION).insertOne(newPlayer)
+  return newPlayer
+}
+
+async function deletePlayer(playerId) {
+  return await db.collection(PLAYERS_COLLECTION).deleteOne({ playerId: playerId })
+}
+
 async function updatePlayerBerries(playerId, amount) {
   const player = await getPlayer(playerId);
 
@@ -134,5 +159,5 @@ async function upgradeMember(playerId, memberId) {
 }
 
 module.exports = {
-  getPlayer, updatePlayerBerries, getAllMembers, addMember, moveMemberToBench, upgradeMember,
+  getPlayer, createPlayer, deletePlayer, updatePlayerBerries, getAllMembers, addMember, moveMemberToBench, upgradeMember,
 }

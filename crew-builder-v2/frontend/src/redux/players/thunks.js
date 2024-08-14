@@ -13,3 +13,7 @@ export const patchBerriesAsync = createAsyncThunk(actionTypes.PATCH_BERRIES, asy
 export const getBenchCrewAsync = createAsyncThunk(actionTypes.GET_BENCH_CREW, async ({ playerId}) => {
   return await PlayerService.getBenchCrew(playerId)
 })
+
+export const deletePlayerAsync = createAsyncThunk(actionTypes.DELETE_PLAYER, async ({ playerId }) => {
+  return await PlayerService.deletePlayer(playerId)
+})

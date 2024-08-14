@@ -13,13 +13,20 @@ const asyncHandler = (fn) => {
 /* GET player by id */
 router.get('/:playerId', asyncHandler(async (req, res) => {
   const playerId = req.params.playerId;
-  const player = await playerService.getPlayer(playerId);
+  let player = await playerService.getPlayer(playerId);
 
   if (!player) {
-    return res.status(404).json({ message: `Player with id: ${playerId} not found` });
+    player = await playerService.createPlayer(playerId);
   }
 
   return res.status(200).json(player);
+}));
+
+/* DELETE player by id */
+router.delete('/:playerId', asyncHandler(async (req, res) => {
+  const playerId = req.params.playerId;
+  await playerService.deletePlayer(playerId)
+  res.status(204).send()
 }));
 
 /* GET player's bench by id */

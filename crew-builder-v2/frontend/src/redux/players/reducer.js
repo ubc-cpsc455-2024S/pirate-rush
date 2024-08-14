@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { REQUEST_STATE } from '../utils'
-import { getBenchCrewAsync, getPlayerAsync, patchBerriesAsync } from './thunks'
+import { getBenchCrewAsync, getPlayerAsync, patchBerriesAsync, deletePlayerAsync } from './thunks'
 
 const INITIAL_STATE = {
   player: null,
@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   getPlayer: REQUEST_STATE.IDLE,
   getBenchCrew: REQUEST_STATE.IDLE,
   patchBerries: REQUEST_STATE.IDLE,
+  deletePlayer: REQUEST_STATE.IDLE,
   error: null,
 }
 
@@ -56,6 +57,18 @@ const playerSlice = createSlice({
       })
       .addCase(getBenchCrewAsync.rejected, (state, action) => {
         state.getBenchCrew = REQUEST_STATE.REJECTED
+        state.error = action.error
+      })
+      .addCase(deletePlayerAsync.pending, (state) => {
+        state.deletePlayer = REQUEST_STATE.PENDING
+        state.error = null
+      })
+      .addCase(deletePlayerAsync.fulfilled, (state, action) => {
+        state.deletePlayer = REQUEST_STATE.FULFILLED
+        state.player = action.payload
+      })
+      .addCase(deletePlayerAsync.rejected, (state, action) => {
+        state.deletePlayer = REQUEST_STATE.REJECTED
         state.error = action.error
       })
   },

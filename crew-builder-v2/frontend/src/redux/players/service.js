@@ -27,6 +27,13 @@ const getBenchCrew = (playerId) => {
   )
 }
 
+const deletePlayer = (playerId) => {
+  return handleApiCall(
+    () => axios.delete(`${BASE_URL}/${playerId}`),
+    `Error deleting player: ${playerId}`
+  )
+}
+
 export default {
-  getPlayerById, patchPlayerBerries, getBenchCrew,
+  getPlayerById, patchPlayerBerries, getBenchCrew, deletePlayer
 }

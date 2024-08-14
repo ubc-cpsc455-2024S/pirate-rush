@@ -6,7 +6,7 @@ import Footer from '../components/Footer.jsx'
 import { v4 as uuidv4 } from 'uuid'
 import { PLAYER_ID } from '../../consts.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { getPlayerAsync } from '../redux/players/thunks.js'
+import { deletePlayerAsync, getPlayerAsync } from '../redux/players/thunks.js'
 import "./HomePage.css"
 
 function HomePage() {
@@ -15,31 +15,45 @@ function HomePage() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    async function initializePlayerIdAndFetch() {
-      const id = await getPlayerId()
-      await dispatch(getPlayerAsync({ playerId: id }))
-      setLoading(false)
-    }
-
-    initializePlayerIdAndFetch()
+    void initializePlayerIdAndFetch()
   }, [dispatch])
 
-  if (loading) {
-    return <div className="loading-player">Loading Player...</div>
+  async function initializePlayerIdAndFetch() {
+    const id = await getPlayerId()
+    await dispatch(getPlayerAsync({ playerId: id }))
+    setLoading(false)
+  }
+
+  async function handleReset() {
+    const userConfirmed = window.confirm("Are you sure you want to reset your progress?");
+    if (userConfirmed) {
+      await dispatch(deletePlayerAsync({ playerId: player.playerId }))
+      setLoading(true)
+      setTimeout(async () => {
+        void initializePlayerIdAndFetch()
+      }, 1000)
+    }
   }
 
   return (
-    <div id="home-container">
-      <div id="main-container">
-        <BossContainer player={player} />
-        <MemberCardContainer player={player} />
-        <InputForm player={player} />
-        <div className="dropdown">
-
-        </div>
+      <div id="home-container">
+        {
+          loading ?
+            <div className="loading-player">Loading Player...</div>
+            :
+            <div id="main-container">
+              <BossContainer player={player} />
+              <MemberCardContainer player={player} />
+              <InputForm player={player} />
+              <div id="reset-button-container">
+                <button className="delete-member-button" onClick={handleReset}>
+                  Reset
+                </button>
+              </div>
+            </div>
+        }
+        {/*<Footer />*/}
       </div>
-      {/*<Footer />*/}
-    </div>
   )
 }
 

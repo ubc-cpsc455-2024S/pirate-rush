@@ -7,7 +7,7 @@ import { getPlayerAsync } from '../../redux/players/thunks.js'
 
 function InputForm({ player }) {
   const crew = useSelector((state) => state.members.list)
-  const playerId = player.playerId
+  const playerId = player?.playerId
   const dispatch = useDispatch()
 
   const [selectedName, setSelectedName] = useState('')
@@ -18,7 +18,7 @@ function InputForm({ player }) {
         await dispatch(getPlayerAsync({ playerId: playerId }))
     }
 
-    updatePlayer()
+    void updatePlayer()
   }, [crew, dispatch])
 
   const handleAddMember = async (memberName) => {
@@ -28,16 +28,20 @@ function InputForm({ player }) {
   const handleSubmit = (event) => {
     event.preventDefault()
     if (selectedName) {
-      handleAddMember(selectedName)
+      void handleAddMember(selectedName)
       setSelectedName('')
       setButtonText('')
     }
   }
 
+  const inCurrent = (character) => player.currentCrew ? player.currentCrew.some((member) => member.name === character) : false
+  const inBench = (character) => player.benchCrew ? player.benchCrew.some((member) => member.name === character) : false
+  const isRecruited = (character) => inCurrent(character) || inBench(character)
+
   const handleCharacterClick = (character) => {
     const unlocked = player.unlockedPirates.includes(character)
     const recruited = isRecruited(character)
-    const inPlay = player.currentCrew.some((member) => member.name === character)
+    const inPlay = inCurrent(character)
 
     if (!inPlay && unlocked && !recruited) {
       setButtonText(`Recruit: ${character}`)
@@ -50,16 +54,9 @@ function InputForm({ player }) {
     }
   }
 
-  const isRecruited = (character) => {
-    const isInCurrentCrew = player.currentCrew.some((member) => member.name === character)
-    const isInBenchCrew = player.benchCrew ? player.benchCrew.some((member) => member.name === character) : false
-
-    return isInCurrentCrew || isInBenchCrew
-  }
-
   return (
     <div id="input-form-container">
-      <form id="member-form" className="form-container" onSubmit={handleSubmit}>
+      <form className="form-container" onSubmit={handleSubmit}>
         <h1 className="mulish-heading">Assemble your Crew!</h1>
         <div className="recruit-container">
           <input id="submit-button" type="submit" value={buttonText || 'Select a Pirate'} disabled={!selectedName} />
@@ -67,9 +64,9 @@ function InputForm({ player }) {
         <div className="character-list">
           {CHARACTER_NAMES.map((character) => {
             const unlocked = player?.unlockedPirates?.includes(character) || false;
-            const recruited = isRecruited(character)
-            const benched = player.benchCrew.some((member) => member.name === character)
-            const inPlay = player.currentCrew.some((member) => member.name === character)
+            const benched = inBench(character)
+            const inPlay = inCurrent(character)
+            const recruited = benched || inPlay
             const isNew = unlocked && !recruited
 
             return (
