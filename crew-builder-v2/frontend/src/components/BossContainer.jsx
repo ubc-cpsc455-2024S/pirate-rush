@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import './BossContainer.css'
 
 function BossContainer({ player }) {
   return (

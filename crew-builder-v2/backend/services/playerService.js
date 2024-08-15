@@ -1,5 +1,6 @@
 const { db } = require('../db')
 const { v4: uuidv4 } = require('uuid')
+const { CHARACTER_NAMES } = require('../backend_consts.js')
 
 const PLAYERS_COLLECTION = 'players'
 const POOL_COLLECTION = 'pool'
@@ -17,7 +18,7 @@ async function createPlayer(playerId) {
   const newPlayer = {
     playerId: playerId,
     username: "New Pirate",
-    unlockedPirates: ['Luffy', 'Zoro'],
+    unlockedPirates: CHARACTER_NAMES,
     currentBoss: {
       name: "TODO",
       level: 1,

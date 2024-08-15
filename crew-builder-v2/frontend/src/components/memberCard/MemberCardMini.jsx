@@ -24,7 +24,7 @@ function MemberCardMini({ crewMember, player }) {
   return (
     <>
       <div>
-        <div className={'mini-member-container-' + crewMember.unitLevel}>
+        <div className={`mini-member-container member-type-${crewMember.stats.TYPE}`}>
           <div>
             <span className="member-name">{crewMember.name}</span>
             <span className="member-level"> LV {crewMember.unitLevel}</span>

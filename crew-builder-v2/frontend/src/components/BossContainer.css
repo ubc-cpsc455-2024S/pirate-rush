@@ -1,0 +1,8 @@
+#boss-container {
+    display: flex;
+    justify-content: center;
+    background-color: #f6f8fa;
+    border-radius: 10px;
+    padding-bottom: 5px;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { FULL_UPGRADE_LEVEL } from '../../../consts.js'
 
 const MemberCardPopup = ({ isOpen, onClose, member }) => {
   if (!isOpen) return null
@@ -10,11 +11,12 @@ const MemberCardPopup = ({ isOpen, onClose, member }) => {
   }
 
   const memberLevel = member.unitLevel
+  const fullyUpgraded = memberLevel > FULL_UPGRADE_LEVEL ? "full-upgrade" : ""
 
   return (
     <>
       <div className="detailed-container" onClick={handleClickOffView}>
-        <div className={'detailed-content' + '-' + memberLevel}>
+        <div className={`detailed-content ${fullyUpgraded} detailed-member-type-${member.stats.TYPE}`}>
           <div className="detailed-text-container">
             <span className="detailed-member-name">{member.name}</span>
             <span className="detailed-member-description">{member.description}</span>
