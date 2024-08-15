@@ -1,5 +1,6 @@
 /* Global Styles */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -21,44 +22,39 @@ ul {
   padding: 0;
 }
 
-#home-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-#main-container {
-  flex: 1;
+.loading,
+.loading-player,
+.empty {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
-}
-
-.footer {
-  background-color: #24292e;
-  padding: 20px 0;
+  align-items: center;
+  font-size: 1.2em;
+  font-family: 'Mulish', sans-serif;
+  color: #292929;
+  height: 100px;
   text-align: center;
-  color: white;
-  width: 100%;
-  margin-top: auto;
+  background-color: #eceef0;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
 }
 
 span,
 .mulish-heading,
 .mulish-p,
 button {
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
 
 .mulish-heading {
-  font-weight: 550;
+  font-weight: 500;
   text-align: center;
   padding: 2px;
   margin: 2px;
+  font-size: 1.6rem;
 }
 
 .mulish-p {
@@ -70,34 +66,31 @@ button {
   cursor: pointer;
 }
 
-/* Button Styles */
 button,
 #submit-button {
-  padding: 4px 12px;
+  padding: 2px 6px;
   margin: 2px;
   border: 2px solid transparent;
   font-size: 1rem;
   border-radius: 5px;
 }
 
-#submit-button,
-#clear-fields-button {
+#submit-button {
   background-color: #202020;
   color: white;
 }
 
-#submit-button:hover,
-#clear-fields-button:hover {
+#submit-button:hover {
   background-color: #515151;
 }
 
 .upgrade-member-button {
-  background-color: #50ba33;
+  background-color: #47aa2c;
   color: white;
 }
 
 .upgrade-member-button:hover {
-  background-color: #6bdd4c;
+  background-color: #66d548;
 }
 
 .delete-member-button {
@@ -109,126 +102,34 @@ button,
   background-color: #bf3636;
 }
 
-.form-container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  min-width: 300px;
-  max-width: 400px;
-  height: 100%;
-  background-color: #f6f8fa;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-  padding-bottom: 10px;
-}
-
-.input-field-container select {
-  padding: 8px;
-  font-size: 0.9rem;
-  border: 1px solid #7b8da3;
-  border-radius: 5px;
-  background-color: white;
-  width: 100%;
-  max-width: 100%;
-}
-
-.input-field-container select:hover,
-.input-field-container select:focus {
-  border-color: #5c5c5c;
-}
-
-.input-field-container select option {
-  background-color: #f6f8fa;
-  color: #101010;
-}
-
-.input-field-container select option:hover {
-  background-color: #ddd;
-}
-
-.input-title-container {
-  margin: 0 10px;
-}
-
-.input-field-container {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-}
-
-.input-field-container label {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.input-field-container input {
-  padding: 8px;
-  font-size: 0.9rem;
-  border: 1px solid #7b8da3;
-  border-radius: 5px;
-}
-
-.navbar {
-  background-color: #24292e;
-  overflow: hidden;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-item {
-  display: inline-block;
-}
-
-.navbar-item a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
-}
-
-.navbar-item a:hover {
-  background-color: #ddd;
-  color: #131313;
-}
-
 .member-container-headings {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-#team-display {
+#team-container {
   display: flex;
   flex: 2;
   justify-content: center;
   background-color: #f6f8fa;
+  border: 2px solid rgb(36, 41, 46);
   border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-  max-width: 890px; /* For repeat(2, 2fr) */
+  padding-bottom: 5px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+  max-width: 700px; /* For repeat(2, 2fr) */
   /*max-width: 560px; For repeat(3, 2fr */
+}
+
+.team-display-container {
+  width: 100%;
 }
 
 #team-list {
   display: grid;
   grid-template-columns: repeat(3, 2fr);
-  gap: 10px;
-  padding: 10px;
+  gap: 12px;
+  padding: 8px;
 }
 
 #each-card {
@@ -240,7 +141,7 @@ button,
     grid-template-columns: repeat(2, 2fr);
   }
 
-  #team-display {
+  #team-display-container {
     min-width: 600px;
     max-width: 600px;
   }
@@ -251,25 +152,16 @@ button,
     grid-template-columns: repeat(1, 1fr);
   }
 
-  #team-display {
+  #team-display-container {
     min-width: 320px;
     max-width: 320px;
   }
 }
 
-.mini-button-container {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-}
-
-/* Mini Member Containers */
-.mini-member-container-1,
-.mini-member-container-2,
-.mini-member-container-3 {
-  width: 260px;
-  gap: 5px;
-  padding: 3px;
+.mini-member-container {
+  max-width: 230px;
+  gap: 2px;
+  padding: 5px;
   background-color: #fbfbfb;
   border-radius: 8px;
   display: flex;
@@ -281,37 +173,61 @@ button,
     box-shadow 0.2s;
 }
 
-.mini-member-container-1:hover,
-.mini-member-container-2:hover,
-.mini-member-container-3:hover {
+.mini-member-container:hover {
   cursor: pointer;
   transform: translateY(-3px);
   transition: transform 0.3s ease;
 }
 
-
-.mini-member-container-1:hover {
-  box-shadow: 0 8px 14px rgb(183, 234, 172);
+.member-type-DEX {
+  border: 2px solid rgb(102, 198, 80);
+  background: linear-gradient(to bottom, rgba(102, 198, 80, 0.4) 0%, rgba(102, 198, 80, 0.2) 8%, white 50%);
 }
 
-.mini-member-container-2:hover {
-  box-shadow: 0 12px 18px rgb(119, 188, 228);
+.member-type-QCK {
+  border: 2px solid rgb(85, 170, 220);
+  background: linear-gradient(to bottom, rgba(85, 170, 220, 0.4) 0%, rgba(85, 170, 220, 0.2) 8%, white 50%);
 }
 
-.mini-member-container-3:hover {
-  box-shadow: 0 16px 22px rgb(239, 103, 72);
+.detailed-member-type-STR {
+  border: 5px solid rgb(218, 54, 16);
+}
+
+.detailed-member-type-DEX {
+  border: 5px solid rgb(84, 211, 55);
+}
+
+.detailed-member-type-QCK {
+  border: 5px solid rgb(68, 160, 214);
+}
+
+.member-type-STR {
+  border: 2px solid rgb(218, 54, 16);
+  background: linear-gradient(to bottom, rgba(218, 54, 16, 0.4) 0%, rgba(218, 54, 16, 0.2) 8%, white 50%);
+}
+
+.member-type-DEX:hover {
+  box-shadow: 0 6px 16px rgb(154, 221, 139);
+}
+
+.member-type-QCK:hover {
+  box-shadow: 0 6px 16px rgb(119, 188, 228);
+}
+
+.member-type-STR:hover {
+  box-shadow: 0 6px 16px rgb(239, 103, 72);
 }
 
 .member-name {
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: #101010;
   text-align: center;
 }
 
 .member-level {
   font-weight: 350;
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   color: #5c5c5c;
   text-align: center;
 }
@@ -343,9 +259,7 @@ button,
   justify-content: center;
 }
 
-.detailed-content-1,
-.detailed-content-2,
-.detailed-content-3 {
+.detailed-content {
   position: relative;
   padding: 10px;
   background: #fff;
@@ -358,9 +272,7 @@ button,
   border-radius: 5px;
 }
 
-.detailed-content-1 > *,
-.detailed-content-2 > *,
-.detailed-content-3 > * {
+.detailed-content-1 > * {
   max-width: 100%; /* Prevents horizontal overflow */
   max-height: 100%; /* Prevents vertical overflow */
   box-sizing: border-box;
@@ -399,9 +311,7 @@ td {
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
-  .detailed-content-1,
-  .detailed-content-2,
-  .detailed-content-3 {
+  .detailed-content {
     width: 80%;
     height: 80%;
   }
@@ -411,7 +321,7 @@ td {
   }
 }
 
-.detailed-content-3 {
+.full-upgrade {
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
   animation: shimmer-glow 3s infinite;
 }
@@ -449,24 +359,15 @@ td {
   }
 
   /* Ensure cards stack vertically */
-  .mini-member-container-1,
-  .mini-member-container-2,
-  .mini-member-container-3 {
+  .mini-member-container {
     max-width: 100%;
     min-width: 275px;
   }
 
   /* Ensure image width doesn't exceed card width */
-  .mini-member-container-1 img,
-  .mini-member-container-2 img,
-  .mini-member-container-3 img {
+  .mini-member-container img {
     max-width: 70%;
     height: auto;
-  }
-
-  .form-container {
-    margin-top: 10px;
-    padding-bottom: 10px;
   }
 
   .input-field-container label {
@@ -478,8 +379,7 @@ td {
   }
 
   #submit-button,
-  #clear-fields-button,
-  #clear-team-button {
+  #clear-fields-button {
     padding: 4px 6px;
     font-size: 0.8rem;
   }

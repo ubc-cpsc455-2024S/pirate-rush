@@ -1,59 +1,62 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { db } = require("../db");
+const playerService = require('../services/playerService');
 
-const PLAYERS_COLL = "players";
+const asyncHandler = (fn) => {
+  return (req, res, next) => {
+    fn(req, res, next).catch((err) => {
+      res.status(500).json({ message: err.message });
+    });
+  };
+};
 
 /* GET player by id */
-router.get("/:playerId", async (req, res) => {
+router.get('/:playerId', asyncHandler(async (req, res) => {
   const playerId = req.params.playerId;
-  try {
-    const player = await db
-      .collection(PLAYERS_COLL)
-      .findOne({ playerId: playerId });
+  let player = await playerService.getPlayer(playerId);
 
-    if (!player) {
-      return res
-        .status(404)
-        .json({ message: `Player with id: ${playerId} not found` });
-    }
-
-    return res.status(200).json(player);
-  } catch (err) {
-    return res.status(500).json({ message: "Server error" });
+  if (!player) {
+    player = await playerService.createPlayer(playerId);
   }
-});
+
+  return res.status(200).json(player);
+}));
+
+/* DELETE player by id */
+router.delete('/:playerId', asyncHandler(async (req, res) => {
+  const playerId = req.params.playerId;
+  await playerService.deletePlayer(playerId)
+  res.status(204).send()
+}));
+
+/* GET player's bench by id */
+router.get('/:playerId/benchCrew', asyncHandler(async (req, res) => {
+  const playerId = req.params.playerId;
+  const player = await playerService.getPlayer(playerId);
+
+  if (!player) {
+    return res.status(404).json({ message: `Player with id: ${playerId} not found` });
+  }
+
+  return res.status(200).json(player.benchCrew);
+}));
 
 /* PATCH player berries by id. { body.amount } has the amount to update berries by */
-router.patch("/:playerId/berries", async (req, res) => {
+router.patch('/:playerId/berries', asyncHandler(async (req, res) => {
   const playerId = req.params.playerId;
   const amount = parseInt(req.body.amount);
 
   if (isNaN(amount)) {
-    return res.status(400).json({ message: "Invalid amount" });
+    return res.status(400).json({ message: 'Invalid amount' });
   }
 
-  try {
-    const player = await db
-      .collection(PLAYERS_COLL)
-      .findOne({ playerId: playerId });
+  const updatedBerries = await playerService.updatePlayerBerries(playerId, amount);
 
-    if (!player) {
-      return res
-        .status(404)
-        .json({ message: `Player with id: ${playerId} not found` });
-    }
-
-    const newBerries = player.berries + amount;
-
-    await db
-      .collection(PLAYERS_COLL)
-      .updateOne({ playerId: playerId }, { $set: { berries: newBerries } });
-
-    return res.status(200).json(newBerries);
-  } catch (err) {
-    return res.status(500).json({ message: "Server error" });
+  if (updatedBerries === null) {
+    return res.status(404).json({ message: `Player with id: ${playerId} not found` });
   }
-});
+
+  return res.status(200).json(updatedBerries);
+}));
 
 module.exports = router;

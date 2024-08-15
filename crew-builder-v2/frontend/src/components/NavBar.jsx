@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import './NavBar.css'
 
 function NavBar() {
   return (
@@ -15,10 +16,15 @@ function NavBar() {
               <span>About</span>
             </Link>
           </li>
+          <li className="navbar-item">
+            <Link to="/Leaderboard">
+              <span>Leaderboard</span>
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

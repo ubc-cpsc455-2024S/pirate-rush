@@ -1,53 +1,57 @@
-import axios from "axios";
+import axios from 'axios'
+import { handleApiCall } from '../utils.js'
 
-const BASE_URL = "/api/members";
+const BASE_URL = '/api/players'
+const MEMBERS_PATH = 'members'
 
-const addMember = async (member) => {
-  try {
-    const response = await axios.post(BASE_URL, member, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return response.data;
-  } catch (error) {
-    const errorMsg = error.response?.data?.message;
-    throw new Error(errorMsg || "Error adding member");
-  }
-};
+const addMember = async (playerId, memberName) => {
+  return handleApiCall(
+    () =>
+      axios.post(
+        `${BASE_URL}/${playerId}/${MEMBERS_PATH}`,
+        { name: memberName },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      ),
+    'Error adding member'
+  )
+}
 
-const getMembers = async () => {
-  try {
-    const response = await axios.get(BASE_URL);
-    return response.data;
-  } catch (error) {
-    throw new Error("Error fetching members");
-  }
-};
+const getMembers = async (playerId) => {
+  return handleApiCall(
+    () => axios.get(`${BASE_URL}/${playerId}/${MEMBERS_PATH}`),
+    'Error fetching members'
+  )
+}
 
-const deleteMember = async (memberId) => {
-  try {
-    await axios.delete(`${BASE_URL}/${memberId}`);
-    return memberId;
-  } catch (error) {
-    const errorMsg = error.response?.data?.message;
-    throw new Error(errorMsg || "Error deleting member");
-  }
-};
+const getMemberById = async (playerId, memberId) => {
+  return handleApiCall(
+    () => axios.get(`${BASE_URL}/${playerId}/${MEMBERS_PATH}/${memberId}`),
+    `Error fetching member with memberId: ${memberId}`
+  )
+}
 
-const patchMemberVersion = async (memberId) => {
-  try {
-    const response = await axios.patch(`${BASE_URL}/${memberId}`);
-    return response.data;
-  } catch (error) {
-    const errorMsg = error.response?.data?.message;
-    throw new Error(errorMsg || "Error patching member");
-  }
-};
+const deleteMember = async (playerId, memberId) => {
+  return handleApiCall(
+    () => axios.delete(`${BASE_URL}/${playerId}/${MEMBERS_PATH}/${memberId}`),
+    'Error deleting member'
+  ).then(() => memberId)
+}
+
+const patchMemberVersion = async (playerId, memberId) => {
+  return handleApiCall(
+    () => axios.patch(`${BASE_URL}/${playerId}/${MEMBERS_PATH}/${memberId}`),
+    'Error patching member'
+  )
+}
 
 export default {
   addMember,
   getMembers,
+  getMemberById,
   deleteMember,
   patchMemberVersion,
-};
+}
