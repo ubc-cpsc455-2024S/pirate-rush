@@ -13,23 +13,26 @@ To address this, we have introduced a caching mechanism that batches these healt
 
 ## Progress
 ### Milestone 5
-Pirate Rush 3.0
+v3.1
+- Add more UI improvements and upgrade the character level-up feature to increase stats and max level.
+
+v3.0
 - Updated UI and revamped the pirate input form to fetch from an existing pool of pirates to be unlocked.
 
 ### Milestone 4
-Pirate Rush 2.2
+v2.2
 - Connect the backend to MongoDB. Use Mongoose schema and add more member fields. Add functionality to upgrade crew with monetary resources (Berries)
 
 ### Milestone 3
-Pirate Rush 2.1
+v2.1
 - Implement backend via Node.js and express. Added member upgrade feature.
 
 ### Milestone 2
-Pirate Rush 2.0
+v2.0
 - Recreate assignment 1 using React and Redux. Add a new feature to select a member to show a detailed view.
 
 ### Milestone 1
-Pirate Rush 1.0
+v1.0
 - Using only HTML, CSS, and JavaScript, build a website to create teams via 
 filling forms and displaying them as a list
 
