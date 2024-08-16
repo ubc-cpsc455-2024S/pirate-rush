@@ -1,6 +1,6 @@
 export const MAX_LEVEL = 99
-export const FIRST_UPGRADE_LEVEL = 5
-export const FULL_UPGRADE_LEVEL = 10
+export const FIRST_UPGRADE_LEVEL = 10
+export const FULL_UPGRADE_LEVEL = 25
 export const PLAYER_ID = 'PLAYER_ID'
 
 // Characters
