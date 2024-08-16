@@ -53,13 +53,11 @@
 /* Styling for characters currently in play */
 .in-play-character {
   cursor: not-allowed;
-  opacity: 0.7;
-  position: relative;
 }
 
 .in-play-character:hover {
   transform: translateY(0);
-  box-shadow: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Character Name */
@@ -126,7 +124,7 @@
   font-weight: 600;
   background-color: #47aa2c;
   color: white;
-  border: none;
+  border: 2px solid #227e00;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;

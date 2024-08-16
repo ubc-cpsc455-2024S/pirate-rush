@@ -12,10 +12,6 @@ body {
   min-height: 100vh;
 }
 
-li {
-  display: inline;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -61,45 +57,48 @@ button {
   font-weight: 400;
   text-align: center;
 }
-
 button {
   cursor: pointer;
-}
-
-button,
-#submit-button {
   padding: 2px 6px;
   margin: 2px;
-  border: 2px solid transparent;
   font-size: 1rem;
   border-radius: 5px;
 }
 
-#submit-button {
-  background-color: #202020;
-  color: white;
-}
-
-#submit-button:hover {
-  background-color: #515151;
-}
-
 .upgrade-member-button {
-  background-color: #47aa2c;
-  color: white;
+  background-color: #ffffff;
+  border: 2px solid rgb(36, 41, 46);
 }
 
-.upgrade-member-button:hover {
-  background-color: #66d548;
+.canBuy {
+  color: #218e00;
+  border: 2px solid #218e00;
 }
+
+.canBuy:hover {
+  color: #69e64a;
+  border: 2px solid #69e64a;
+}
+
+.cannotBuy {
+  color: #930101;
+  border: 2px solid #930101;
+}
+
+.cannotBuy:hover {
+  color: #e65656;
+  border: 2px solid #e65656;
+}
+
 
 .delete-member-button {
-  background-color: #aa2b2b;
-  color: white;
+  background-color: white;
+  border: 2px solid rgb(36, 41, 46);
 }
 
 .delete-member-button:hover {
-  background-color: #bf3636;
+  color: rgb(123, 127, 131);
+  border: 2px solid rgb(123, 127, 131);
 }
 
 .member-container-headings {
@@ -175,18 +174,21 @@ button,
 
 .mini-member-container:hover {
   cursor: pointer;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   transition: transform 0.3s ease;
+}
+
+
+.member-type-STR {
+  border: 2px solid rgb(218, 54, 16);
 }
 
 .member-type-DEX {
   border: 2px solid rgb(102, 198, 80);
-  background: linear-gradient(to bottom, rgba(102, 198, 80, 0.4) 0%, rgba(102, 198, 80, 0.2) 8%, white 50%);
 }
 
 .member-type-QCK {
   border: 2px solid rgb(85, 170, 220);
-  background: linear-gradient(to bottom, rgba(85, 170, 220, 0.4) 0%, rgba(85, 170, 220, 0.2) 8%, white 50%);
 }
 
 .detailed-member-type-STR {
@@ -201,21 +203,16 @@ button,
   border: 5px solid rgb(68, 160, 214);
 }
 
-.member-type-STR {
-  border: 2px solid rgb(218, 54, 16);
-  background: linear-gradient(to bottom, rgba(218, 54, 16, 0.4) 0%, rgba(218, 54, 16, 0.2) 8%, white 50%);
-}
-
 .member-type-DEX:hover {
-  box-shadow: 0 6px 16px rgb(154, 221, 139);
+  box-shadow: 0 3px 20px rgb(154, 221, 139);
 }
 
 .member-type-QCK:hover {
-  box-shadow: 0 6px 16px rgb(119, 188, 228);
+  box-shadow: 0 3px 20px rgb(119, 188, 228);
 }
 
 .member-type-STR:hover {
-  box-shadow: 0 6px 16px rgb(239, 103, 72);
+  box-shadow: 0 3px 20px rgb(239, 103, 72);
 }
 
 .member-name {
@@ -228,7 +225,7 @@ button,
 .member-level {
   font-weight: 350;
   font-size: 0.95rem;
-  color: #5c5c5c;
+  color: #333333;
   text-align: center;
 }
 
@@ -236,9 +233,7 @@ button,
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  gap: 5px;
-  width: 90%;
-  margin: 5px;
+  width: 95%;
   padding: 3px;
   background-color: #efefef;
   border: 1px solid #a8a8a8;
@@ -261,9 +256,9 @@ button,
 
 .detailed-content {
   position: relative;
-  padding: 10px;
+  padding-top: 10px;
   background: #fff;
-  width: 470px;
+  width: 480px;
   height: 440px;
   overflow: hidden;
   display: flex;
@@ -410,41 +405,6 @@ td {
   }
 }
 
-/* About Page */
-.about {
-  text-align: center;
-  padding: 15px;
-  background-color: #f0f4f8;
-  border-radius: 10px;
-  margin: 60px auto;
-  width: 90%;
-  max-width: 800px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.about h1 {
-  margin-bottom: 20px;
-}
-
-.about-content {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.about-content p {
-  margin-bottom: 15px;
-}
-
-.about-link {
-  color: #0073b1;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.about-link:hover {
-  color: #005582;
-}
-
 /* Detailed Container */
 .detailed-container {
   position: fixed;
@@ -459,7 +419,7 @@ td {
 }
 
 /* Animation Effects */
-@keyframes evolve {
+@keyframes levelUp {
   0%,
   100% {
     transform: scale(1);
@@ -471,11 +431,11 @@ td {
   }
 }
 
-.evolving {
-  animation: evolve 0.5s ease-in-out forwards;
+.levelingUp {
+  animation: levelUp 0.4s ease-in-out forwards;
 }
 
-@keyframes silhouette {
+@keyframes evolve {
   from {
     filter: brightness(0%);
   }
@@ -484,8 +444,8 @@ td {
   }
 }
 
-.silhouette {
-  animation: silhouette 0.5s ease-in-out forwards;
+.evolving {
+  animation: evolve 0.5s ease-in-out forwards;
 }
 
 /* Footer Styles */

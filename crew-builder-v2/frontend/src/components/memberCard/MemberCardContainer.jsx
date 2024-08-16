@@ -10,12 +10,12 @@ function MemberCardContainer({ player }) {
   const getPlayerStatus = useSelector((state) => state.players.getPlayer)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    async function fetchData() {
-      await dispatch(getMembersAsync({ playerId: playerId }))
-    }
+  async function fetchData() {
+    await dispatch(getMembersAsync({ playerId: playerId }))
+  }
 
-    fetchData()
+  useEffect(() => {
+    void fetchData()
   }, [dispatch, playerId])
 
   if (getPlayerStatus === REQUEST_STATE.PENDING || !player) {
@@ -27,7 +27,7 @@ function MemberCardContainer({ player }) {
       <div className="team-display-container">
         <div className="member-container-headings">
           <h2 className="mulish-heading">{`${player.username}'s Crew`}</h2>
-          <h2 className="mulish-heading">{`Berries ($): ${player.berries}`}</h2>
+          <h2 className="mulish-heading berries-text-box">{`Berries ($): ${player.berries}`}</h2>
         </div>
         {crew.length === 0 ? (
           <div className="empty mulish-p">

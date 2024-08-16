@@ -1,11 +1,10 @@
 const { db } = require('../db')
 const { v4: uuidv4 } = require('uuid')
 const { CHARACTER_NAMES } = require('../backend_consts.js')
+const { MAX_CREW_SIZE, MAX_LEVEL, RARITY_VALUE, RARITY_MODIFIER } = require('../backend_consts')
 
 const PLAYERS_COLLECTION = 'players'
 const POOL_COLLECTION = 'pool'
-const MAX_CREW_SIZE = 6
-const MAX_LEVEL = 3
 
 let pool_cache = []
 
@@ -16,18 +15,9 @@ async function getPlayer(playerId) {
 // TODO - Balance numbers, use boss data
 async function createPlayer(playerId) {
   const newPlayer = {
-    playerId: playerId,
-    username: "New Pirate",
-    unlockedPirates: CHARACTER_NAMES,
-    currentBoss: {
-      name: "TODO",
-      level: 1,
-      HP: 100,
-      ATK: 10,
-    },
-    currentCrew: [],
-    benchCrew: [],
-    berries: 1000,
+    playerId: playerId, username: 'New Pirate', unlockedPirates: CHARACTER_NAMES, currentBoss: {
+      name: 'TODO', level: 1, HP: 100, ATK: 10,
+    }, currentCrew: [], benchCrew: [], berries: 1000,
   }
 
   await db.collection(PLAYERS_COLLECTION).insertOne(newPlayer)
@@ -39,20 +29,17 @@ async function deletePlayer(playerId) {
 }
 
 async function updatePlayerBerries(playerId, amount) {
-  const player = await getPlayer(playerId);
+  const player = await getPlayer(playerId)
 
   if (!player) {
-    return null; // Indicates that the player was not found
+    return null // Indicates that the player was not found
   }
 
-  const newBerries = player.berries + amount;
+  const newBerries = player.berries + amount
 
-  await db.collection(PLAYERS_COLLECTION).updateOne(
-    { playerId: playerId },
-    { $set: { berries: newBerries } }
-  );
+  await db.collection(PLAYERS_COLLECTION).updateOne({ playerId: playerId }, { $set: { berries: newBerries } })
 
-  return newBerries;
+  return newBerries
 }
 
 async function getMemberById(playerId, memberId) {
@@ -90,7 +77,7 @@ async function addMember(playerId, newMemberName) {
       memberToAdd = benchMember
       await db
         .collection(PLAYERS_COLLECTION)
-        .updateOne({ playerId: playerId }, { $pull: { benchCrew: {memberId: benchMember.memberId } } })
+        .updateOne({ playerId: playerId }, { $pull: { benchCrew: { memberId: benchMember.memberId } } })
     } else {
       const newMember = pool_cache.find((pirate) => pirate.name === newMemberName)
 
@@ -137,6 +124,10 @@ async function moveMemberToBench(playerId, memberId) {
   }
 }
 
+const calculateStat = (baseStat, rarity, modifierMap, valueMap) => {
+  return Math.floor(baseStat + baseStat * modifierMap[rarity] + valueMap[rarity]);
+};
+
 async function upgradeMember(playerId, memberId) {
   const member = await getMemberById(playerId, memberId)
 
@@ -151,14 +142,28 @@ async function upgradeMember(playerId, memberId) {
   await db
     .collection(PLAYERS_COLLECTION)
     .updateOne({
-      playerId: playerId,
-      'currentCrew.memberId': memberId,
-    }, { $set: { 'currentCrew.$.unitLevel': member.unitLevel + 1 } })
+      playerId: playerId, 'currentCrew.memberId': memberId,
+    }, {
+      $set: {
+        'currentCrew.$.unitLevel': member.unitLevel + 1,
+        'currentCrew.$.stats.HP': calculateStat(member.stats.HP, member.rarity, RARITY_MODIFIER, RARITY_VALUE),
+        'currentCrew.$.stats.ATK': calculateStat(member.stats.ATK, member.rarity, RARITY_MODIFIER, RARITY_VALUE),
+        'currentCrew.$.cost': calculateStat(member.cost, member.rarity, RARITY_MODIFIER, RARITY_VALUE),
+      },
+    })
+
 
   member.unitLevel += 1
   return member
 }
 
 module.exports = {
-  getPlayer, createPlayer, deletePlayer, updatePlayerBerries, getAllMembers, addMember, moveMemberToBench, upgradeMember,
+  getPlayer,
+  createPlayer,
+  deletePlayer,
+  updatePlayerBerries,
+  getAllMembers,
+  addMember,
+  moveMemberToBench,
+  upgradeMember,
 }

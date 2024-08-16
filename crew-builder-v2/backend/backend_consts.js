@@ -31,6 +31,25 @@ const CHARACTER_NAMES = [
   ODEN_KOZUKI,
 ];
 
+const COMMON = "common"
+const EPIC = "epic"
+const LEGENDARY = "legendary"
+
+const RARITY_VALUE = {
+  [COMMON]: 1,
+  [EPIC]: 2,
+  [LEGENDARY]: 5,
+};
+
+const RARITY_MODIFIER = {
+  [COMMON]: 0.1,
+  [EPIC]: 0.2,
+  [LEGENDARY]: 0.35,
+};
+
+const MAX_CREW_SIZE = 6
+const MAX_LEVEL = 99
+
 module.exports = {
   LUFFY,
   ZORO,
@@ -47,4 +66,11 @@ module.exports = {
   GOL_D_ROGER,
   ODEN_KOZUKI,
   CHARACTER_NAMES,
+  COMMON,
+  EPIC,
+  LEGENDARY,
+  RARITY_VALUE,
+  RARITY_MODIFIER,
+  MAX_CREW_SIZE,
+  MAX_LEVEL
 };

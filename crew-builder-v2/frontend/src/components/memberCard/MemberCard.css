@@ -1,0 +1,15 @@
+.stat-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px; /* Adjust the gap between the icon and the text */
+}
+
+.berries-text-box {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #000000;
+    display: inline-block; /* Ensures the box size only fits the content */
+}
