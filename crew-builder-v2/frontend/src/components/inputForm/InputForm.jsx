@@ -6,23 +6,15 @@ import './InputForm.css'
 import { getPlayerAsync } from '../../redux/players/thunks.js'
 
 function InputForm({ player }) {
-  const crew = useSelector((state) => state.members.list)
   const playerId = player?.playerId
   const dispatch = useDispatch()
 
   const [selectedName, setSelectedName] = useState('')
   const [buttonText, setButtonText] = useState('')
 
-  useEffect(() => {
-    async function updatePlayer() {
-        await dispatch(getPlayerAsync({ playerId: playerId }))
-    }
-
-    void updatePlayer()
-  }, [crew, dispatch])
-
   const handleAddMember = async (memberName) => {
     await dispatch(addMemberAsync({ playerId, memberName }))
+    await dispatch(getPlayerAsync({ playerId }))
   }
 
   const handleSubmit = (event) => {

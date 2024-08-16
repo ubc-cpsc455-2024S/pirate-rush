@@ -1,11 +1,10 @@
 const { db } = require('../db')
 const { v4: uuidv4 } = require('uuid')
 const { CHARACTER_NAMES } = require('../backend_consts.js')
+const { MAX_CREW_SIZE, MAX_LEVEL } = require('../backend_consts')
 
 const PLAYERS_COLLECTION = 'players'
 const POOL_COLLECTION = 'pool'
-const MAX_CREW_SIZE = 6
-const MAX_LEVEL = 3
 
 let pool_cache = []
 

@@ -1,13 +1,14 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import MemberCardPopup from './MemberCardPopup.jsx'
-import { handleDeleteMember, handleUpgradeMember } from './MemberCardMiniUtils.js'
+import { getMemberImage, handleDeleteMember, handleUpgradeMember } from './MemberCardUtils.js'
+import { FIRST_UPGRADE_LEVEL, FULL_UPGRADE_LEVEL } from '../../../consts.js'
 
 function MemberCardMini({ crewMember, player }) {
   const [viewDetailed, setViewDetailed] = React.useState(false)
   const [selectedMember, setSelectedMember] = React.useState(null)
+  const [isLevelingUp, setIsLevelUp] = React.useState(false)
   const [isEvolving, setIsEvolving] = React.useState(false)
-  const [isSilhouette, setIsSilhouette] = React.useState(false)
 
   const dispatch = useDispatch()
 
@@ -31,8 +32,8 @@ function MemberCardMini({ crewMember, player }) {
           </div>
 
           <img
-            className={`member-image ${isEvolving ? 'evolving' : ''} ${isSilhouette ? 'silhouette' : ''}`}
-            src={crewMember.images[crewMember.unitLevel - 1]}
+            className={`member-image ${isLevelingUp ? 'levelingUp' : ''} ${isEvolving ? 'evolving' : ''}`}
+            src={getMemberImage(crewMember)}
             alt={crewMember.name}
             width={200}
             onClick={() => viewMember()}
@@ -40,7 +41,7 @@ function MemberCardMini({ crewMember, player }) {
           <div className="mini-button-container">
             <button
               className="upgrade-member-button"
-              onClick={() => handleUpgradeMember(crewMember, player, dispatch, setIsEvolving, setIsSilhouette)}
+              onClick={() => handleUpgradeMember(crewMember, player, dispatch, setIsLevelUp, setIsEvolving)}
             >
               {`LVL UP [${crewMember.cost}$]`}
             </button>

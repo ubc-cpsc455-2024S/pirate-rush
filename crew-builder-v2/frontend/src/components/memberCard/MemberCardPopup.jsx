@@ -1,5 +1,6 @@
 import React from 'react'
 import { FULL_UPGRADE_LEVEL } from '../../../consts.js'
+import { getMemberImage } from './MemberCardUtils.js'
 
 const MemberCardPopup = ({ isOpen, onClose, member }) => {
   if (!isOpen) return null
@@ -22,7 +23,7 @@ const MemberCardPopup = ({ isOpen, onClose, member }) => {
             <span className="detailed-member-description">{member.description}</span>
           </div>
           <div className="detailed-image-container">
-            <img className="detailed-image" src={member.images[member.unitLevel - 1]} alt={member.name} />
+            <img className="detailed-image" src={getMemberImage(member)} alt={member.name} />
           </div>
           <table className="mulish-p">
             <tbody>
