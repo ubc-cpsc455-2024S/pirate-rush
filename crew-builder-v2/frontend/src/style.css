@@ -12,10 +12,6 @@ body {
   min-height: 100vh;
 }
 
-li {
-  display: inline;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
