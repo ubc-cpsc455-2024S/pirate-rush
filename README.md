@@ -14,6 +14,7 @@ To address this, we have introduced a caching mechanism that batches these healt
 ## Progress
 ### Milestone 5
 Pirate Rush 3.0
+- Updated UI and revamped the pirate input form to fetch from an existing pool of pirates to be unlocked.
 
 ### Milestone 4
 Pirate Rush 2.2
