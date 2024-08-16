@@ -35,9 +35,17 @@ const COMMON = "common"
 const EPIC = "epic"
 const LEGENDARY = "legendary"
 
-const RARITY = [
-  COMMON, EPIC, LEGENDARY
-]
+const RARITY_VALUE = {
+  [COMMON]: 1,
+  [EPIC]: 2,
+  [LEGENDARY]: 5,
+};
+
+const RARITY_MODIFIER = {
+  [COMMON]: 0.1,
+  [EPIC]: 0.2,
+  [LEGENDARY]: 0.35,
+};
 
 const MAX_CREW_SIZE = 6
 const MAX_LEVEL = 99
@@ -61,7 +69,8 @@ module.exports = {
   COMMON,
   EPIC,
   LEGENDARY,
-  RARITY,
+  RARITY_VALUE,
+  RARITY_MODIFIER,
   MAX_CREW_SIZE,
   MAX_LEVEL
 };
