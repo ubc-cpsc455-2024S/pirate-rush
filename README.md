@@ -7,9 +7,11 @@ Play now on: https://pirate-rush.onrender.com/
 
 ## Notes
 ### Challenges
-The core gameplay involves players clicking rapidly on a boss character to inflict damage. Managing this interaction in a React-Redux setup presents unique challenges, especially due to the high frequency of actions and the necessity to maintain responsive and accurate game state updates. A key concern is the efficiency of updating the boss's health; making an API call to update the health with every click would be impractical and inefficient.
+The core gameplay involves players clicking rapidly on a boss character to inflict damage. Managing this interaction in a React-Redux setup presents unique challenges, especially due to the high frequency of actions and the necessity to maintain responsive and accurate game state updates. A key concern is the efficiency of updating the boss's health; making an API call to update the boss's health data in Mongo with every click would be impractical and inefficient.
 
-To address this, we have introduced a caching mechanism that batches these health updates, thereby reducing the number of API calls. This system ensures that the game's performance remains optimal, even as players interact with the game rapidly.
+To address this, I decided to keep track of the boss's health on the front end to reduce API calls. This system ensures that the game's performance remains optimal, even as players interact with the game rapidly. 
+
+I encountered another bug where the recruit pirate component was re-rendering unnecessarily, as it fetched the Player data every time the crew changed, not just after form submission. This caused re-renders after each pirate upgrade, which was both unoptimized and functionally problematic. I resolved the issue by adjusting the logic to fetch the Player data only when necessary, such as during form submission or when moving a player to the bench.
 
 ## Progress
 ### Milestone 5
