@@ -23,7 +23,7 @@ v3.0
 
 ### Milestone 4
 v2.2
-- Connect the backend to MongoDB. Use Mongoose schema and add more member fields. Add functionality to upgrade crew with monetary resources (Berries)
+- Connect the backend to MongoDB. Use Mongoose schema and add more member fields. Add functionality to upgrade crew with monetary resources (Berries).
 
 ### Milestone 3
 v2.1
@@ -35,8 +35,7 @@ v2.0
 
 ### Milestone 1
 v1.0
-- Using only HTML, CSS, and JavaScript, build a website to create teams via 
-filling forms and displaying them as a list
+- Using only HTML, CSS, and JavaScript, build a website to create teams via filling forms and displaying them as a list.
 
 ## References
 
