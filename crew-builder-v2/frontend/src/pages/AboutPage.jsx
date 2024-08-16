@@ -6,12 +6,12 @@ function AboutPage() {
     <>
       <div className="about-container">
         <h1 className="mulish-heading">Pirate Rush</h1>
-        <div className="about-content">
-          <p className="mulish-p">
+        <div className="about-content mulish-p">
+          <p>
             Hi, my name is Jackson and this is my One Piece themed idle-clicker game. I am a 4th year Computer Science
             student with a passion for software engineering, gaming, and art!
           </p>
-          <p className="mulish-p">
+          <p>
             You can find out more about me on my
             <span>{' '}</span>
             <a href="https://www.linkedin.com/in/jacksonliiii" target="_blank" className="about-link">
@@ -26,8 +26,10 @@ function AboutPage() {
             <span>{' '}</span>
             account.
           </p>
-          <p className="mulish-p">
-            Enough about me. Do you want to become the Pirate King? Build your pirate crew and conquer the seas!
+          <p>
+            All character art credits go to ©Bandai Namco Entertainment Inc. and were retrieved from
+            <span>{' '}</span>
+            <a href="https://optc-db.github.io/" className="about-link">https://optc-db.github.io/</a>
           </p>
         </div>
 

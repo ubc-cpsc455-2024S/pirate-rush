@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import MemberCardPopup from './MemberCardPopup.jsx'
 import { getMemberImage, handleDeleteMember, handleUpgradeMember } from './MemberCardUtils.js'
-import { FIRST_UPGRADE_LEVEL, FULL_UPGRADE_LEVEL } from '../../../consts.js'
 
 function MemberCardMini({ crewMember, player }) {
   const [viewDetailed, setViewDetailed] = React.useState(false)
@@ -20,6 +19,14 @@ function MemberCardMini({ crewMember, player }) {
   const closeView = () => {
     setSelectedMember(null)
     setViewDetailed(false)
+  }
+
+  const canBuy = () => {
+    if (crewMember.cost <= player.berries) {
+      return "canBuy"
+    } else {
+      return "cannotBuy"
+    }
   }
 
   return (
@@ -40,10 +47,10 @@ function MemberCardMini({ crewMember, player }) {
           />
           <div className="mini-button-container">
             <button
-              className="upgrade-member-button"
+              className={`upgrade-member-button ${canBuy()}`}
               onClick={() => handleUpgradeMember(crewMember, player, dispatch, setIsLevelUp, setIsEvolving)}
             >
-              {`LVL UP [${crewMember.cost}$]`}
+              {`LVL UP [$${crewMember.cost}]`}
             </button>
             <button
               className="delete-member-button"
