@@ -1,14 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const playerService = require('../services/playerService');
-
-const asyncHandler = (fn) => {
-  return (req, res, next) => {
-    fn(req, res, next).catch((err) => {
-      res.status(500).json({ message: err.message });
-    });
-  };
-};
+const { asyncHandler } = require('./routeUtils')
 
 /* GET player by id */
 router.get('/:playerId', asyncHandler(async (req, res) => {

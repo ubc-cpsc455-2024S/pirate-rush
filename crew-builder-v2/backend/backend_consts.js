@@ -1,3 +1,8 @@
+// MONGODB collection names
+const PLAYERS_COLLECTION = 'players'
+const PIRATE_POOL_COLLECTION = 'pirate_pool'
+const BOSS_POOL_COLLECTION = 'boss_pool'
+
 // Characters
 const LUFFY = 'Luffy';
 const ZORO = 'Zoro';
@@ -72,5 +77,8 @@ module.exports = {
   RARITY_VALUE,
   RARITY_MODIFIER,
   MAX_CREW_SIZE,
-  MAX_LEVEL
+  MAX_LEVEL,
+  PLAYERS_COLLECTION,
+  PIRATE_POOL_COLLECTION,
+  BOSS_POOL_COLLECTION
 };

@@ -6,13 +6,6 @@ export const getMembersAsync = createAsyncThunk(actionTypes.GET_MEMBERS, async (
   return await MemberService.getMembers(playerId)
 })
 
-// export const getMemberByIdAsync = createAsyncThunk(
-//   actionTypes.GET_MEMBERS,
-//   async ({playerId, memberId}) => {
-//     return await MemberService.getMemberById(playerId, memberId);
-//   },
-// );
-
 export const addMemberAsync = createAsyncThunk(actionTypes.ADD_MEMBER, async ({ playerId, memberName }) => {
   return await MemberService.addMember(playerId, memberName)
 })
