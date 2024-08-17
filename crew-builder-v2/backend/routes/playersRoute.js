@@ -59,4 +59,17 @@ router.patch('/:playerId/berries', asyncHandler(async (req, res) => {
   return res.status(200).json(updatedBerries);
 }));
 
+router.patch('/:playerId/username', asyncHandler(async (req, res) => {
+  const playerId = req.params.playerId;
+  const username = req.body.username;
+
+  const updatedName = await playerService.updatePlayerName(playerId, username);
+
+  if (updatedName === null) {
+    return res.status(404).json({ message: `Player with id: ${playerId} not found` });
+  }
+
+  return res.status(200).json(updatedName);
+}));
+
 module.exports = router;

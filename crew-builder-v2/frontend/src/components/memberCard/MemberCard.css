@@ -13,3 +13,12 @@
     border: 1px solid #000000;
     display: inline-block; /* Ensures the box size only fits the content */
 }
+
+.pencil-icon {
+    font-size: 1.3rem;
+    margin-left: 5px;
+}
+
+.pencil-icon:hover {
+    cursor: pointer;
+}

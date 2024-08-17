@@ -30,16 +30,24 @@ async function deletePlayer(playerId) {
 
 async function updatePlayerBerries(playerId, amount) {
   const player = await getPlayer(playerId)
-
   if (!player) {
-    return null // Indicates that the player was not found
+    return null
   }
 
   const newBerries = player.berries + amount
 
   await db.collection(PLAYERS_COLLECTION).updateOne({ playerId: playerId }, { $set: { berries: newBerries } })
-
   return newBerries
+}
+
+async function updatePlayerName(playerId, name) {
+  const player = await getPlayer(playerId)
+  if (!player) {
+    return null
+  }
+
+  await db.collection(PLAYERS_COLLECTION).updateOne({ playerId: playerId }, { $set: { username: name } })
+  return name
 }
 
 async function getMemberById(playerId, memberId) {
@@ -166,4 +174,5 @@ module.exports = {
   addMember,
   moveMemberToBench,
   upgradeMember,
+  updatePlayerName
 }
