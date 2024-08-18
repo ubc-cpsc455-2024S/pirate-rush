@@ -7,6 +7,6 @@ export default configureStore({
   reducer: {
     members: membersReducer,
     players: playersReducer,
-    boss: bossReducer
+    boss: bossReducer,
   },
 })

@@ -65,4 +65,16 @@ router.patch('/:playerId/username', asyncHandler(async (req, res) => {
   return res.status(200).json(updatedName);
 }));
 
+router.patch('/:playerId/newPirates', asyncHandler(async (req, res) => {
+  const playerId = req.params.playerId;
+  const pirates = req.body.pirates;
+
+  const updatedUnlockedPirates = await playerService.updateUnlockedPirates(playerId, pirates);
+
+  if (updatedUnlockedPirates === null) {
+    return res.status(404).json({ message: `Player with id: ${playerId} not found` });
+  }
+
+  return res.status(200).json(updatedUnlockedPirates);
+}));
 module.exports = router;

@@ -20,6 +20,16 @@ export const YAMATO = 'Yamato'
 export const GOL_D_ROGER = 'Gol D. Roger'
 export const ODEN_KOZUKI = 'Oden Kozuki'
 
+// Bosses
+export const SEA_MONSTER = 'Sea Monster'
+export const ARLONG = 'Arlong'
+export const CROCODILE = 'Crocodile'
+export const ENEL = 'Enel'
+export const ROB_LUCCI = 'Rob Lucci'
+export const DOFLAMINGO = 'Doflamingo'
+export const BIG_MOM = 'Big Mom'
+export const KAIDO = 'Kaido'
+
 export const CHARACTER_NAMES = [
   LUFFY,
   ZORO,

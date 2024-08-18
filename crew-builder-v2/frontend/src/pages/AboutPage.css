@@ -62,7 +62,7 @@
 }
 
 .how-to-play li:before {
-  content: "⚓"; /* Adds an anchor icon before each list item */
+  content: '⚓'; /* Adds an anchor icon before each list item */
   color: #0073b1;
   margin-right: 10px;
 }

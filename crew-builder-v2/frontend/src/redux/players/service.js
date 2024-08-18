@@ -5,6 +5,7 @@ const BASE_URL = '/api/players'
 const BERRIES_PATH = 'berries'
 const BENCH_PATH = 'benchCrew'
 const USERNAME_PATH = 'username'
+const NEW_PIRATES_PATH = 'newPirates'
 const jsonContent = { 'Content-Type': 'application/json' }
 
 const getPlayerById = (playerId) => {
@@ -15,9 +16,17 @@ const getPlayerById = (playerId) => {
 }
 
 const patchPlayerBerries = (playerId, amount) => {
-  return handleApiCall(() => axios.patch(`${BASE_URL}/${playerId}/${BERRIES_PATH}`, { amount }, {
-    headers: jsonContent,
-  }), `Error patching berries for player: ${playerId}`)
+  return handleApiCall(
+    () =>
+      axios.patch(
+        `${BASE_URL}/${playerId}/${BERRIES_PATH}`,
+        { amount },
+        {
+          headers: jsonContent,
+        }
+      ),
+    `Error patching berries for player: ${playerId}`
+  )
 }
 
 const getBenchCrew = (playerId) => {
@@ -36,12 +45,37 @@ const deletePlayer = (playerId) => {
 
 const patchPlayerName = (playerId, username) => {
   return handleApiCall(
-    () => axios.patch(`${BASE_URL}/${playerId}/${USERNAME_PATH}`, { username: username }, {
-      headers: jsonContent,
-    }), `Error deleting player: ${playerId}`
+    () =>
+      axios.patch(
+        `${BASE_URL}/${playerId}/${USERNAME_PATH}`,
+        { username: username },
+        {
+          headers: jsonContent,
+        }
+      ),
+    `Error changing name for: ${playerId}`
+  )
+}
+
+const patchNewPirates = (playerId, pirates) => {
+  return handleApiCall(
+    () =>
+      axios.patch(
+        `${BASE_URL}/${playerId}/${NEW_PIRATES_PATH}`,
+        { pirates: pirates },
+        {
+          headers: jsonContent,
+        }
+      ),
+    `Error updating new pirates: ${playerId}`
   )
 }
 
 export default {
-  getPlayerById, patchPlayerBerries, getBenchCrew, deletePlayer, patchPlayerName
+  getPlayerById,
+  patchPlayerBerries,
+  getBenchCrew,
+  deletePlayer,
+  patchPlayerName,
+  patchNewPirates,
 }

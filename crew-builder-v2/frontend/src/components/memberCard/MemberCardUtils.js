@@ -1,8 +1,18 @@
-import { patchMemberVersionAsync, getMembersAsync, deleteMemberAsync } from '../../redux/members/thunks.js'
+import {
+  patchMemberVersionAsync,
+  getMembersAsync,
+  deleteMemberAsync,
+} from '../../redux/members/thunks.js'
 import { getPlayerAsync, patchBerriesAsync } from '../../redux/players/thunks.js'
 import { FIRST_UPGRADE_LEVEL, FULL_UPGRADE_LEVEL, MAX_LEVEL } from '../../../consts.js'
 
-export const handleUpgradeMember = async (crewMember, player, dispatch, setIsLevelingUp, setIsEvolving) => {
+export const handleUpgradeMember = async (
+  crewMember,
+  player,
+  dispatch,
+  setIsLevelingUp,
+  setIsEvolving
+) => {
   if (crewMember.unitLevel === MAX_LEVEL) {
     alert(`Crew member ${crewMember.name} is at max level.`)
     return
@@ -17,7 +27,10 @@ export const handleUpgradeMember = async (crewMember, player, dispatch, setIsLev
     await spendToUpgrade(crewMember, player, dispatch)
     await levelUpMember(player.playerId, crewMember, dispatch, setIsLevelingUp, setIsEvolving)
 
-    if (crewMember.unitLevel === FIRST_UPGRADE_LEVEL - 1 || crewMember.unitLevel === FULL_UPGRADE_LEVEL - 1) {
+    if (
+      crewMember.unitLevel === FIRST_UPGRADE_LEVEL - 1 ||
+      crewMember.unitLevel === FULL_UPGRADE_LEVEL - 1
+    ) {
       await evolveMember(setIsEvolving)
     }
   } catch (error) {
@@ -60,7 +73,10 @@ export const handleDeleteMember = async (playerId, crewMember, dispatch) => {
 export const getMemberImage = (crewMember) => {
   if (crewMember.unitLevel < FIRST_UPGRADE_LEVEL) {
     return crewMember.images[0]
-  } else if (crewMember.unitLevel >= FIRST_UPGRADE_LEVEL && crewMember.unitLevel < FULL_UPGRADE_LEVEL) {
+  } else if (
+    crewMember.unitLevel >= FIRST_UPGRADE_LEVEL &&
+    crewMember.unitLevel < FULL_UPGRADE_LEVEL
+  ) {
     return crewMember.images[1]
   } else {
     return crewMember.images[2]
@@ -70,7 +86,10 @@ export const getMemberImage = (crewMember) => {
 export const getMemberIcon = (crewMember) => {
   if (crewMember.unitLevel < FIRST_UPGRADE_LEVEL) {
     return crewMember.icons[0]
-  } else if (crewMember.unitLevel >= FIRST_UPGRADE_LEVEL && crewMember.unitLevel < FULL_UPGRADE_LEVEL) {
+  } else if (
+    crewMember.unitLevel >= FIRST_UPGRADE_LEVEL &&
+    crewMember.unitLevel < FULL_UPGRADE_LEVEL
+  ) {
     return crewMember.icons[1]
   } else {
     return crewMember.icons[2]

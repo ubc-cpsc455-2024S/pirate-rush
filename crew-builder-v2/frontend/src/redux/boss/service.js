@@ -13,14 +13,16 @@ const getBoss = async (playerId) => {
 
 const setBoss = async (playerId, bossId) => {
   return handleApiCall(
-    () => axios.post(`${BASE_URL}/${playerId}/${BOSS_PATH}`,
-      { bossId: bossId },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    ),
+    () =>
+      axios.post(
+        `${BASE_URL}/${playerId}/${BOSS_PATH}`,
+        { bossId: bossId },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      ),
     'Error setting boss'
   )
 }

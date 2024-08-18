@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import MemberCardPopup from './MemberCardPopup.jsx'
 import { getMemberImage, handleDeleteMember, handleUpgradeMember } from './MemberCardUtils.js'
-import { GrUpgrade } from "react-icons/gr";
+import { GrUpgrade } from 'react-icons/gr'
 import './MemberCard.css'
 import { FULL_UPGRADE_LEVEL } from '../../../consts.js'
 
@@ -26,9 +26,9 @@ function MemberCardMini({ crewMember, player }) {
 
   const canBuy = () => {
     if (crewMember.cost <= player.berries) {
-      return "canBuy"
+      return 'canBuy'
     } else {
-      return "cannotBuy"
+      return 'cannotBuy'
     }
   }
 
@@ -43,7 +43,9 @@ function MemberCardMini({ crewMember, player }) {
   return (
     <>
       <div className="mini-card-container">
-        <div className={`mini-member-container member-type-${crewMember.stats.TYPE} ${lastEvolve()}`}>
+        <div
+          className={`mini-member-container member-type-${crewMember.stats.TYPE} ${lastEvolve()}`}
+        >
           <div>
             <span className="member-name">{crewMember.name}</span>
             <span className="member-level"> LV {crewMember.unitLevel}</span>
@@ -57,9 +59,11 @@ function MemberCardMini({ crewMember, player }) {
           <div className="mini-button-container">
             <button
               className={`upgrade-member-button ${canBuy()}`}
-              onClick={() => handleUpgradeMember(crewMember, player, dispatch, setIsLevelUp, setIsEvolving)}
+              onClick={() =>
+                handleUpgradeMember(crewMember, player, dispatch, setIsLevelUp, setIsEvolving)
+              }
             >
-              <GrUpgrade className="svg-text"/>
+              <GrUpgrade className="svg-text" />
               {`$${crewMember.cost}`}
             </button>
             <button

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FULL_UPGRADE_LEVEL } from '../../../consts.js'
 import { getMemberImage } from './MemberCardUtils.js'
-import { LuSword } from "react-icons/lu";
+import { LuSword } from 'react-icons/lu'
 import './MemberCard.css'
 import { MdOutlineHealthAndSafety } from 'react-icons/md'
 
@@ -15,12 +15,14 @@ const MemberCardPopup = ({ isOpen, onClose, member }) => {
   }
 
   const memberLevel = member.unitLevel
-  const fullyUpgraded = memberLevel >= FULL_UPGRADE_LEVEL ? "full-upgrade" : ""
+  const fullyUpgraded = memberLevel >= FULL_UPGRADE_LEVEL ? 'full-upgrade' : ''
 
   return (
     <>
       <div className="detailed-container" onClick={handleClickOffView}>
-        <div className={`detailed-content ${fullyUpgraded} detailed-member-type-${member.stats.TYPE}`}>
+        <div
+          className={`detailed-content ${fullyUpgraded} detailed-member-type-${member.stats.TYPE}`}
+        >
           <div className="detailed-text-container">
             <span className="detailed-member-name">{member.name}</span>
             <span className="detailed-member-description">{member.description}</span>
@@ -35,16 +37,18 @@ const MemberCardPopup = ({ isOpen, onClose, member }) => {
                 <th>Type</th>
                 <th>
                   <div className="stat-header">
-                    <LuSword/> ATK
+                    <LuSword /> ATK
                   </div>
                 </th>
-                <th><div className="stat-header">
-                  <MdOutlineHealthAndSafety/> HP
-                </div></th>
+                <th>
+                  <div className="stat-header">
+                    <MdOutlineHealthAndSafety /> HP
+                  </div>
+                </th>
               </tr>
             </tbody>
             <tbody>
-            <tr>
+              <tr>
                 <td>{memberLevel}</td>
                 <td>{member.stats.TYPE}</td>
                 <td>{member.stats.ATK}</td>

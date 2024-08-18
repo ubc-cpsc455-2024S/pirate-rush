@@ -49,10 +49,25 @@ async function updatePlayerName(playerId, name) {
   return name
 }
 
+async function updateUnlockedPirates(playerId, pirates) {
+  const player = await getPlayer(playerId)
+  if (!player) {
+    return null
+  }
+
+  await db.collection(PLAYERS_COLLECTION).updateOne(
+    { playerId: playerId },
+    { $addToSet: { unlockedPirates: { $each: pirates } } }
+  );
+
+  return player.unlockedPirates.concat(pirates);
+}
+
 module.exports = {
   getPlayer,
   createPlayer,
   deletePlayer,
   updatePlayerBerries,
-  updatePlayerName
+  updatePlayerName,
+  updateUnlockedPirates
 }
