@@ -42,7 +42,7 @@ function MemberCardMini({ crewMember, player }) {
 
   return (
     <>
-      <div>
+      <div className="mini-card-container">
         <div className={`mini-member-container member-type-${crewMember.stats.TYPE} ${lastEvolve()}`}>
           <div>
             <span className="member-name">{crewMember.name}</span>
@@ -52,7 +52,6 @@ function MemberCardMini({ crewMember, player }) {
             className={`member-image ${isLevelingUp ? 'levelingUp' : ''} ${isEvolving ? 'evolving' : ''}`}
             src={getMemberImage(crewMember)}
             alt={crewMember.name}
-            width={200}
             onClick={() => viewMember()}
           />
           <div className="mini-button-container">

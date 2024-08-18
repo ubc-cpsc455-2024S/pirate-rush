@@ -66,3 +66,13 @@ export const getMemberImage = (crewMember) => {
     return crewMember.images[2]
   }
 }
+
+export const getMemberIcon = (crewMember) => {
+  if (crewMember.unitLevel < FIRST_UPGRADE_LEVEL) {
+    return crewMember.icons[0]
+  } else if (crewMember.unitLevel >= FIRST_UPGRADE_LEVEL && crewMember.unitLevel < FULL_UPGRADE_LEVEL) {
+    return crewMember.icons[1]
+  } else {
+    return crewMember.icons[2]
+  }
+}

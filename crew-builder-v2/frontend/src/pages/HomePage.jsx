@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import InputForm from '../components/inputForm/InputForm.jsx'
 import MemberCardContainer from '../components/memberCard/MemberCardContainer.jsx'
 import BossContainer from '../components/boss/BossContainer.jsx'
-import Footer from '../components/Footer.jsx'
 import { v4 as uuidv4 } from 'uuid'
 import { PLAYER_ID } from '../../consts.js'
 import { useDispatch, useSelector } from 'react-redux'
@@ -46,7 +45,7 @@ function HomePage() {
               <MemberCardContainer player={player} />
               <InputForm player={player} />
               <div id="reset-button-container">
-                <button className="delete-member-button" onClick={handleReset}>
+                <button className="reset-button" onClick={handleReset}>
                   Reset
                 </button>
               </div>

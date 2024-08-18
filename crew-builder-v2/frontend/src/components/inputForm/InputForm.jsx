@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { addMemberAsync } from '../../redux/members/thunks.js'
-import { CHARACTER_NAMES } from '../../../consts.js'
+import { CHARACTER_NAMES, MAX_CREW_SIZE } from '../../../consts.js'
 import './InputForm.css'
 import { getPlayerAsync } from '../../redux/players/thunks.js'
 
@@ -19,11 +19,16 @@ function InputForm({ player }) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (selectedName) {
-      void handleAddMember(selectedName)
-      setSelectedName('')
-      setButtonText('')
+
+    if (player.currentCrew.length === MAX_CREW_SIZE) {
+      window.alert("Your crew is full! Remove a pirate to add another!")
+    } else {
+      if (selectedName) {
+        void handleAddMember(selectedName)
+      }
     }
+    setSelectedName('')
+    setButtonText('')
   }
 
   const inCurrent = (character) => player.currentCrew ? player.currentCrew.some((member) => member.name === character) : false
@@ -47,8 +52,8 @@ function InputForm({ player }) {
   }
 
   return (
-    <div id="input-form-container">
-      <form className="form-container" onSubmit={handleSubmit}>
+    <>
+      <form className="input-form-container" onSubmit={handleSubmit}>
         <h1 className="mulish-heading">Assemble your Crew!</h1>
         <div className="recruit-container">
           <input id="submit-button" type="submit" value={buttonText || 'Select a Pirate'} disabled={!selectedName} />
@@ -83,7 +88,7 @@ function InputForm({ player }) {
           })}
         </div>
       </form>
-    </div>
+    </>
   )
 }
 
