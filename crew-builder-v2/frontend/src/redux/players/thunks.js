@@ -17,3 +17,7 @@ export const getBenchCrewAsync = createAsyncThunk(actionTypes.GET_BENCH_CREW, as
 export const deletePlayerAsync = createAsyncThunk(actionTypes.DELETE_PLAYER, async ({ playerId }) => {
   return await PlayerService.deletePlayer(playerId)
 })
+
+export const patchPlayerNameAsync = createAsyncThunk(actionTypes.PATCH_PLAYER_NAME, async ({ playerId, username }) => {
+  return await PlayerService.patchPlayerName(playerId, username)
+})

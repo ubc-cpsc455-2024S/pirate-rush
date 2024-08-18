@@ -6,6 +6,7 @@
 }
 
 .berries-text-box {
+    margin-right: 15px;
     background-color: white;
     padding: 5px 10px;
     border-radius: 5px;
@@ -13,3 +14,38 @@
     border: 1px solid #000000;
     display: inline-block; /* Ensures the box size only fits the content */
 }
+
+.pencil-icon {
+    font-size: 1.3rem;
+    margin-left: 5px;
+}
+
+.pencil-icon:hover {
+    cursor: pointer;
+}
+
+.member-container-headings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.berries-text {
+    background: linear-gradient(to bottom, #ffac33 50%, #ff9900 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.crew-name-text {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mini-button-container {
+    display: flex;
+    flex-direction: row;
+}
+

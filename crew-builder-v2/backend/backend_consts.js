@@ -1,3 +1,8 @@
+// MONGODB collection names
+const PLAYERS_COLLECTION = 'players'
+const PIRATE_POOL_COLLECTION = 'pirate_pool'
+const BOSS_POOL_COLLECTION = 'boss_pool'
+
 // Characters
 const LUFFY = 'Luffy';
 const ZORO = 'Zoro';
@@ -32,19 +37,22 @@ const CHARACTER_NAMES = [
 ];
 
 const COMMON = "common"
+const RARE = "rare"
 const EPIC = "epic"
 const LEGENDARY = "legendary"
 
 const RARITY_VALUE = {
   [COMMON]: 1,
-  [EPIC]: 2,
-  [LEGENDARY]: 5,
+  [RARE]: 2,
+  [EPIC]: 3,
+  [LEGENDARY]: 4,
 };
 
 const RARITY_MODIFIER = {
   [COMMON]: 0.1,
-  [EPIC]: 0.2,
-  [LEGENDARY]: 0.35,
+  [RARE]: 0.12,
+  [EPIC]: 0.16,
+  [LEGENDARY]: 0.2,
 };
 
 const MAX_CREW_SIZE = 6
@@ -67,10 +75,14 @@ module.exports = {
   ODEN_KOZUKI,
   CHARACTER_NAMES,
   COMMON,
+  RARE,
   EPIC,
   LEGENDARY,
   RARITY_VALUE,
   RARITY_MODIFIER,
   MAX_CREW_SIZE,
-  MAX_LEVEL
+  MAX_LEVEL,
+  PLAYERS_COLLECTION,
+  PIRATE_POOL_COLLECTION,
+  BOSS_POOL_COLLECTION
 };
