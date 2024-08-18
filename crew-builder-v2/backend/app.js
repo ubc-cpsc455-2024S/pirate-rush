@@ -6,6 +6,7 @@ const logger = require('morgan')
 const indexRouter = require('./routes')
 const membersRouter = require('./routes/membersRoute')
 const playersRouter = require('./routes/playersRoute')
+const bossRouter = require('./routes/bossRoute')
 
 const app = express()
 
@@ -19,5 +20,6 @@ app.use(express.static('dist'))
 app.use('/', indexRouter)
 app.use('/api/players', membersRouter)
 app.use('/api/players', playersRouter)
+app.use('/api/players', bossRouter)
 
 module.exports = app

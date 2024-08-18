@@ -113,7 +113,6 @@ async function upgradeMember(playerId, memberId) {
       },
     })
 
-  member.unitLevel += 1
   return member
 }
 

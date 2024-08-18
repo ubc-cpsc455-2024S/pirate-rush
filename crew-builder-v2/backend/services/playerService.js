@@ -1,19 +1,17 @@
 const { db } = require('../db')
 const { CHARACTER_NAMES, PLAYERS_COLLECTION } = require('../backend_consts')
+const { getBossById } = require('./bossService')
 
 async function getPlayer(playerId) {
   return await db.collection(PLAYERS_COLLECTION).findOne({ playerId: playerId })
 }
 
-// TODO - Balance numbers, use boss data
 async function createPlayer(playerId) {
   const newPlayer = {
     playerId: playerId,
     username: 'New Pirate',
     unlockedPirates: CHARACTER_NAMES,
-    currentBoss: {
-      name: 'TODO', level: 1, HP: 100, ATK: 10,
-    },
+    currentBoss: getBossById("1"),
     currentCrew: [],
     benchCrew: [],
     berries: 100000,

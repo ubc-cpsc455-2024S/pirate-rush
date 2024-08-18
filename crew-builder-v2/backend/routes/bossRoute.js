@@ -17,15 +17,6 @@ router.get('/:playerId/boss/:bossId', asyncHandler(async (req, res) => {
   }
 }))
 
-/* PUT boss by id -> Replace boss with new boss */
-router.put('/:playerId/boss/:bossId', asyncHandler(async (req, res) => {
-  const playerId = req.params.playerId
-  const bossId = req.params.bossId
-
-  const updatedBoss = await bossService.replaceBoss(playerId, bossId)
-  res.status(200).json(updatedBoss)
-}))
-
 /* PATCH boss by id -> Increase strength of boss */
 router.patch('/:playerId/boss/:bossId', asyncHandler(async (req, res) => {
   const playerId = req.params.playerId
