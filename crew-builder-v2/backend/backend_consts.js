@@ -37,18 +37,21 @@ const CHARACTER_NAMES = [
 ];
 
 const COMMON = "common"
+const RARE = "rare"
 const EPIC = "epic"
 const LEGENDARY = "legendary"
 
 const RARITY_VALUE = {
   [COMMON]: 1,
-  [EPIC]: 2,
-  [LEGENDARY]: 3,
+  [RARE]: 2,
+  [EPIC]: 3,
+  [LEGENDARY]: 4,
 };
 
 const RARITY_MODIFIER = {
   [COMMON]: 0.1,
-  [EPIC]: 0.15,
+  [RARE]: 0.12,
+  [EPIC]: 0.16,
   [LEGENDARY]: 0.2,
 };
 
@@ -72,6 +75,7 @@ module.exports = {
   ODEN_KOZUKI,
   CHARACTER_NAMES,
   COMMON,
+  RARE,
   EPIC,
   LEGENDARY,
   RARITY_VALUE,

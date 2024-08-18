@@ -11,8 +11,7 @@ const bossSchema = new mongoose.Schema({
     bossLevel: { type: Number, default: 1 },
     reward: { type: Number, required: true }
   },
-  rarity: { type: String, required: true },
-  icons: { type: [String], required: true },
+  rarity: { type: String, required: true }
 })
 
 const Boss = mongoose.model('Boss', bossSchema)
