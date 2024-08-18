@@ -22,3 +22,23 @@
 .pencil-icon:hover {
     cursor: pointer;
 }
+
+.member-container-headings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.berries-text {
+    background: linear-gradient(to bottom, #ffac33 50%, #ff9900 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.crew-name-text {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

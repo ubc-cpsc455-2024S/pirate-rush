@@ -67,12 +67,19 @@ function MemberCardContainer({ player }) {
               autoFocus
             />
           ) : (
-            <h2 className="mulish-heading">
-              {`${player.username}'s Crew`}
-              <FaPencilAlt className="pencil-icon" onClick={handleUsernameClick}/>
-            </h2>
+            <div className="crew-name-text">
+              <h2 className="mulish-heading">
+                {`${player.username}'s Crew`}
+                <FaPencilAlt className="pencil-icon" onClick={handleUsernameClick} />
+              </h2>
+            </div>
           )}
-          <h2 className="mulish-heading berries-text-box">{`Berries ($): ${player.berries}`}</h2>
+          <h2 className="mulish-heading berries-text-box">
+            {`Berries: `}
+            <span className="berries-text">
+              ${player.berries}
+            </span>
+          </h2>
         </div>
         {crew.length === 0 ? (
           <div className="empty mulish-p">
