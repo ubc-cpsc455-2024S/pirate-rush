@@ -15,7 +15,7 @@ const MemberCardPopup = ({ isOpen, onClose, member }) => {
   }
 
   const memberLevel = member.unitLevel
-  const fullyUpgraded = memberLevel > FULL_UPGRADE_LEVEL ? "full-upgrade" : ""
+  const fullyUpgraded = memberLevel >= FULL_UPGRADE_LEVEL ? "full-upgrade" : ""
 
   return (
     <>

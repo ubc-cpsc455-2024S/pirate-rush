@@ -8,7 +8,7 @@ function NavBar() {
         <ul className="navbar-list">
           <li className="navbar-item">
             <Link to="/">
-              <span>Home</span>
+              <span>Pirate Rush</span>
             </Link>
           </li>
           <li className="navbar-item">

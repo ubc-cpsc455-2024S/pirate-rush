@@ -43,13 +43,13 @@ const LEGENDARY = "legendary"
 const RARITY_VALUE = {
   [COMMON]: 1,
   [EPIC]: 2,
-  [LEGENDARY]: 5,
+  [LEGENDARY]: 3,
 };
 
 const RARITY_MODIFIER = {
   [COMMON]: 0.1,
-  [EPIC]: 0.2,
-  [LEGENDARY]: 0.35,
+  [EPIC]: 0.15,
+  [LEGENDARY]: 0.2,
 };
 
 const MAX_CREW_SIZE = 6

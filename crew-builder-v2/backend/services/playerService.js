@@ -16,7 +16,7 @@ async function createPlayer(playerId) {
     },
     currentCrew: [],
     benchCrew: [],
-    berries: 1000,
+    berries: 100000,
   }
 
   await db.collection(PLAYERS_COLLECTION).insertOne(newPlayer)

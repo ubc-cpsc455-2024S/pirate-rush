@@ -68,6 +68,14 @@ button {
 .upgrade-member-button {
   background-color: #ffffff;
   border: 2px solid rgb(36, 41, 46);
+  text-align: center;
+}
+
+.svg-text {
+  vertical-align: middle;
+  horiz-align: center;
+  margin-bottom: 4px;
+  margin-right: 2px;
 }
 
 .canBuy {
@@ -152,7 +160,7 @@ button {
 }
 
 .mini-member-container {
-  max-width: 230px;
+  max-width: 200px;
   gap: 2px;
   padding: 5px;
   background-color: #fbfbfb;
@@ -172,7 +180,6 @@ button {
   transition: transform 0.3s ease;
 }
 
-
 .member-type-STR {
   border: 2px solid rgb(218, 54, 16);
 }
@@ -184,6 +191,58 @@ button {
 .member-type-QCK {
   border: 2px solid rgb(85, 170, 220);
 }
+
+.last-evolve-STR {
+  border: 3px solid rgb(218, 54, 16);
+  background-image: linear-gradient(90deg, rgba(218, 54, 16, 0.8), rgba(218, 54, 16, 0.2), rgba(218, 54, 16, 0.8));
+  background-size: 200% 100%;
+  background-clip: border-box;
+  animation: wave-str 2s infinite linear;
+}
+
+@keyframes wave-str {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.last-evolve-DEX {
+  border: 3px solid rgb(102, 198, 80);
+  background-image: linear-gradient(90deg, rgba(102, 198, 80, 0.8), rgba(102, 198, 80, 0.2), rgba(102, 198, 80, 0.8));
+  background-size: 200% 100%;
+  background-clip: border-box;
+  animation: wave-dex 2s infinite linear;
+}
+
+@keyframes wave-dex {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.last-evolve-QCK {
+  border: 3px solid rgb(85, 170, 220);
+  background-image: linear-gradient(90deg, rgba(85, 170, 220, 0.8), rgba(85, 170, 220, 0.2), rgba(85, 170, 220, 0.8));
+  background-size: 200% 100%;
+  background-clip: border-box;
+  animation: wave-qck 2s infinite linear;
+}
+
+@keyframes wave-qck {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 
 .detailed-member-type-STR {
   border: 5px solid rgb(218, 54, 16);
@@ -323,11 +382,17 @@ td {
       0 0 20px rgba(255, 0, 0, 0.5);
     border-color: #ff0000;
   }
-  50% {
+  66% {
     box-shadow:
-      0 0 30px rgba(255, 215, 0, 0.9),
-      0 0 40px rgba(255, 215, 0, 0.9);
-    border-color: #ffd700;
+      0 0 30px rgba(67, 216, 211, 0.9),
+      0 0 40px rgba(68, 200, 196, 0.9);
+    border-color: #62a0dd;
+  }
+  33% {
+    box-shadow:
+            0 0 30px rgba(82, 197, 91, 0.9),
+            0 0 40px rgba(0, 255, 21, 0.9);
+    border-color: #11ff00;
   }
 }
 
