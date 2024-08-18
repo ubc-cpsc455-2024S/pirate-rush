@@ -16,11 +16,6 @@ function NavBar() {
               <span>About</span>
             </Link>
           </li>
-          <li className="navbar-item">
-            <Link to="/Leaderboard">
-              <span>Leaderboard</span>
-            </Link>
-          </li>
         </ul>
       </nav>
     </div>
