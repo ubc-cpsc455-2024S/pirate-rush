@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import InputForm from '../components/inputForm/InputForm.jsx'
 import MemberCardContainer from '../components/memberCard/MemberCardContainer.jsx'
-import BossContainer from '../components/BossContainer.jsx'
+import BossContainer from '../components/boss/BossContainer.jsx'
 import Footer from '../components/Footer.jsx'
 import { v4 as uuidv4 } from 'uuid'
 import { PLAYER_ID } from '../../consts.js'

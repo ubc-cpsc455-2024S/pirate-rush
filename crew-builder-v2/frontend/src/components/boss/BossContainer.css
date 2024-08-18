@@ -1,0 +1,65 @@
+#boss-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f6f8fa;
+    border: 2px solid rgb(36, 41, 46);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    max-width: 300px;
+    text-align: center;
+}
+
+.loading-boss {
+    margin: 0;
+    color: rgb(102, 102, 102);
+    font-size: 1.2rem;
+}
+
+.boss-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.boss-level {
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+#boss-image-container {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boss-image {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 2px solid rgb(36, 41, 46);
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.boss-image:hover {
+    transform: scale(1.02);
+}
+
+#boss-bounty-text-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#boss-bounty-text-container h2 {
+    font-size: 1.2rem;
+}
+
+#boss-bounty-text-container .mulish-p {
+    font-size: 1.4rem;
+    background: linear-gradient(to bottom, #ffac33 50%, #ff9900 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}

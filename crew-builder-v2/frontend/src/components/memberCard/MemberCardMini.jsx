@@ -48,7 +48,6 @@ function MemberCardMini({ crewMember, player }) {
             <span className="member-name">{crewMember.name}</span>
             <span className="member-level"> LV {crewMember.unitLevel}</span>
           </div>
-
           <img
             className={`member-image ${isLevelingUp ? 'levelingUp' : ''} ${isEvolving ? 'evolving' : ''}`}
             src={getMemberImage(crewMember)}

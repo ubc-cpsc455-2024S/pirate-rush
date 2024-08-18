@@ -49,54 +49,55 @@ function MemberCardContainer({ player }) {
     }
   }
 
-  if (getPlayerStatus === REQUEST_STATE.PENDING || !player) {
-    return <div className="loading mulish-p">Loading Your Crew...</div>
-  }
-
   return (
-    <div id="team-container">
-      <div className="team-display-container">
-        <div className="member-container-headings">
-          {isEditing ? (
-            <input
-              type="text"
-              className="mulish-heading"
-              value={newUsername}
-              onChange={handleUsernameChange}
-              onBlur={handleUsernameBlur}
-              autoFocus
-            />
-          ) : (
-            <div className="crew-name-text">
-              <h2 className="mulish-heading">
-                {`${player.username}'s Crew`}
-                <FaPencilAlt className="pencil-icon" onClick={handleUsernameClick} />
-              </h2>
-            </div>
-          )}
-          <h2 className="mulish-heading berries-text-box">
-            {`Berries: `}
-            <span className="berries-text">
+    getPlayerStatus === REQUEST_STATE.PENDING || !player ? (
+      <div className="loading mulish-p">Loading Your Crew...</div>
+    ) : (
+      <div id="team-container">
+        <div className="team-display-container">
+          <div className="member-container-headings">
+            {isEditing ? (
+              <input
+                type="text"
+                className="mulish-heading"
+                value={newUsername}
+                onChange={handleUsernameChange}
+                onBlur={handleUsernameBlur}
+                autoFocus
+              />
+            ) : (
+              <div className="crew-name-text">
+                <h2 className="mulish-heading">
+                  {`${player.username}'s Crew`}
+                  <FaPencilAlt className="pencil-icon" onClick={handleUsernameClick} />
+                </h2>
+              </div>
+            )}
+            <h2 className="mulish-heading berries-text-box">
+              {`Berries: `}
+              <span className="berries-text">
               ${player.berries}
             </span>
-          </h2>
-        </div>
-        {crew.length === 0 ? (
-          <div className="empty mulish-p">
-            Your crew is currently empty.
+            </h2>
           </div>
-        ) : (
-          <ul id="team-list">
-            {crew.map((crewMember) => (
-              <li key={crewMember.name} className="each-card">
-                <MemberCardMini crewMember={crewMember} player={player} />
-              </li>
-            ))}
-          </ul>
-        )}
+          {crew.length === 0 ? (
+            <div className="empty mulish-p">
+              Your crew is currently empty.
+            </div>
+          ) : (
+            <ul id="team-list">
+              {crew.map((crewMember) => (
+                <li key={crewMember.name} className="each-card">
+                  <MemberCardMini crewMember={crewMember} player={player} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
-    </div>
+    )
   )
+
 }
 
 export default MemberCardContainer

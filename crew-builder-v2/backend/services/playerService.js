@@ -1,17 +1,19 @@
 const { db } = require('../db')
-const { CHARACTER_NAMES, PLAYERS_COLLECTION } = require('../backend_consts')
-const { getBossById } = require('./bossService')
+const { PLAYERS_COLLECTION, LUFFY } = require('../backend_consts')
+const { addBossById } = require('./bossService')
 
 async function getPlayer(playerId) {
   return await db.collection(PLAYERS_COLLECTION).findOne({ playerId: playerId })
 }
 
 async function createPlayer(playerId) {
+  const firstBoss = await addBossById(playerId,"1")
+
   const newPlayer = {
     playerId: playerId,
     username: 'New Pirate',
-    unlockedPirates: CHARACTER_NAMES,
-    currentBoss: getBossById("1"),
+    unlockedPirates: [LUFFY],
+    currentBoss: firstBoss,
     currentCrew: [],
     benchCrew: [],
     berries: 100000,
