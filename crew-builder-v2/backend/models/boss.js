@@ -9,9 +9,9 @@ const bossSchema = new mongoose.Schema({
     ATK: Number,
     HP: Number,
     bossLevel: { type: Number, default: 1 },
-    reward: { type: Number, required: true }
+    reward: { type: Number, required: true },
   },
-  rarity: { type: String, required: true }
+  rarity: { type: String, required: true },
 })
 
 const Boss = mongoose.model('Boss', bossSchema)

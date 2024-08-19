@@ -6,7 +6,8 @@ import {
   patchBerriesAsync,
   deletePlayerAsync,
   patchPlayerNameAsync,
-  patchNewPiratesAsync, patchBossAsync,
+  patchNewPiratesAsync,
+  patchBossAsync,
 } from './thunks'
 
 const INITIAL_STATE = {

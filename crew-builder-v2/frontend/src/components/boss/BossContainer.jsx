@@ -1,76 +1,80 @@
-import React, { useEffect, useState } from 'react';
-import './BossContainer.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTotalATK, piratesToUnlock } from './BossUtils.js';
-import { patchBerriesAsync, patchBossAsync, patchNewPiratesAsync } from '../../redux/players/thunks.js';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import React, { useEffect, useState } from 'react'
+import './BossContainer.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTotalATK, piratesToUnlock } from './BossUtils.js'
+import {
+  patchBerriesAsync,
+  patchBossAsync,
+  patchNewPiratesAsync,
+} from '../../redux/players/thunks.js'
+import Snackbar from '@mui/material/Snackbar'
+import Alert from '@mui/material/Alert'
 
 function BossContainer({ player }) {
-  const crew = useSelector((state) => state.members.list);
-  const playerId = player.playerId;
-  const boss = player.currentBoss;
-  const [hp, setHP] = useState(boss ? boss.stats.HP : 0);
-  const [damageTexts, setDamageTexts] = useState([]);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [unlockedPirates, setUnlockedPirates] = useState([]);
-  const dispatch = useDispatch();
+  const crew = useSelector((state) => state.members.list)
+  const playerId = player.playerId
+  const boss = player.currentBoss
+  const [hp, setHP] = useState(boss ? boss.stats.HP : 0)
+  const [damageTexts, setDamageTexts] = useState([])
+  const [snackbarOpen, setSnackbarOpen] = useState(false)
+  const [unlockedPirates, setUnlockedPirates] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (boss) {
-      setHP(boss.stats.HP);
+      setHP(boss.stats.HP)
     }
-  }, [boss]);
+  }, [boss])
 
   const takeDamage = async (event) => {
-    const damage = getTotalATK(crew);
-    const { clientX, clientY } = event;
-    const offsetX = Math.floor(Math.random() * 10) - 5;
+    const damage = getTotalATK(crew)
+    const { clientX, clientY } = event
+    const offsetX = Math.floor(Math.random() * 10) - 5
 
     const newDamageText = {
       id: Date.now(),
       damage,
       x: clientX + offsetX,
       y: clientY - 20,
-    };
+    }
 
-    setDamageTexts((prevTexts) => [...prevTexts, newDamageText]);
+    setDamageTexts((prevTexts) => [...prevTexts, newDamageText])
 
     if (hp - damage <= 0) {
-      setHP(0);
+      setHP(0)
       setTimeout(() => {
-        window.alert('You defeated ' + boss.name + ' at level ' + boss.stats.bossLevel + "!");
-      }, 0);
+        window.alert('You defeated ' + boss.name + ' at level ' + boss.stats.bossLevel + '!')
+      }, 0)
 
-      await dispatch(patchBerriesAsync({ playerId: playerId, amount: boss.stats.reward }));
+      await dispatch(patchBerriesAsync({ playerId: playerId, amount: boss.stats.reward }))
 
       if (boss.stats.bossLevel < 3) {
-        await dispatch(patchBossAsync({ playerId: playerId, boss: boss, nextBoss: false }));
+        await dispatch(patchBossAsync({ playerId: playerId, boss: boss, nextBoss: false }))
       } else {
-        await dispatch(patchBossAsync({ playerId: playerId, boss: boss, nextBoss: true }));
+        await dispatch(patchBossAsync({ playerId: playerId, boss: boss, nextBoss: true }))
 
-        const pirates = piratesToUnlock(boss.name);
-        setUnlockedPirates(pirates);
-        await dispatch(patchNewPiratesAsync({ playerId: playerId, pirates: pirates }));
-        setSnackbarOpen(true);
+        const pirates = piratesToUnlock(boss.name)
+        setUnlockedPirates(pirates)
+        await dispatch(patchNewPiratesAsync({ playerId: playerId, pirates: pirates }))
+        setSnackbarOpen(true)
       }
     } else {
-      setHP(hp - damage);
+      setHP(hp - damage)
     }
 
     setTimeout(() => {
-      setDamageTexts((prevTexts) => prevTexts.filter((text) => text.id !== newDamageText.id));
-    }, 1000);
-  };
+      setDamageTexts((prevTexts) => prevTexts.filter((text) => text.id !== newDamageText.id))
+    }, 1000)
+  }
 
   const handleCloseSnackbar = () => {
-    setSnackbarOpen(false);
-  };
+    setSnackbarOpen(false)
+  }
 
   const getBossImage = () => {
-    const image = boss.stats.bossLevel - 1;
-    return image >= 3 ? 2 : image;
-  };
+    const image = boss.stats.bossLevel - 1
+    return image >= 3 ? 2 : image
+  }
 
   return !boss ? (
     <div className="loading-boss loading mulish-p bborder">Loading Boss...</div>
@@ -119,7 +123,7 @@ function BossContainer({ player }) {
         </Alert>
       </Snackbar>
     </>
-  );
+  )
 }
 
-export default BossContainer;
+export default BossContainer

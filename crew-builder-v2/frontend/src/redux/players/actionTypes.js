@@ -5,5 +5,5 @@ export const actionTypes = {
   GET_BENCH_CREW: 'players/getBenchCrew',
   DELETE_PLAYER: 'players/deletePlayer',
   PATCH_PLAYER_NAME: 'players/patchPlayerName',
-  PATCH_BOSS: 'players/patchBoss'
+  PATCH_BOSS: 'players/patchBoss',
 }

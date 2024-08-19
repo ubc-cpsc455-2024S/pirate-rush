@@ -93,5 +93,5 @@ export default {
   deletePlayer,
   patchPlayerName,
   patchNewPirates,
-  patchBoss
+  patchBoss,
 }

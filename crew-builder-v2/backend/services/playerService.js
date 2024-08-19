@@ -7,7 +7,7 @@ async function getPlayer(playerId) {
 }
 
 async function createPlayer(playerId) {
-  const firstBoss = await addBossById(playerId, "1")
+  const firstBoss = await addBossById(playerId, '1')
 
   const newPlayer = {
     playerId: playerId,
@@ -35,7 +35,9 @@ async function updatePlayerBerries(playerId, amount) {
 
   const newBerries = player.berries + amount
 
-  await db.collection(PLAYERS_COLLECTION).updateOne({ playerId: playerId }, { $set: { berries: newBerries } })
+  await db
+    .collection(PLAYERS_COLLECTION)
+    .updateOne({ playerId: playerId }, { $set: { berries: newBerries } })
   return newBerries
 }
 
@@ -45,7 +47,9 @@ async function updatePlayerName(playerId, name) {
     return null
   }
 
-  await db.collection(PLAYERS_COLLECTION).updateOne({ playerId: playerId }, { $set: { username: name } })
+  await db
+    .collection(PLAYERS_COLLECTION)
+    .updateOne({ playerId: playerId }, { $set: { username: name } })
   return name
 }
 
@@ -55,12 +59,11 @@ async function updateUnlockedPirates(playerId, pirates) {
     return null
   }
 
-  await db.collection(PLAYERS_COLLECTION).updateOne(
-    { playerId: playerId },
-    { $addToSet: { unlockedPirates: { $each: pirates } } }
-  );
+  await db
+    .collection(PLAYERS_COLLECTION)
+    .updateOne({ playerId: playerId }, { $addToSet: { unlockedPirates: { $each: pirates } } })
 
-  return player.unlockedPirates.concat(pirates);
+  return player.unlockedPirates.concat(pirates)
 }
 
 module.exports = {
@@ -69,5 +72,5 @@ module.exports = {
   deletePlayer,
   updatePlayerBerries,
   updatePlayerName,
-  updateUnlockedPirates
+  updateUnlockedPirates,
 }
