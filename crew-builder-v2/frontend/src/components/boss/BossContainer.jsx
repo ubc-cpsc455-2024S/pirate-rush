@@ -9,6 +9,7 @@ import {
 } from '../../redux/players/thunks.js'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
+import { GOL_D_ROGER } from '../../../consts.js'
 
 function BossContainer({ player }) {
   const crew = useSelector((state) => state.members.list)
@@ -19,6 +20,7 @@ function BossContainer({ player }) {
   const [snackbarOpen, setSnackbarOpen] = useState(false)
   const [unlockedPirates, setUnlockedPirates] = useState([])
   const dispatch = useDispatch()
+  let lastUnlock = false
 
   useEffect(() => {
     if (boss) {
@@ -54,9 +56,16 @@ function BossContainer({ player }) {
         await dispatch(patchBossAsync({ playerId: playerId, boss: boss, nextBoss: true }))
 
         const pirates = piratesToUnlock(boss.name)
-        setUnlockedPirates(pirates)
-        await dispatch(patchNewPiratesAsync({ playerId: playerId, pirates: pirates }))
-        setSnackbarOpen(true)
+
+        if (!lastUnlock) {
+          setUnlockedPirates(pirates)
+          await dispatch(patchNewPiratesAsync({ playerId: playerId, pirates: pirates }))
+          setSnackbarOpen(true)
+        }
+
+        if (pirates.includes(GOL_D_ROGER)) {
+          lastUnlock = true;
+        }
       }
     } else {
       setHP(hp - damage)
