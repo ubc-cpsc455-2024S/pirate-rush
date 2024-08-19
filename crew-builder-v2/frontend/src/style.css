@@ -30,6 +30,7 @@ ul {
   height: 100px;
   text-align: center;
   background-color: #eceef0;
+  border: 2px solid rgb(36, 41, 46);
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
@@ -98,7 +99,6 @@ button {
   border: 2px solid #e65656;
 }
 
-
 .delete-member-button {
   background-color: white;
   border: 2px solid rgb(36, 41, 46);
@@ -114,11 +114,12 @@ button {
   flex: 2;
   justify-content: center;
   background-color: #f6f8fa;
-  border: 2px solid rgb(36, 41, 46);
+  border: 4px solid rgb(36, 41, 46);
   border-radius: 10px;
   padding-bottom: 5px;
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
-  max-width: 700px; /* For repeat(2, 2fr) */
+  flex-grow: 1;
+  /* For repeat(2, 2fr) */
   /*max-width: 560px; For repeat(3, 2fr */
 }
 
@@ -129,12 +130,18 @@ button {
 #team-list {
   display: grid;
   grid-template-columns: repeat(3, 2fr);
-  gap: 12px;
+  gap: 8px;
   padding: 8px;
 }
 
-#each-card {
+.member-image {
+  width: 100%;
+}
+
+.mini-card-container {
+  display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 @media (max-width: 1200px) {
@@ -160,7 +167,7 @@ button {
 }
 
 .mini-member-container {
-  max-width: 200px;
+  max-width: 100%;
   gap: 2px;
   padding: 5px;
   background-color: #fbfbfb;
@@ -194,7 +201,12 @@ button {
 
 .last-evolve-STR {
   border: 3px solid rgb(218, 54, 16);
-  background-image: linear-gradient(90deg, rgba(218, 54, 16, 0.8), rgba(218, 54, 16, 0.2), rgba(218, 54, 16, 0.8));
+  background-image: linear-gradient(
+    90deg,
+    rgba(218, 54, 16, 0.8),
+    rgba(218, 54, 16, 0.2),
+    rgba(218, 54, 16, 0.8)
+  );
   background-size: 200% 100%;
   background-clip: border-box;
   animation: wave-str 2s infinite linear;
@@ -211,7 +223,12 @@ button {
 
 .last-evolve-DEX {
   border: 3px solid rgb(102, 198, 80);
-  background-image: linear-gradient(90deg, rgba(102, 198, 80, 0.8), rgba(102, 198, 80, 0.2), rgba(102, 198, 80, 0.8));
+  background-image: linear-gradient(
+    90deg,
+    rgba(102, 198, 80, 0.8),
+    rgba(102, 198, 80, 0.2),
+    rgba(102, 198, 80, 0.8)
+  );
   background-size: 200% 100%;
   background-clip: border-box;
   animation: wave-dex 2s infinite linear;
@@ -228,7 +245,12 @@ button {
 
 .last-evolve-QCK {
   border: 3px solid rgb(85, 170, 220);
-  background-image: linear-gradient(90deg, rgba(85, 170, 220, 0.8), rgba(85, 170, 220, 0.2), rgba(85, 170, 220, 0.8));
+  background-image: linear-gradient(
+    90deg,
+    rgba(85, 170, 220, 0.8),
+    rgba(85, 170, 220, 0.2),
+    rgba(85, 170, 220, 0.8)
+  );
   background-size: 200% 100%;
   background-clip: border-box;
   animation: wave-qck 2s infinite linear;
@@ -242,7 +264,6 @@ button {
     background-position: 200% 0;
   }
 }
-
 
 .detailed-member-type-STR {
   border: 5px solid rgb(218, 54, 16);
@@ -390,8 +411,8 @@ td {
   }
   33% {
     box-shadow:
-            0 0 30px rgba(82, 197, 91, 0.9),
-            0 0 40px rgba(0, 255, 21, 0.9);
+      0 0 30px rgba(82, 197, 91, 0.9),
+      0 0 40px rgba(0, 255, 21, 0.9);
     border-color: #11ff00;
   }
 }
@@ -485,7 +506,7 @@ td {
     opacity: 1;
   }
   50% {
-    transform: scale(1.5);
+    transform: scale(1.2);
     opacity: 0.5;
   }
 }

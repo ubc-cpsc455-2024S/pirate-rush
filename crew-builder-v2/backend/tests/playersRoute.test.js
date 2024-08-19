@@ -61,12 +61,17 @@ describe('PATCH /players/:playerId/berries', () => {
     })
     db.collection().updateOne.mockResolvedValueOnce({ modifiedCount: 1 })
 
-    const response = await request(app).patch(`/players/${playerId}/berries`).send({ amount: amountToSubtract })
+    const response = await request(app)
+      .patch(`/players/${playerId}/berries`)
+      .send({ amount: amountToSubtract })
 
     expect(response.status).toBe(200)
     expect(response.body).toBe(newBerries)
     expect(db.collection().findOne).toHaveBeenCalledWith({ playerId })
-    expect(db.collection().updateOne).toHaveBeenCalledWith({ playerId }, { $set: { berries: newBerries } })
+    expect(db.collection().updateOne).toHaveBeenCalledWith(
+      { playerId },
+      { $set: { berries: newBerries } }
+    )
   })
 
   it("should add berries to the player's account", async () => {
@@ -81,12 +86,17 @@ describe('PATCH /players/:playerId/berries', () => {
     })
     db.collection().updateOne.mockResolvedValueOnce({ modifiedCount: 1 })
 
-    const response = await request(app).patch(`/players/${playerId}/berries`).send({ amount: amountToAdd })
+    const response = await request(app)
+      .patch(`/players/${playerId}/berries`)
+      .send({ amount: amountToAdd })
 
     expect(response.status).toBe(200)
     expect(response.body).toBe(newBerries)
     expect(db.collection().findOne).toHaveBeenCalledWith({ playerId })
-    expect(db.collection().updateOne).toHaveBeenCalledWith({ playerId }, { $set: { berries: newBerries } })
+    expect(db.collection().updateOne).toHaveBeenCalledWith(
+      { playerId },
+      { $set: { berries: newBerries } }
+    )
   })
 
   it('should return 404 if the player is not found', async () => {
@@ -113,7 +123,9 @@ describe('PATCH /players/:playerId/berries', () => {
       berries: initialBerries,
     })
 
-    const response = await request(app).patch(`/players/${playerId}/berries`).send({ amount: 'not_a_number' })
+    const response = await request(app)
+      .patch(`/players/${playerId}/berries`)
+      .send({ amount: 'not_a_number' })
 
     expect(response.status).toBe(400)
     expect(response.body).toEqual({ message: 'Invalid amount' })
@@ -131,7 +143,9 @@ describe('PATCH /players/:playerId/berries', () => {
     })
     db.collection().updateOne.mockRejectedValueOnce(new Error('Server error'))
 
-    const response = await request(app).patch(`/players/${playerId}/berries`).send({ amount: amountToAdd })
+    const response = await request(app)
+      .patch(`/players/${playerId}/berries`)
+      .send({ amount: amountToAdd })
 
     expect(response.status).toBe(500)
     expect(response.body).toEqual({ message: 'Server error' })

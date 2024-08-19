@@ -1,22 +1,22 @@
 const { db } = require('../db')
-const { CHARACTER_NAMES, PLAYERS_COLLECTION } = require('../backend_consts')
+const { PLAYERS_COLLECTION, LUFFY } = require('../backend_consts')
+const { addBossById } = require('./bossService')
 
 async function getPlayer(playerId) {
   return await db.collection(PLAYERS_COLLECTION).findOne({ playerId: playerId })
 }
 
-// TODO - Balance numbers, use boss data
 async function createPlayer(playerId) {
+  const firstBoss = await addBossById(playerId, '1')
+
   const newPlayer = {
     playerId: playerId,
     username: 'New Pirate',
-    unlockedPirates: CHARACTER_NAMES,
-    currentBoss: {
-      name: 'TODO', level: 1, HP: 100, ATK: 10,
-    },
+    unlockedPirates: [LUFFY],
+    currentBoss: firstBoss,
     currentCrew: [],
     benchCrew: [],
-    berries: 100000,
+    berries: 100,
   }
 
   await db.collection(PLAYERS_COLLECTION).insertOne(newPlayer)
@@ -35,7 +35,9 @@ async function updatePlayerBerries(playerId, amount) {
 
   const newBerries = player.berries + amount
 
-  await db.collection(PLAYERS_COLLECTION).updateOne({ playerId: playerId }, { $set: { berries: newBerries } })
+  await db
+    .collection(PLAYERS_COLLECTION)
+    .updateOne({ playerId: playerId }, { $set: { berries: newBerries } })
   return newBerries
 }
 
@@ -45,8 +47,23 @@ async function updatePlayerName(playerId, name) {
     return null
   }
 
-  await db.collection(PLAYERS_COLLECTION).updateOne({ playerId: playerId }, { $set: { username: name } })
+  await db
+    .collection(PLAYERS_COLLECTION)
+    .updateOne({ playerId: playerId }, { $set: { username: name } })
   return name
+}
+
+async function updateUnlockedPirates(playerId, pirates) {
+  const player = await getPlayer(playerId)
+  if (!player) {
+    return null
+  }
+
+  await db
+    .collection(PLAYERS_COLLECTION)
+    .updateOne({ playerId: playerId }, { $addToSet: { unlockedPirates: { $each: pirates } } })
+
+  return player.unlockedPirates.concat(pirates)
 }
 
 module.exports = {
@@ -54,5 +71,6 @@ module.exports = {
   createPlayer,
   deletePlayer,
   updatePlayerBerries,
-  updatePlayerName
+  updatePlayerName,
+  updateUnlockedPirates,
 }

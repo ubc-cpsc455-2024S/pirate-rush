@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import InputForm from '../components/inputForm/InputForm.jsx'
 import MemberCardContainer from '../components/memberCard/MemberCardContainer.jsx'
-import BossContainer from '../components/BossContainer.jsx'
-import Footer from '../components/Footer.jsx'
+import BossContainer from '../components/boss/BossContainer.jsx'
 import { v4 as uuidv4 } from 'uuid'
 import { PLAYER_ID } from '../../consts.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { deletePlayerAsync, getPlayerAsync } from '../redux/players/thunks.js'
-import "./HomePage.css"
+import './HomePage.css'
 
 function HomePage() {
   const [loading, setLoading] = useState(true)
@@ -25,7 +24,7 @@ function HomePage() {
   }
 
   async function handleReset() {
-    const userConfirmed = window.confirm("Are you sure you want to reset your progress?");
+    const userConfirmed = window.confirm('Are you sure you want to reset your progress?')
     if (userConfirmed) {
       await dispatch(deletePlayerAsync({ playerId: player.playerId }))
       setLoading(true)
@@ -36,24 +35,23 @@ function HomePage() {
   }
 
   return (
-      <div id="home-container">
-        {
-          loading ?
-            <div className="loading-player">Loading Player...</div>
-            :
-            <div id="main-container">
-              <BossContainer player={player} />
-              <MemberCardContainer player={player} />
-              <InputForm player={player} />
-              <div id="reset-button-container">
-                <button className="delete-member-button" onClick={handleReset}>
-                  Reset
-                </button>
-              </div>
-            </div>
-        }
-        {/*<Footer />*/}
-      </div>
+    <div id="home-container">
+      {loading ? (
+        <div className="loading-player">Loading Player...</div>
+      ) : (
+        <div id="main-container">
+          <BossContainer player={player} />
+          <MemberCardContainer player={player} />
+          <InputForm player={player} />
+          <div id="reset-button-container">
+            <button className="reset-button" onClick={handleReset}>
+              Reset
+            </button>
+          </div>
+        </div>
+      )}
+      {/*<Footer />*/}
+    </div>
   )
 }
 

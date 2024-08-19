@@ -4,20 +4,20 @@ const PIRATE_POOL_COLLECTION = 'pirate_pool'
 const BOSS_POOL_COLLECTION = 'boss_pool'
 
 // Characters
-const LUFFY = 'Luffy';
-const ZORO = 'Zoro';
-const NAMI = 'Nami';
-const USOPP = 'Usopp';
-const SANJI = 'Sanji';
-const ROBIN = 'Robin';
-const CHOPPER = 'Chopper';
-const BROOK = 'Brook';
-const FRANKY = 'Franky';
-const JINBEI = 'Jinbei';
-const PORTGAS_D_ACE = 'Portgas D. Ace';
-const YAMATO = 'Yamato';
-const GOL_D_ROGER = 'Gol D. Roger';
-const ODEN_KOZUKI = 'Oden Kozuki';
+const LUFFY = 'Luffy'
+const ZORO = 'Zoro'
+const NAMI = 'Nami'
+const USOPP = 'Usopp'
+const SANJI = 'Sanji'
+const ROBIN = 'Robin'
+const CHOPPER = 'Chopper'
+const BROOK = 'Brook'
+const FRANKY = 'Franky'
+const JINBEI = 'Jinbei'
+const PORTGAS_D_ACE = 'Portgas D. Ace'
+const YAMATO = 'Yamato'
+const GOL_D_ROGER = 'Gol D. Roger'
+const ODEN_KOZUKI = 'Oden Kozuki'
 
 const CHARACTER_NAMES = [
   LUFFY,
@@ -34,26 +34,26 @@ const CHARACTER_NAMES = [
   PORTGAS_D_ACE,
   GOL_D_ROGER,
   ODEN_KOZUKI,
-];
+]
 
-const COMMON = "common"
-const RARE = "rare"
-const EPIC = "epic"
-const LEGENDARY = "legendary"
+const COMMON = 'common'
+const RARE = 'rare'
+const EPIC = 'epic'
+const LEGENDARY = 'legendary'
 
 const RARITY_VALUE = {
   [COMMON]: 1,
   [RARE]: 2,
   [EPIC]: 3,
   [LEGENDARY]: 4,
-};
+}
 
 const RARITY_MODIFIER = {
   [COMMON]: 0.1,
   [RARE]: 0.12,
   [EPIC]: 0.16,
   [LEGENDARY]: 0.2,
-};
+}
 
 const MAX_CREW_SIZE = 6
 const MAX_LEVEL = 99
@@ -84,5 +84,5 @@ module.exports = {
   MAX_LEVEL,
   PLAYERS_COLLECTION,
   PIRATE_POOL_COLLECTION,
-  BOSS_POOL_COLLECTION
-};
+  BOSS_POOL_COLLECTION,
+}

@@ -1,5 +1,12 @@
 const { db } = require('../db')
-const { MAX_CREW_SIZE, MAX_LEVEL, RARITY_MODIFIER, RARITY_VALUE, PLAYERS_COLLECTION, PIRATE_POOL_COLLECTION } = require('../backend_consts')
+const {
+  MAX_CREW_SIZE,
+  MAX_LEVEL,
+  RARITY_MODIFIER,
+  RARITY_VALUE,
+  PLAYERS_COLLECTION,
+  PIRATE_POOL_COLLECTION,
+} = require('../backend_consts')
 const { v4: uuidv4 } = require('uuid')
 
 const { getPlayer } = require('./playerService')
@@ -42,7 +49,10 @@ async function addMember(playerId, newMemberName) {
       memberToAdd = benchMember
       await db
         .collection(PLAYERS_COLLECTION)
-        .updateOne({ playerId: playerId }, { $pull: { benchCrew: { memberId: benchMember.memberId } } })
+        .updateOne(
+          { playerId: playerId },
+          { $pull: { benchCrew: { memberId: benchMember.memberId } } }
+        )
     } else {
       const newMember = pool_cache.find((pirate) => pirate.name === newMemberName)
 
@@ -51,7 +61,8 @@ async function addMember(playerId, newMemberName) {
       }
 
       memberToAdd = {
-        ...newMember, memberId: uuidv4(),
+        ...newMember,
+        memberId: uuidv4(),
       }
     }
 
@@ -78,11 +89,13 @@ async function moveMemberToBench(playerId, memberId) {
     throw new Error(`Member with id: ${memberId} not found in currentCrew`)
   }
 
-  const result = await db
-    .collection(PLAYERS_COLLECTION)
-    .updateOne({ playerId: playerId }, {
-      $pull: { currentCrew: { memberId: memberId } }, $push: { benchCrew: memberToBench },
-    })
+  const result = await db.collection(PLAYERS_COLLECTION).updateOne(
+    { playerId: playerId },
+    {
+      $pull: { currentCrew: { memberId: memberId } },
+      $push: { benchCrew: memberToBench },
+    }
+  )
 
   if (result.modifiedCount === 0) {
     throw new Error(`Member with id: ${memberId} not found`)
@@ -100,20 +113,36 @@ async function upgradeMember(playerId, memberId) {
     throw new Error(`Pirate ${member.memberId} is already at MAX level`)
   }
 
-  await db
-    .collection(PLAYERS_COLLECTION)
-    .updateOne({
-      playerId: playerId, 'currentCrew.memberId': memberId,
-    }, {
+  await db.collection(PLAYERS_COLLECTION).updateOne(
+    {
+      playerId: playerId,
+      'currentCrew.memberId': memberId,
+    },
+    {
       $set: {
         'currentCrew.$.unitLevel': member.unitLevel + 1,
-        'currentCrew.$.stats.HP': calculateStat(member.stats.HP, member.rarity, RARITY_MODIFIER, RARITY_VALUE),
-        'currentCrew.$.stats.ATK': calculateStat(member.stats.ATK, member.rarity, RARITY_MODIFIER, RARITY_VALUE),
-        'currentCrew.$.cost': calculateStat(member.cost, member.rarity, RARITY_MODIFIER, RARITY_VALUE),
+        'currentCrew.$.stats.HP': calculateStat(
+          member.stats.HP,
+          member.rarity,
+          RARITY_MODIFIER,
+          RARITY_VALUE
+        ),
+        'currentCrew.$.stats.ATK': calculateStat(
+          member.stats.ATK,
+          member.rarity,
+          RARITY_MODIFIER,
+          RARITY_VALUE
+        ),
+        'currentCrew.$.cost': calculateStat(
+          member.cost,
+          member.rarity,
+          RARITY_MODIFIER,
+          RARITY_VALUE
+        ),
       },
-    })
+    }
+  )
 
-  member.unitLevel += 1
   return member
 }
 

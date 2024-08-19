@@ -6,13 +6,19 @@ export const getMembersAsync = createAsyncThunk(actionTypes.GET_MEMBERS, async (
   return await MemberService.getMembers(playerId)
 })
 
-export const addMemberAsync = createAsyncThunk(actionTypes.ADD_MEMBER, async ({ playerId, memberName }) => {
-  return await MemberService.addMember(playerId, memberName)
-})
+export const addMemberAsync = createAsyncThunk(
+  actionTypes.ADD_MEMBER,
+  async ({ playerId, memberName }) => {
+    return await MemberService.addMember(playerId, memberName)
+  }
+)
 
-export const deleteMemberAsync = createAsyncThunk(actionTypes.DELETE_MEMBER, async ({ playerId, memberId }) => {
-  return await MemberService.deleteMember(playerId, memberId)
-})
+export const deleteMemberAsync = createAsyncThunk(
+  actionTypes.DELETE_MEMBER,
+  async ({ playerId, memberId }) => {
+    return await MemberService.deleteMember(playerId, memberId)
+  }
+)
 
 export const patchMemberVersionAsync = createAsyncThunk(
   actionTypes.PATCH_MEMBER_VERSION,

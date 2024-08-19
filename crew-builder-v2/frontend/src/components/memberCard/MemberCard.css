@@ -1,51 +1,53 @@
 .stat-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px; /* Adjust the gap between the icon and the text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px; /* Adjust the gap between the icon and the text */
 }
 
 .berries-text-box {
-    margin-right: 15px;
-    background-color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border: 1px solid #000000;
-    display: inline-block; /* Ensures the box size only fits the content */
+  width: 220px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background-color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #000000;
+  display: inline-block; /* Ensures the box size only fits the content */
 }
 
 .pencil-icon {
-    font-size: 1.3rem;
-    margin-left: 5px;
+  font-size: 1.3rem;
+  margin-left: 5px;
 }
 
 .pencil-icon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .member-container-headings {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .berries-text {
-    background: linear-gradient(to bottom, #ffac33 50%, #ff9900 50%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, #ffac33 50%, #ff9900 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .crew-name-text {
-    width: 400px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .mini-button-container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
-

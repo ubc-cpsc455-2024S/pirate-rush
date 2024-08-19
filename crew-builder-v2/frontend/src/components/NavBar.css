@@ -1,33 +1,33 @@
 .navbar {
-    background-color: #24292e;
-    overflow: hidden;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
+  background-color: #24292e;
+  overflow: hidden;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-item {
-    display: inline-block;
+  display: inline-block;
 }
 
 .navbar-item a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition:
-            background-color 0.3s,
-            color 0.3s;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .navbar-item a:hover {
-    background-color: #ddd;
-    color: #131313;
+  background-color: #ddd;
+  color: #131313;
 }
