@@ -105,7 +105,7 @@ router.patch(
     const nextBoss = req.body.nextBoss
     const nextBossId = parseInt(boss.bossId) + 1
 
-    if (nextBossId >= 8) {
+    if (nextBossId >= 9) {
       const updatedBoss = await bossService.upgradeBoss(playerId, boss)
       return res.status(200).json(updatedBoss)
     }
