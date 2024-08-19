@@ -1,66 +1,76 @@
-import React, { useEffect, useState } from 'react'
-import './BossContainer.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { getTotalATK, piratesToUnlock } from './BossUtils.js'
-import { patchBossVersionAsync } from '../../redux/boss/thunks.js'
-import { patchBerriesAsync, patchNewPiratesAsync } from '../../redux/players/thunks.js'
+import React, { useEffect, useState } from 'react';
+import './BossContainer.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTotalATK, piratesToUnlock } from './BossUtils.js';
+import { patchBerriesAsync, patchBossAsync, patchNewPiratesAsync } from '../../redux/players/thunks.js';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function BossContainer({ player }) {
-  const crew = useSelector((state) => state.members.list)
-  const playerId = player.playerId
-  const boss = player.currentBoss
-  const [hp, setHP] = useState(boss ? boss.stats.HP : 0)
-  const [damageTexts, setDamageTexts] = useState([])
-  const dispatch = useDispatch()
+  const crew = useSelector((state) => state.members.list);
+  const playerId = player.playerId;
+  const boss = player.currentBoss;
+  const [hp, setHP] = useState(boss ? boss.stats.HP : 0);
+  const [damageTexts, setDamageTexts] = useState([]);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [unlockedPirates, setUnlockedPirates] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (boss) {
-      setHP(boss.stats.HP)
+      setHP(boss.stats.HP);
     }
-  }, [boss])
+  }, [boss]);
 
   const takeDamage = async (event) => {
-    const damage = getTotalATK(crew)
-    const { clientX, clientY } = event
-    const offsetX = Math.floor(Math.random() * 10) - 5
+    const damage = getTotalATK(crew);
+    const { clientX, clientY } = event;
+    const offsetX = Math.floor(Math.random() * 10) - 5;
 
     const newDamageText = {
       id: Date.now(),
       damage,
       x: clientX + offsetX,
       y: clientY - 20,
-    }
+    };
 
-    setDamageTexts((prevTexts) => [...prevTexts, newDamageText])
+    setDamageTexts((prevTexts) => [...prevTexts, newDamageText]);
 
     if (hp - damage <= 0) {
-      setHP(0)
+      setHP(0);
       setTimeout(() => {
-        window.alert('You defeated ' + boss.name + ' at level ' + boss.stats.bossLevel)
-      }, 0)
+        window.alert('You defeated ' + boss.name + ' at level ' + boss.stats.bossLevel + "!");
+      }, 0);
 
-      // Gain berries
-      await dispatch(patchBerriesAsync({playerId: playerId, amount: boss.stats.reward}))
+      await dispatch(patchBerriesAsync({ playerId: playerId, amount: boss.stats.reward }));
 
       if (boss.stats.bossLevel < 3) {
-        // Get next boss level
-        //await dispatch(patchBossVersionAsync({ playerId: playerId }))
+        await dispatch(patchBossAsync({ playerId: playerId, boss: boss, nextBoss: false }));
       } else {
-        // get new boss
-        //await dispatch(patchBossVersionAsync({ playerId: playerId }))
-        // Unlock new pirates
-        const pirates = piratesToUnlock(boss.name)
-        await dispatch(patchNewPiratesAsync({ playerId: playerId, pirates: pirates }))
+        await dispatch(patchBossAsync({ playerId: playerId, boss: boss, nextBoss: true }));
+
+        const pirates = piratesToUnlock(boss.name);
+        setUnlockedPirates(pirates);
+        await dispatch(patchNewPiratesAsync({ playerId: playerId, pirates: pirates }));
+        setSnackbarOpen(true);
       }
     } else {
-      setHP(hp - damage)
+      setHP(hp - damage);
     }
 
-    // Remove the specific damage text after the animation
     setTimeout(() => {
-      setDamageTexts((prevTexts) => prevTexts.filter((text) => text.id !== newDamageText.id))
-    }, 1000)
-  }
+      setDamageTexts((prevTexts) => prevTexts.filter((text) => text.id !== newDamageText.id));
+    }, 1000);
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
+  };
+
+  const getBossImage = () => {
+    const image = boss.stats.bossLevel - 1;
+    return image >= 3 ? 2 : image;
+  };
 
   return !boss ? (
     <div className="loading-boss loading mulish-p bborder">Loading Boss...</div>
@@ -74,7 +84,7 @@ function BossContainer({ player }) {
         <div id="boss-image-container">
           <img
             className="boss-image"
-            src={boss.images[boss.stats.bossLevel - 1]}
+            src={boss.images[getBossImage()]}
             alt={boss.name}
             width={200}
             onClick={takeDamage}
@@ -98,8 +108,18 @@ function BossContainer({ player }) {
           <span className="mulish-p boss-bounty-text">{boss.stats.reward}</span>
         </div>
       </div>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity="success">
+          Unlocked Pirates: {unlockedPirates.join(', ')}
+        </Alert>
+      </Snackbar>
     </>
-  )
+  );
 }
 
-export default BossContainer
+export default BossContainer;

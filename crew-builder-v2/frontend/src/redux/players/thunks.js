@@ -40,3 +40,10 @@ export const patchPlayerNameAsync = createAsyncThunk(
     return await PlayerService.patchPlayerName(playerId, username)
   }
 )
+
+export const patchBossAsync = createAsyncThunk(
+  actionTypes.PATCH_BOSS,
+  async ({ playerId, boss, nextBoss }) => {
+    return await PlayerService.patchBoss(playerId, boss, nextBoss)
+  }
+)

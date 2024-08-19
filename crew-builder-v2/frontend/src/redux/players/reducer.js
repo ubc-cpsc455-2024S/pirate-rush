@@ -6,7 +6,7 @@ import {
   patchBerriesAsync,
   deletePlayerAsync,
   patchPlayerNameAsync,
-  patchNewPiratesAsync,
+  patchNewPiratesAsync, patchBossAsync,
 } from './thunks'
 
 const INITIAL_STATE = {
@@ -19,6 +19,7 @@ const INITIAL_STATE = {
   deletePlayer: REQUEST_STATE.IDLE,
   patchPlayerName: REQUEST_STATE.IDLE,
   patchNewPirates: REQUEST_STATE.IDLE,
+  patchBoss: REQUEST_STATE.IDLE,
   error: null,
 }
 
@@ -106,6 +107,20 @@ const playerSlice = createSlice({
       })
       .addCase(patchNewPiratesAsync.rejected, (state, action) => {
         state.patchNewPirates = REQUEST_STATE.REJECTED
+        state.error = action.error
+      })
+      .addCase(patchBossAsync.pending, (state) => {
+        state.patchBoss = REQUEST_STATE.PENDING
+        state.error = null
+      })
+      .addCase(patchBossAsync.fulfilled, (state, action) => {
+        state.patchBoss = REQUEST_STATE.FULFILLED
+        if (state.player) {
+          state.player.currentBoss = action.payload
+        }
+      })
+      .addCase(patchBossAsync.rejected, (state, action) => {
+        state.patchBoss = REQUEST_STATE.REJECTED
         state.error = action.error
       })
   },

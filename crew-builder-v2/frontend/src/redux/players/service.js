@@ -6,6 +6,7 @@ const BERRIES_PATH = 'berries'
 const BENCH_PATH = 'benchCrew'
 const USERNAME_PATH = 'username'
 const NEW_PIRATES_PATH = 'newPirates'
+const BOSS_PATH = 'boss'
 const jsonContent = { 'Content-Type': 'application/json' }
 
 const getPlayerById = (playerId) => {
@@ -71,6 +72,20 @@ const patchNewPirates = (playerId, pirates) => {
   )
 }
 
+const patchBoss = (playerId, boss, nextBoss) => {
+  return handleApiCall(
+    () =>
+      axios.patch(
+        `${BASE_URL}/${playerId}/${BOSS_PATH}`,
+        { boss: boss, nextBoss: nextBoss },
+        {
+          headers: jsonContent,
+        }
+      ),
+    `Error updating boss for: ${playerId}`
+  )
+}
+
 export default {
   getPlayerById,
   patchPlayerBerries,
@@ -78,4 +93,5 @@ export default {
   deletePlayer,
   patchPlayerName,
   patchNewPirates,
+  patchBoss
 }

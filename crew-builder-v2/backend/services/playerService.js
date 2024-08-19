@@ -1,5 +1,5 @@
 const { db } = require('../db')
-const { PLAYERS_COLLECTION, LUFFY, CHARACTER_NAMES } = require('../backend_consts')
+const { PLAYERS_COLLECTION, LUFFY } = require('../backend_consts')
 const { addBossById } = require('./bossService')
 
 async function getPlayer(playerId) {
@@ -7,16 +7,16 @@ async function getPlayer(playerId) {
 }
 
 async function createPlayer(playerId) {
-  const firstBoss = await addBossById(playerId,"1")
+  const firstBoss = await addBossById(playerId, "1")
 
   const newPlayer = {
     playerId: playerId,
     username: 'New Pirate',
-    unlockedPirates: CHARACTER_NAMES,
+    unlockedPirates: [LUFFY],
     currentBoss: firstBoss,
     currentCrew: [],
     benchCrew: [],
-    berries: 100000,
+    berries: 100,
   }
 
   await db.collection(PLAYERS_COLLECTION).insertOne(newPlayer)
