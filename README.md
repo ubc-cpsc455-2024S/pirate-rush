@@ -15,6 +15,9 @@ I encountered another bug where the recruit pirate component was re-rendering un
 
 ## Progress
 ### Milestone 5
+v3.3
+- Implement Boss fight logic.
+
 v3.2
 - Add more member card UI improvements.
   
